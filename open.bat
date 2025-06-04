@@ -1,0 +1,1 @@
+start "./fronted/index.html"
