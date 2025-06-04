@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年公職考試讀書計畫</title>
+    <link rel="stylesheet" href="..\style\proj.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>2025年公職考試讀書計畫表</h1>
+        <div class="links-group">
+            <a href="index.html" class="countdown-link">&lt;</a>
+            <a href="learning_dashboard.html" class="countdown-link">科目監控進度</a>
+            <a href="General_subject.html" class="countdown-link">考古題記錄</a>
+        </div>
+
+        <!-- 在 h2 標題之前添加即時提示區塊 -->
+        <div class="current-activity-container">
+            <div class="current-activity">
+                <div class="time-info">
+                    <span class="current-time" id="currentTime"></span>
+                    <span class="current-date" id="currentDate"></span>
+                </div>
+                <div class="activity-info">
+                    <div class="now-activity">
+                        <i class="icon">📍</i>
+                        <span class="label">現在應該：</span>
+                        <span class="activity-name" id="currentActivity"></span>
+                    </div>
+                    <div class="next-activity">
+                        <i class="icon">⏰</i>
+                        <span class="label">下個活動：</span>
+                        <span class="activity-name" id="nextActivity"></span>
+                        <span class="time-until" id="timeUntil"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>📅 階段性作息時間表</h2>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color subject-computer"></div>
+                <span>計算機概要</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-programming"></div>
+                <span>程式設計</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-network"></div>
+                <span>資通網路</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-management"></div>
+                <span>資訊管理</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-english"></div>
+                <span>國英文</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-review"></div>
+                <span>複習/練習</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-rest"></div>
+                <span>休閒時間</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-gym"></div>
+                <span>健身</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-law"></div>
+                <span>法學/憲法</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color subject-mock"></div>
+                <span>模擬考</span>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('stage1')">第一階段 (6-7月)</button>
+            <button class="tab-button" onclick="showTab('stage2')">第二階段 (8-9月)</button>
+            <button class="tab-button" onclick="showTab('stage3')">第三階段 (10-12月)</button>
+        </div>
+
+        <!-- 第一階段作息表 -->
+        <div id="stage1" class="tab-content active">
+            <div class="stage-description">
+                <h3>第一階段：基礎建立期 (6月-7月)</h3>
+                <p><strong>重點：</strong>專注專業科目課程，建立申論題練習習慣，每日國英考古題</p>
+            </div>
+            <div class="week-schedule">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>時段</th>
+                            <th>週一</th>
+                            <th>週二</th>
+                            <th>週三</th>
+                            <th>週四</th>
+                            <th>週五</th>
+                            <th>週六</th>
+                            <th>週日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00-12:00</td>
+                            <td class="subject-programming">程式設計課程</td>
+                            <td class="subject-network">資通網路課程</td>
+                            <td class="subject-computer">計算機概要課程</td>
+                            <td class="subject-management">資訊管理課程</td>
+                            <td class="subject-programming">程式設計課程</td>
+                            <td class="subject-management">資訊管理課程</td>
+                            <td class="subject-review">本週進度補課/緩衝</td>
+                        </tr>
+                        <tr>
+                            <td>12:00-13:00</td>
+                            <td colspan="7" style="background-color: #fff9c4;">午餐時間</td>
+                        </tr>
+                        <tr>
+                            <td>13:00-15:00</td>
+                            <td class="subject-review">程式設計<br>申論題練習</td>
+                            <td class="subject-review">資通網路<br>申論題練習</td>
+                            <td class="subject-review">計算機<br>選擇題練習</td>
+                            <td class="subject-review">資訊管理<br>申論題練習</td>
+                            <td class="subject-review">程式實作練習</td>
+                            <td class="subject-review">申論題<br>綜合練習</td>
+                            <td class="subject-english">國文課程</td>
+                        </tr>
+                        <tr>
+                            <td>15:00-16:00</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                        </tr>
+                        <tr>
+                            <td>16:00-16:30</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                        </tr>
+                        <tr>
+                            <td>16:30-20:00</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                        </tr>
+                        <tr>
+                            <td>20:00-22:00</td>
+                            <td class="subject-review">筆記整理<br>+Notion弱點記錄</td>
+                            <td class="subject-review">筆記整理<br>+Notion弱點記錄</td>
+                            <td class="subject-review">筆記整理<br>+Notion弱點記錄</td>
+                            <td class="subject-review">筆記整理<br>+Notion弱點記錄</td>
+                            <td class="subject-review">週複習整理</td>
+                            <td class="subject-english">英文課程</td>
+                            <td class="subject-review">週複習<br>+下週規劃</td>
+                        </tr>
+                        <tr>
+                            <td>22:00-23:00</td>
+                            <td class="subject-review">明日預習</td>
+                            <td class="subject-review">錯題檢討</td>
+                            <td class="subject-review">今日總複習</td>
+                            <td class="subject-review">錯題檢討</td>
+                            <td class="subject-review">弱點補強</td>
+                            <td class="subject-review">今日總複習</td>
+                            <td class="subject-review">整理本週筆記</td>
+                        </tr>
+                        <tr>
+                            <td>23:00-01:00</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 第二階段作息表 -->
+        <div id="stage2" class="tab-content">
+            <div class="stage-description">
+                <h3>第二階段：強化提升期 (8月-9月)</h3>
+                <p><strong>重點：</strong>完成專業課程，大量歷屆試題練習，申論題實戰，9月開始法緒憲法速成</p>
+            </div>
+            <div class="week-schedule">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>時段</th>
+                            <th>週一</th>
+                            <th>週二</th>
+                            <th>週三</th>
+                            <th>週四</th>
+                            <th>週五</th>
+                            <th>週六</th>
+                            <th>週日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00-12:00</td>
+                            <td class="subject-review">專業科目<br>歷屆選擇題<br>+申論題練習</td>
+                            <td class="subject-programming">程式設計實作<br>+申論題練習</td>
+                            <td class="subject-network">資通網路<br>歷屆題練習</td>
+                            <td class="subject-computer">計算機<br>選擇題精練</td>
+                            <td class="subject-management">資訊管理<br>歷屆題練習</td>
+                            <td class="subject-mock">模擬考<br>(專業科目)</td>
+                            <td class="subject-review">弱點科目加強</td>
+                        </tr>
+                        <tr>
+                            <td>12:00-13:00</td>
+                            <td colspan="7" style="background-color: #fff9c4;">午餐時間</td>
+                        </tr>
+                        <tr>
+                            <td>13:00-15:00</td>
+                            <td class="subject-review">申論題檢討<br>+改進</td>
+                            <td class="subject-review">Debug與<br>優化練習</td>
+                            <td class="subject-review">網路實務<br>案例分析</td>
+                            <td class="subject-review">速解技巧<br>練習</td>
+                            <td class="subject-review">資料處理<br>實務練習</td>
+                            <td class="subject-review">模考檢討</td>
+                            <td class="subject-review">申論題<br>技巧總結</td>
+                        </tr>
+                        <tr>
+                            <td>15:00-16:00</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                        </tr>
+                        <tr>
+                            <td>16:00-16:30</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-law">法學緒論速成</td>
+                        </tr>
+                        <tr>
+                            <td>16:30-20:00</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                            <td class="subject-law">憲法速成<br>+晚餐</td>
+                        </tr>
+                        <tr>
+                            <td>20:00-22:00</td>
+                            <td class="subject-review">弱點單元加強</td>
+                            <td class="subject-review">歷屆試題<br>深入解析</td>
+                            <td class="subject-review">弱點單元加強</td>
+                            <td class="subject-review">跨科整合練習</td>
+                            <td class="subject-english">國文課程</td>
+                            <td class="subject-english">英文課程</td>
+                            <td class="subject-review">週總複習</td>
+                        </tr>
+                        <tr>
+                            <td>22:00-23:00</td>
+                            <td class="subject-review">Notion筆記更新</td>
+                            <td class="subject-review">錯題整理</td>
+                            <td class="subject-review">今日總複習</td>
+                            <td class="subject-review">Notion筆記更新</td>
+                            <td class="subject-review">週檢討</td>
+                            <td class="subject-review">錯題強化</td>
+                            <td class="subject-review">下週規劃</td>
+                        </tr>
+                        <tr>
+                            <td>23:00-01:00</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                            <td class="subject-review">自由安排</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 第三階段作息表 -->
+        <div id="stage3" class="tab-content">
+            <div class="stage-description">
+                <h3>第三階段：衝刺階段 (10月-12月)</h3>
+                <p><strong>重點：</strong>模擬考實戰，針對國營(11/9)加強資管，普考(12/6)加強法緒憲法</p>
+            </div>
+            <div class="week-schedule">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>時段</th>
+                            <th>週一</th>
+                            <th>週二</th>
+                            <th>週三</th>
+                            <th>週四</th>
+                            <th>週五</th>
+                            <th>週六</th>
+                            <th>週日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00-12:00</td>
+                            <td class="subject-mock">國營模擬考<br>(計算機+程式)</td>
+                            <td class="subject-computer">計算機<br>錯題精練</td>
+                            <td class="subject-mock">國營模擬考<br>(資通+資管)</td>
+                            <td class="subject-network">資通網路<br>錯題精練</td>
+                            <td class="subject-mock">全科模擬考</td>
+                            <td class="subject-review">專業科目<br>總複習</td>
+                            <td class="subject-mock">普考模擬考<br>(含法緒憲法)</td>
+                        </tr>
+                        <tr>
+                            <td>12:00-13:00</td>
+                            <td colspan="7" style="background-color: #fff9c4;">午餐時間</td>
+                        </tr>
+                        <tr>
+                            <td>13:00-15:00</td>
+                            <td class="subject-review">模考檢討<br>+強化</td>
+                            <td class="subject-programming">程式申論強化</td>
+                            <td class="subject-review">模考檢討<br>+強化</td>
+                            <td class="subject-management">資管申論強化</td>
+                            <td class="subject-review">模考檢討<br>+強化</td>
+                            <td class="subject-review">考古題精練</td>
+                            <td class="subject-review">模考總檢討</td>
+                        </tr>
+                        <tr>
+                            <td>15:00-16:00</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                            <td class="subject-english">國英考古題練習</td>
+                        </tr>
+                        <tr>
+                            <td>16:00-16:30</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-rest">休息準備</td>
+                            <td class="subject-law">法緒憲法衝刺</td>
+                        </tr>
+                        <tr>
+                            <td>16:30-20:00</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-gym">健身+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                            <td class="subject-rest">休息+晚餐</td>
+                        </tr>
+                        <tr>
+                            <td>20:00-22:00</td>
+                            <td class="subject-management">資管重點加強</td>
+                            <td class="subject-review">重點筆記背誦</td>
+                            <td class="subject-law">法學緒論課程</td>
+                            <td class="subject-law">憲法課程</td>
+                            <td class="subject-law">法緒憲法練習</td>
+                            <td class="subject-review">考前猜題練習</td>
+                            <td class="subject-review">全科快速複習</td>
+                        </tr>
+                        <tr>
+                            <td>22:00-23:00</td>
+                            <td class="subject-review">公式速記</td>
+                            <td class="subject-review">程式語法速記</td>
+                            <td class="subject-review">網路協定速記</td>
+                            <td class="subject-review">管理理論速記</td>
+                            <td class="subject-review">綜合整理</td>
+                            <td class="subject-review">考試注意事項</td>
+                            <td class="subject-review">調整心態</td>
+                        </tr>
+                        <tr>
+                            <td>23:00-00:00</td>
+                            <td class="subject-rest">早睡調整</td>
+                            <td class="subject-rest">早睡調整</td>
+                            <td class="subject-rest">早睡調整</td>
+                            <td class="subject-rest">早睡調整</td>
+                            <td class="subject-rest">早睡調整</td>
+                            <td class="subject-rest">早睡調整</td>
+                            <td class="subject-rest">早睡調整</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h2>📊 進度規劃表</h2>
+
+        <div class="progress-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>階段</th>
+                        <th>時間</th>
+                        <th>週數</th>
+                        <th>主要目標</th>
+                        <th>各科進度</th>
+                        <th>重點事項</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2"><strong>第一階段<br>基礎建立</strong></td>
+                        <td>6月<br>(6/1-6/30)</td>
+                        <td>4週</td>
+                        <td>建立學習節奏<br>專注專業科目</td>
+                        <td>
+                            • 程式設計：完成5堂<br>
+                            • 資通網路：完成5堂<br>
+                            • 計算機概要：完成5堂<br>
+                            • 資訊管理：完成11堂<br>
+                            • 國文：完成2堂<br>
+                            • 英文：完成2堂
+                        </td>
+                        <td>
+                            • 每週完成6-7堂專業課<br>
+                            • 每日國英考古題練習<br>
+                            • 建立申論題練習習慣<br>
+                            • 週日緩衝補課
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7月<br>(7/1-7/31)</td>
+                        <td>4週</td>
+                        <td>加速進度<br>深化申論能力</td>
+                        <td>
+                            • 程式設計：完成5堂（累計10堂）<br>
+                            • 資通網路：完成5堂（累計10堂）<br>
+                            • 計算機概要：完成5堂（累計10堂）<br>
+                            • 資訊管理：完成11堂（累計22堂）<br>
+                            • 國文：完成2堂（累計4堂）<br>
+                            • 英文：完成2堂（累計4堂）
+                        </td>
+                        <td>
+                            • 加強申論題寫作<br>
+                            • 開始整理筆記<br>
+                            • 建立Notion弱點紀錄<br>
+                            • 每日國英考古題
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>第二階段<br>強化提升</strong></td>
+                        <td>8月<br>(8/1-8/31)</td>
+                        <td>4週</td>
+                        <td>完成課程<br>歷屆試題練習</td>
+                        <td>
+                            • 程式設計：完成4堂（累計14堂）✓<br>
+                            • 資通網路：完成5堂（累計15堂）✓<br>
+                            • 計算機概要：完成4堂（累計14堂）✓<br>
+                            • 資訊管理：完成12堂（累計34堂）✓<br>
+                            • 國文：完成3堂（累計7堂）<br>
+                            • 英文：完成2堂（累計6堂）
+                        </td>
+                        <td>
+                            • 完成所有專業課程<br>
+                            • 開始大量歷屆試題<br>
+                            • 申論題實戰練習<br>
+                            • 程式實作加強
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9月<br>(9/1-9/30)</td>
+                        <td>4週</td>
+                        <td>題目實戰<br>弱點補強</td>
+                        <td>
+                            • 專業科目：歷屆試題演練<br>
+                            • 國文：完成2堂（累計9堂）✓<br>
+                            • 英文：完成1堂（累計7堂）✓<br>
+                            • 開始法學緒論速成<br>
+                            • 開始憲法速成
+                        </td>
+                        <td>
+                            • 選擇題+申論題並重<br>
+                            • 依弱點補強單元<br>
+                            • 開始模擬考練習<br>
+                            • 調整答題速度
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>第三階段<br>衝刺階段</strong></td>
+                        <td>10/1-11/9<br></td>
+                        <td>5.5週</td>
+                        <td>國營考試衝刺</td>
+                        <td>
+                            • 程式設計：題庫+申論<br>
+                            • 資通網路：題庫+申論<br>
+                            • 計算機概要：選擇題精練<br>
+                            • 資訊管理：重點加強<br>
+                            • 模擬考：每週2-3次
+                        </td>
+                        <td>
+                            • <span class="important">11/9 國營考試</span><br>
+                            • 依考試時程模擬<br>
+                            • 針對資管加強<br>
+                            • 維持手感
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11/10-12/6<br></td>
+                        <td>4週</td>
+                        <td>普考衝刺</td>
+                        <td>
+                            • 法學緒論：完成10堂✓<br>
+                            • 憲法：完成9堂✓<br>
+                            • 國英文：考古題精練<br>
+                            • 專業科目：維持手感<br>
+                            • 模擬考：每週3次
+                        </td>
+                        <td>
+                            • <span class="important">12/6 普考</span><br>
+                            • 法緒憲法速成<br>
+                            • 全科綜合複習<br>
+                            • 調整應考狀態
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>📖 國考讀書方法與申論寫作技巧</h2>
+
+        <div class="study-tips-container">
+            <!-- 讀書方法區塊 -->
+            <div class="tips-section">
+                <h3 class="tips-header" onclick="toggleTips('study-method')">
+                    <span>一、有效的讀書方法</span>
+                    <span class="tips-toggle" id="toggle-study-method">▼</span>
+                </h3>
+                <div class="tips-content" id="content-study-method">
+                    <div class="tip-item">
+                        <h4>1. 理解重於背誦</h4>
+                        <p>不要死背，要理解原理和概念。理解後自然記得牢，考試時也能靈活運用。</p>
+                    </div>
+                    <div class="tip-item">
+                        <h4>2. 建立知識架構</h4>
+                        <ul>
+                            <li>使用心智圖整理各科重點</li>
+                            <li>建立章節間的關聯性</li>
+                            <li>定期複習加深印象</li>
+                        </ul>
+                    </div>
+                    <div class="tip-item">
+                        <h4>3. 練習歷屆試題</h4>
+                        <p>透過大量練習掌握出題方向，熟悉答題技巧，提升應試能力。</p>
+                    </div>
+                    <div class="tip-item">
+                        <h4>4. 時間管理</h4>
+                        <p>善用番茄鐘工作法，保持專注力。適度休息避免過度疲勞。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 申論寫作技巧區塊 -->
+            <div class="tips-section">
+                <h3 class="tips-header" onclick="toggleTips('writing-skills')">
+                    <span>二、申論題寫作技巧</span>
+                    <span class="tips-toggle" id="toggle-writing-skills">▼</span>
+                </h3>
+                <div class="tips-content" id="content-writing-skills">
+                    <div class="tip-item">
+                        <h4>1. 答題架構（無三不成禮原則）</h4>
+                        <div class="answer-structure">
+                            <div class="structure-item">
+                                <strong>前言：</strong>破題、定義、重要性
+                            </div>
+                            <div class="structure-item">
+                                <strong>本文：</strong>
+                                <ul>
+                                    <li>內容：依題目要求分點論述</li>
+                                    <li>架構：可用層次分析（優缺點、例子）</li>
+                                    <li>技巧：5W1H分析法</li>
+                                </ul>
+                            </div>
+                            <div class="structure-item">
+                                <strong>結論：</strong>總結重點、提出建議
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-item">
+                        <h4>2. 寫作要點</h4>
+                        <ul>
+                            <li><strong>審題：</strong>仔細閱讀題目，掌握關鍵字</li>
+                            <li><strong>架構：</strong>先擬定大綱再下筆</li>
+                            <li><strong>論述：</strong>觀點明確，論證充分</li>
+                            <li><strong>字跡：</strong>工整清晰，段落分明</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-item">
+                        <h4>3. 答題流程（PDCA）</h4>
+                        <div class="pdca-flow">
+                            <div class="flow-item">
+                                <strong>Plan：</strong>規劃答題架構
+                            </div>
+                            <div class="flow-item">
+                                <strong>Do：</strong>依架構撰寫
+                            </div>
+                            <div class="flow-item">
+                                <strong>Check：</strong>檢查內容完整性
+                            </div>
+                            <div class="flow-item">
+                                <strong>Act：</strong>修正補充
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-item">
+                        <h4>4. 常見題型應對</h4>
+                        <table class="question-types">
+                            <tr>
+                                <th>題型</th>
+                                <th>答題重點</th>
+                            </tr>
+                            <tr>
+                                <td>說明題</td>
+                                <td>定義→特徵→舉例→總結</td>
+                            </tr>
+                            <tr>
+                                <td>比較題</td>
+                                <td>定義→相同點→相異點→結論</td>
+                            </tr>
+                            <tr>
+                                <td>評論題</td>
+                                <td>現況→優缺點→改善建議</td>
+                            </tr>
+                            <tr>
+                                <td>應用題</td>
+                                <td>理論說明→實務應用→案例分析</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 考前準備提醒 -->
+            <div class="tips-section">
+                <h3 class="tips-header" onclick="toggleTips('exam-prep')">
+                    <span>三、考前準備提醒</span>
+                    <span class="tips-toggle" id="toggle-exam-prep">▼</span>
+                </h3>
+                <div class="tips-content" id="content-exam-prep">
+                    <div class="tip-item">
+                        <h4>考前一週</h4>
+                        <ul>
+                            <li>複習重點筆記和錯題</li>
+                            <li>調整作息，避免熬夜</li>
+                            <li>準備考試用品</li>
+                            <li>確認考場位置</li>
+                        </ul>
+                    </div>
+                    <div class="tip-item">
+                        <h4>考試當天</h4>
+                        <ul>
+                            <li>提早到達考場</li>
+                            <li>保持冷靜，深呼吸放鬆</li>
+                            <li>仔細審題，合理分配時間</li>
+                            <li>字跡工整，卷面整潔</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>💡 執行要點</h2>
+
+        <div class="note">
+            <h3>🎯 每日執行原則：</h3>
+            <ul>
+                <li><strong>一天一主科：</strong>每天專注於一個主要科目（3小時課程 + 2小時複習練習）</li>
+                <li><strong>固定國英文：</strong>每天固定1小時練習（背單字30分鐘 + 閱讀30分鐘）</li>
+                <li><strong>保證休閒：</strong>每天1.5小時休閒時間，維持身心平衡</li>
+                <li><strong>週末加強：</strong>週六可安排雙科目（晚上+週日早上），但需評估體力</li>
+                <li><strong>法學穿插：</strong>每週2-3次，每次1小時，挑選重點章節</li>
+            </ul>
+
+            <h3>📝 學習建議：</h3>
+            <ul>
+                <li><strong>程式設計：</strong>上課3小時後，必須實作練習2小時，動手寫Code最重要</li>
+                <li><strong>計算機概要：</strong>注重理解概念，多畫圖表幫助記憶</li>
+                <li><strong>資通網路：</strong>整理專有名詞，建立知識架構圖</li>
+                <li><strong>錯題本：</strong>每科準備錯題本，考前重點複習</li>
+                <li><strong>筆記整理：</strong>每週日整理本週筆記，濃縮重點</li>
+            </ul>
+
+            <h3>⚠️ 注意事項：</h3>
+            <ul>
+                <li class="important">健身日彈性安排，但一週維持4次</li>
+                <li class="important">若某科進度超前，可調整時間給落後科目</li>
+                <li class="important">每兩週檢討進度，必要時調整計畫</li>
+                <li class="important">考前兩週進入全面複習模式，減少新進度</li>
+                <li class="important">保持規律作息，避免熬夜影響隔天學習</li>
+            </ul>
+        </div>
+        <button id="backToTopBtn" title="回到最上面">⬆️</button>
+
+    </div>
+    <script src="../script/proj.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+
+.progress-container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.h2 {
+    color: #080f17;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.overall-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.subject-group-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.subject-row {
+    display: flex;
+    gap: 15px;
+    /* 卡片之間的間距 */
+    margin-bottom: 15px;
+}
+
+.subject-card {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.collapse-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.collapse-btn:hover {
+    background: #e9ecef;
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 100px;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    transition: width 0.3s ease;
+}
+
+.collapse-content {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: none;
+}
+
+.collapse-content.active {
+    display: block;
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 6px;
+}
+
+.lesson-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.lesson-item:hover {
+    background: #f8f9fa;
+}
+
+.lesson-item input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.lesson-item input[type="checkbox"]:checked+label {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.collapse-arrow {
+    transition: transform 0.3s ease;
+}
+
+.collapse-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+.review-section {
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.review-title {
+    font-weight: bold;
+    color: #dc3545;
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.links-group {
+    display: flex;
+    /* 讓兩個連結也使用 Flexbox 排版 */
+    gap: 15px;
+    /* 設定連結之間的間距 */
+    /* **新增以下兩行來增加分隔線** */
+    border-bottom: 1px solid #e0e0e0;
+    /* 一條細灰色分隔線 */
+    padding-bottom: 15px;
+    /* 分隔線上方和連結之間留一些空間 */
+    margin-top: 15px;
+    /* 讓 links-group 和它上方的 h2 之間有間距 */
+    margin-bottom: 25px;
+    /* **關鍵：讓分隔線和下方的 overall-stats 之間有適當的間距** */
+    width: 100%;
+    /* 確保分隔線可以佔滿整個可用寬度 */
+}
+
+@media (max-width: 768px) {
+    .subject-row {
+        flex-direction: column;
+    }
+}

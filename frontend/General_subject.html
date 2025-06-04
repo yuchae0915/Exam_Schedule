@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>考古題記錄</title>
+    <link rel="stylesheet" href="../style/General_subject.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📝 考古題記錄</h1>
+        <a href="index.html" class="countdown-link">&lt;</a>
+        <a href="learning_dashboard.html" class="countdown-link">科目監控進度</a>
+        <a href="proj.html" class="countdown-link">讀書計畫</a>
+
+
+        <!-- 科目統計區域 -->
+        <div class="subject-stats" id="subjectStats">
+            <h2>科目統計</h2>
+            <div id="subjectStatsContainer"></div>
+        </div>
+
+        <!-- 新增記錄區 -->
+        <div class="input-section">
+            <h2>新增記錄</h2>
+            <!-- 修改輸入欄位，加入 datalist -->
+            <div class="input-grid">
+                <input type="text" id="inputYear" placeholder="年度 (例: 113)" maxlength="3" list="yearList">
+                <datalist id="yearList"></datalist>
+
+                <input type="text" id="inputExam" placeholder="考別 (例: 高考)" list="examList">
+                <datalist id="examList"></datalist>
+
+                <select id="inputType">
+                    <option value="">選擇類型</option>
+                    <option value="共同科目">共同科目</option>
+                    <option value="專業科目">專業科目</option>
+                </select>
+
+                <input type="text" id="inputSubject" placeholder="科目 (例: 國文)" list="subjectList">
+                <datalist id="subjectList"></datalist>
+            </div>
+            <button class="btn btn-add" onclick="addRecord()" style="margin-top: 10px; width: 100%;">新增</button>
+        </div>
+
+        <!-- 篩選區域 -->
+        <div class="filter-section">
+            <h2>篩選顯示</h2>
+            <div class="filter-grid">
+                <select id="filterYear" onchange="filterRecords()">
+                    <option value="">全部年度</option>
+                </select>
+                <select id="filterExam" onchange="filterRecords()">
+                    <option value="">全部考別</option>
+                </select>
+                <select id="filterSubject" onchange="filterRecords()">
+                    <option value="">全部科目</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="display-section">
+            <h2>記錄列表</h2>
+            <div id="recordsContainer"></div>
+
+            <div class="danger-zone">
+                <h3>⚠️ 危險操作區</h3>
+                <p>以下操作將永久刪除資料，請謹慎使用</p>
+                <div class="danger-confirm">
+                    <input type="checkbox" id="confirmDelete" onchange="toggleDeleteButton()">
+                    <label for="confirmDelete">我了解這將刪除所有資料</label>
+                </div>
+                <button class="btn btn-clear" id="deleteButton" onclick="clearAllRecords()" disabled>清除所有記錄</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/General_subject.js"></script>
+</body>
+
+</html>

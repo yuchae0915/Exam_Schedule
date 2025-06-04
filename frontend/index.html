@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<link rel="stylesheet" href="..\style\style.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>考試時程表</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 考試時程規劃表</h1>
+            <p>2025年度公職考試重要資訊整理</p>
+        </div>
+
+        <div class="table-container">
+            <div class="links-group">
+                <a href="proj.html" class="nav-link">讀書計畫</a>
+                <a href="learning_dashboard.html" class="nav-link">科目監控進度</a>
+                <a href="General_subject.html" class="nav-link">考古題記錄</a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 120px;">考試名稱</th>
+                        <th style="width: 120px;">報名日期</th>
+                        <th style="width: 120px;">考試日期</th>
+                        <th style="width: 80px;">放榜日期</th>
+                        <th style="width: 140px;">倒數天數</th>
+                        <th style="width: 300px;">考試科目</th>
+                        <th style="width: 120px;">其他資訊</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="exam-name">高考三級<br />(地特三等)</td>
+                        <td class="date-cell">2025/03/11-03/20</td>
+                        <td class="date-cell">2025/07/06-07/08</td>
+                        <td class="date-cell">-</td>
+                        <td class="countdown" id="countdown-gao">-</td>
+                        <td class="subject-list">
+                            <div class="subject-item">• 國文 <span class="weight">(8%)</span></div>
+                            <div class="subject-item">• 英文 + 法學知識 <span class="weight">(14%)</span></div>
+                            <div class="subject-item">• 資料結構 + 資通網路與安全 + 資料庫應用 + 資訊管理 <span class="weight">(78%)</span>
+                            </div>
+                        </td>
+                        <td>共6科<br />專業科目全申論</td>
+                    </tr>
+                    <tr>
+                        <td class="exam-name">普考</td>
+                        <td class="date-cell">2025/03/11-03/20</td>
+                        <td class="date-cell">2025/07/04-07/05</td>
+                        <td class="date-cell">-</td>
+                        <td class="countdown" id="countdown-pu">-</td>
+                        <td class="subject-list">
+                            <div class="subject-item">• 國文 <span class="weight">(20%)</span></div>
+                            <div class="subject-item">• 英文 (8%) + 法學知識 (12%) <span class="weight"></span></div>
+                            <div class="subject-item">• 計算機概要(單選) + 程式設計概要 + 資通網路與安全概要 <span class="weight">(60%)</span>
+                            </div>
+                        </td>
+                        <td>總共5科</td>
+                    </tr>
+                    <tr>
+                        <td class="exam-name">地特四等</td>
+                        <td class="date-cell">2025/09/09-09/18</td>
+                        <td class="date-cell">2025/12/06-12/08</td>
+                        <td class="date-cell">-</td>
+                        <td class="countdown" id="countdown-dite">-</td>
+                        <td class="subject-list">
+                            <div class="subject-item">• 國文 <span class="weight">(20%)</span></div>
+                            <div class="subject-item">• 英文 (8%) + 法學知識 (12%) <span class="weight"></span></div>
+                            <div class="subject-item">• 計算機概要(單選) + 程式設計概要 + 資通網路與安全概要 <span class="weight">(60%)</span>
+                            </div>
+                        </td>
+                        <td>總共5科</td>
+                    </tr>
+                    <tr>
+                        <td class="exam-name">國營聯招</td>
+                        <td class="date-cell">2025/07 (預計)</td>
+                        <td class="date-cell">2025/11/09</td>
+                        <td class="date-cell">2026/03</td>
+                        <td class="countdown" id="countdown-guo">-</td>
+                        <td class="subject-list">
+                            <div class="subject-item">• 國文 <span class="weight">(10%)</span></div>
+                            <div class="subject-item">• 英文 <span class="weight">(10%)</span></div>
+                            <div class="subject-item">• 計算機原理(單選) + 網路概論(單選) + 資訊管理 + 程式設計 <span
+                                    class="weight">(80%)</span></div>
+                        </td>
+                        <td>筆試 + 口試 (總共6科)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="refresh-btn" onclick="forceUpdate()">🔄 立即更新倒數</button>
+            <div class="update-time">
+                <p>📅 最後更新時間：<span id="current-time">-</span></p>
+                <p>⏰ 倒數計算基準：距離考試開始日期</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdowns() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // 考試日期設定
+            const examDates = {
+                'countdown-pu': new Date('2025-07-04'), // 普考
+                'countdown-dite': new Date('2025-12-06'), // 地特四等
+                'countdown-guo': new Date('2025-11-09'), // 國營
+                'countdown-gao': new Date('2025-07-06') // 高考
+            };
+
+            Object.keys(examDates).forEach(id => {
+                const examDate = examDates[id];
+                const timeDiff = examDate.getTime() - today.getTime();
+                const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                const weeksDiff = Math.ceil(daysDiff / 7);
+
+                const element = document.getElementById(id);
+
+                if (daysDiff > 0) {
+                    element.textContent = `${daysDiff} 天（約 ${weeksDiff} 週）`;
+
+                    // 根據天數設定樣式
+                    element.classList.remove('urgent', 'near', 'far');
+                    if (daysDiff <= 30) {
+                        element.classList.add('urgent');
+                    } else if (daysDiff <= 90) {
+                        element.classList.add('near');
+                    } else {
+                        element.classList.add('far');
+                    }
+                } else if (daysDiff === 0) {
+                    element.textContent = '今天！';
+                    element.classList.add('urgent');
+                } else {
+                    element.textContent = '已結束';
+                    element.style.color = '#999';
+                }
+            });
+        }
+
+        function updateCurrentTime() {
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'Asia/Taipei'
+            };
+            document.getElementById('current-time').textContent =
+                now.toLocaleDateString('zh-TW', options);
+        }
+        function forceUpdate() {
+            updateCountdowns();
+            updateCurrentTime();
+
+            // 按鈕回饋動畫
+            const btn = document.querySelector('.refresh-btn');
+            btn.style.transform = 'scale(0.95)';
+            btn.textContent = '✅ 已更新！';
+
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+                btn.textContent = '🔄 立即更新倒數';
+            }, 1000);
+        }
+        // 初始化
+        updateCountdowns();
+        updateCurrentTime();
+
+        // 每分鐘更新一次
+        setInterval(updateCountdowns, 60000);
+        setInterval(updateCurrentTime, 60000);
+    </script>
+</body>
+
+</html>

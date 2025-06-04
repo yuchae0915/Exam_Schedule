@@ -1,0 +1,477 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', sans-serif;
+    background: linear-gradient(135deg, #667eea 50%, #764ba2 100%);
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+/* 科目統計區域 - 修改為網格布局 */
+.subject-stats {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+#subjectStatsContainer {
+    display: block;
+}
+
+.subject-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+    margin-bottom: 10px;
+    width: 100%;
+    /* 確保寬度固定 */
+    box-sizing: border-box;
+}
+
+.subject-header {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #3498db;
+    color: white;
+    user-select: none;
+}
+
+.subject-header:hover {
+    background: #2980b9;
+}
+
+.subject-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.subject-name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.subject-count {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.toggle-icon {
+    transition: transform 0.3s;
+    font-size: 1.2em;
+}
+
+.toggle-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.subject-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #f8f9fa;
+}
+
+.subject-content.show {
+    max-height: 500px;
+    transition: max-height 0.3s ease-in;
+}
+
+.subject-records {
+    padding: 15px;
+}
+
+.subject-record-item {
+    padding: 8px;
+    margin-bottom: 5px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subject-record-item:hover {
+    background: #ecf0f1;
+}
+
+/* 輸入區域 */
+.input-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type="text"],
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* 美化 datalist 的輸入框效果 */
+input[list] {
+    position: relative;
+}
+
+input[list]::-webkit-calendar-picker-indicator {
+    opacity: 100;
+    cursor: pointer;
+}
+
+/* 當輸入框聚焦時的樣式 */
+input[list]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* 類別區塊樣式 */
+.type-section {
+    margin-bottom: 20px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.type-header {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    color: white;
+    user-select: none;
+}
+
+.type-header:hover {
+    background: #1a252f;
+}
+
+.type-header.common {
+    background: #27ae60;
+}
+
+.type-header.common:hover {
+    background: #219a52;
+}
+
+.type-header.professional {
+    background: #e74c3c;
+}
+
+.type-header.professional:hover {
+    background: #c0392b;
+}
+
+.type-name {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.type-count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.type-toggle {
+    font-size: 1.2em;
+    transition: transform 0.3s;
+}
+
+.type-toggle.expanded {
+    transform: rotate(180deg);
+}
+
+.type-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #f8f9fa;
+    padding: 0;
+}
+
+.type-content.show {
+    max-height: 2000px;
+    padding: 20px;
+    transition: max-height 0.3s ease-in;
+}
+
+/* 為內部的 grid 容器添加固定寬度，防止收合時重排 */
+.type-subjects-grid {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 按鈕樣式 */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-add {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-add:hover {
+    background-color: #219a52;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* 危險操作區樣式 */
+.danger-zone {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffe6e6;
+    border: 2px dashed #e74c3c;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.danger-zone h3 {
+    color: #c0392b;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.danger-zone p {
+    color: #7f1e1e;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+/* 讓清除按鈕看起來更危險 */
+.btn-clear {
+    background-color: #c0392b;
+    color: white;
+    position: relative;
+}
+
+.btn-clear:hover {
+    background-color: #a93226;
+    box-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
+}
+
+/* 可選：加入確認勾選框方式 */
+.danger-confirm {
+    margin-bottom: 15px;
+}
+
+.danger-confirm input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.danger-confirm label {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* 篩選區域 */
+.filter-section {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+/* 顯示區域 */
+.display-section {
+    margin-top: 20px;
+}
+
+.record-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.record-table th {
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.record-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.record-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.record-table tr:nth-child(even) {
+    background-color: #f5f7fa;
+}
+
+.no-records {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 18px;
+}
+
+.no-subject-stats {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+}
+
+/* 分頁樣式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination .page-btn {
+    min-width: 40px;
+}
+
+.pagination .page-btn.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.pagination .page-info {
+    color: #666;
+    font-size: 14px;
+}
+
+.countdown-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-link:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.countdown-link {
+    background: linear-gradient(135deg, #667eea 0%, #a81351 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+@media (max-width: 1024px) {
+    .input-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+}

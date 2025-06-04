@@ -1,0 +1,529 @@
+body {
+    font-family: 'Microsoft JhengHei', sans-serif;
+    margin: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #080f17;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #7f8c8d;
+    margin-top: 20px;
+}
+
+.week-schedule {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.subject-computer {
+    background-color: #e3f2fd;
+}
+
+.subject-programming {
+    background-color: #f3e5f5;
+}
+
+.subject-network {
+    background-color: #e8f5e9;
+}
+
+.subject-management {
+    background-color: #fff3e0;
+}
+
+.subject-english {
+    background-color: #fce4ec;
+}
+
+.subject-review {
+    background-color: #f0f4c3;
+}
+
+.subject-rest {
+    background-color: #e0e0e0;
+}
+
+.subject-gym {
+    background-color: #ffcdd2;
+}
+
+/* 新增申論練習的樣式 */
+.subject-essay {
+    background-color: #fff3cd;
+    border-left: 3px solid #ffc107;
+}
+
+/* 新增考古題練習的樣式 */
+.subject-practice {
+    background-color: #d1ecf1;
+    border-left: 3px solid #17a2b8;
+}
+
+/* 新增Notion筆記整理的樣式 */
+.subject-notion {
+    background-color: #f8d7da;
+    border-left: 3px solid #dc3545;
+}
+
+.subject-law {
+    background-color: #d7ccc8;
+}
+
+.progress-table {
+    margin: 20px 0;
+}
+
+.progress-table th {
+    background-color: #2ecc71;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+}
+
+.note {
+    background-color: #ffeaa7;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.important {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Tab styles */
+.tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px 5px 0 0;
+    transition: all 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-button.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.stage-description {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+}
+
+.current-activity-container {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    margin-bottom: 30px;
+}
+
+.current-activity {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.time-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.current-time {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.current-date {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.activity-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.now-activity,
+.next-activity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.label {
+    font-size: 14px;
+    opacity: 0.9;
+    min-width: 80px;
+}
+
+.activity-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.time-until {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-left: 10px;
+}
+
+.countdown-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-link:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.countdown-link {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.links-group {
+    display: flex;
+    /* 讓兩個連結也使用 Flexbox 排版 */
+    gap: 15px;
+    /* 設定連結之間的間距 */
+    /* **新增以下兩行來增加分隔線** */
+    border-bottom: 1px solid #e0e0e0;
+    /* 一條細灰色分隔線 */
+    padding-bottom: 15px;
+    /* 分隔線上方和連結之間留一些空間 */
+    margin-top: 15px;
+    /* 讓 links-group 和它上方的 h2 之間有間距 */
+    margin-bottom: 25px;
+    /* **關鍵：讓分隔線和下方的 overall-stats 之間有適當的間距** */
+    width: 100%;
+    /* 確保分隔線可以佔滿整個可用寬度 */
+}
+
+/* 讀書技巧容器 */
+.study-tips-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* 技巧區塊 */
+.tips-section {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+/* 標題樣式 */
+.tips-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.tips-header:hover {
+    opacity: 0.9;
+}
+
+.tips-toggle {
+    font-size: 1.2em;
+    transition: transform 0.3s;
+}
+
+.tips-toggle.expanded {
+    transform: rotate(180deg);
+}
+
+/* 內容區域 */
+.tips-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #f8f9fa;
+}
+
+.tips-content.show {
+    max-height: 2000px;
+    transition: max-height 0.3s ease-in;
+}
+
+/* 提示項目 */
+.tip-item {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tip-item:last-child {
+    border-bottom: none;
+}
+
+.tip-item h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.tip-item p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.tip-item ul {
+    margin-left: 20px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.tip-item li {
+    margin-bottom: 8px;
+}
+
+/* 答題架構 */
+.answer-structure {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.structure-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #ecf0f1;
+    border-radius: 5px;
+}
+
+.structure-item strong {
+    color: #e74c3c;
+    font-size: 1.1em;
+}
+
+/* PDCA 流程 */
+.pdca-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.flow-item {
+    background: #3498db;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.flow-item strong {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+/* 題型表格 */
+.question-types {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.question-types th {
+    background: #34495e;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.question-types td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.question-types tr:hover td {
+    background: #f5f5f5;
+}
+
+#backToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    background-color: #7a72eb;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#backToTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#backToTopBtn:hover {
+    background-color: #7a72eb;
+}
+
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .current-activity {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .activity-info {
+        align-items: center;
+    }
+
+    .now-activity,
+    .next-activity {
+        flex-direction: column;
+    }
+
+    .pdca-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .answer-structure {
+        padding: 15px;
+    }
+
+    .tips-header {
+        font-size: 0.9em;
+    }
+}
+
+@media print {
+    body {
+        margin: 0;
+    }
+
+    .container {
+        box-shadow: none;
+    }
+}

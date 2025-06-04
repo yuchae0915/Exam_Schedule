@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雲端課程進度</title>
+    <link rel="stylesheet" href="../style/dashboard.css">
+</head>
+
+<body>
+    <div class="progress-container">
+
+        <h2 class="h2">📊 雲端課程進度</h2>
+        <div class="links-group">
+            <a href="index.html" class="nav-link">&lt;</a>
+            <a href="proj.html" class="nav-link">讀書計畫</a>
+            <a href="General_subject.html" class="nav-link">考古題記錄</a>
+        </div>
+        <div class="overall-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-completed">0</div>
+                <div class="stat-label">已完成堂數</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-lessons">0</div>
+                <div class="stat-label">總堂數</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completion-rate">0%</div>
+                <div class="stat-label">完成率</div>
+            </div>
+        </div>
+
+        <h3 class="subject-group-title">共同科目</h3>
+
+        <div class="subject-card" id="chinese-subject-card"></div>
+
+        <div class="subject-card" id="law-subject-card"></div>
+
+        <div class="subject-card" id="constitution-subject-card"></div>
+
+        <div class="subject-card" id="english-subject-card"></div>
+
+        <h3 class="subject-group-title">專業科目</h3>
+
+        <div class="subject-card" id="programming-subject-card"></div>
+
+        <div class="subject-card" id="network-subject-card"></div>
+
+        <div class="subject-card" id="computer-subject-card"></div>
+
+        <div class="subject-card" id="information-management-subject-card"></div>
+
+    </div>
+
+    <script>
+        const subjectData = {
+            'chinese': {
+                name: '國文',
+                icon: '📚',
+                normalLessons: 5,
+                reviewLessons: 4,
+                idPrefix: 'chinese'
+            },
+            'law': {
+                name: '法學緒論',
+                icon: '⚖️',
+                normalLessons: 10,
+                reviewLessons: 0,
+                idPrefix: 'law'
+            },
+            'constitution': {
+                name: '憲法',
+                icon: '🏛️',
+                normalLessons: 9,
+                reviewLessons: 0,
+                idPrefix: 'constitution'
+            },
+            'english': {
+                name: '英文',
+                icon: '🔤',
+                normalLessons: 7,
+                reviewLessons: 0,
+                idPrefix: 'english'
+            },
+            'computer': {
+                name: '計算機概要',
+                icon: '🖥️',
+                normalLessons: 12,
+                reviewLessons: 2,
+                idPrefix: 'computer'
+            },
+            'programming': {
+                name: '程式設計概要',
+                icon: '💻',
+                normalLessons: 14,
+                reviewLessons: 0,
+                idPrefix: 'programming'
+            },
+            'network': {
+                name: '資通網路',
+                icon: '🌐',
+                normalLessons: 15,
+                reviewLessons: 0,
+                idPrefix: 'network'
+            },
+
+            'information-management': {
+                name: '資訊管理 (資料處理 + 資通安全)',
+                icon: '📊',
+                normalLessons: 31,
+                reviewLessons: 3,
+                idPrefix: 'information-management'
+            }
+        };
+
+        function toggleCollapse(button) {
+            const content = button.nextElementSibling;
+            const arrow = button.querySelector('.collapse-arrow');
+
+            content.classList.toggle('active');
+            arrow.classList.toggle('rotated');
+        }
+
+        function createSubjectCard(subjectKey) {
+            const data = subjectData[subjectKey];
+            const totalLessons = data.normalLessons + data.reviewLessons;
+
+            let html = `
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+            <span>${data.icon} ${data.name}</span>
+            <div class="progress-info">
+                <span class="progress-text">0/${totalLessons}堂 (0%)</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                <span class="collapse-arrow">▼</span>
+            </div>
+        </button>
+        <div class="collapse-content">
+            <div class="lesson-grid">
+    `;
+
+            // Add normal lessons
+            for (let i = 1; i <= data.normalLessons; i++) {
+                html += `
+                <div class="lesson-item">
+                    <input type="checkbox" id="${data.idPrefix}-${i}" onchange="updateProgress()">
+                    <label for="${data.idPrefix}-${i}">第${i}堂</label>
+                </div>
+        `;
+            }
+            html += `</div>`; // Close lesson-grid for normal lessons
+
+            // Add review section if applicable
+            if (data.reviewLessons > 0) {
+                html += `
+            <div class="review-section">
+                <div class="review-title">📝 考衝班</div>
+                <div class="lesson-grid">
+        `;
+                for (let i = 1; i <= data.reviewLessons; i++) {
+                    html += `
+                            <div class="lesson-item">
+                                <input type="checkbox" id="${data.idPrefix}-review-${i}" onchange="updateProgress()">
+                                <label for="${data.idPrefix}-review-${i}">考衝班${i}</label>
+                            </div>
+                    `;
+                }
+                html += `</div></div>`; // Close lesson-grid and review-section
+            }
+
+            html += `</div>`; // Close collapse-content
+
+            document.getElementById(`${subjectKey}-subject-card`).innerHTML = html;
+        }
+
+        // **新增：將所有勾選狀態儲存到 localStorage 的函數**
+        function saveStates() {
+            const states = {};
+            // 遍歷所有 checkbox
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                // 使用 checkbox 的 ID 作為 key，它的勾選狀態 (true/false) 作為 value
+                states[checkbox.id] = checkbox.checked;
+            });
+            // 將 states 物件轉換為 JSON 字串，並儲存到 localStorage
+            localStorage.setItem('lessonProgress', JSON.stringify(states));
+        }
+
+        // **新增：從 localStorage 載入並應用勾選狀態的函數**
+        function loadSavedStates() {
+            // 從 localStorage 取得名為 'lessonProgress' 的資料
+            const savedStates = localStorage.getItem('lessonProgress');
+            if (savedStates) {
+                // 如果有資料，將 JSON 字串解析回物件
+                const states = JSON.parse(savedStates);
+                // 遍歷儲存的狀態物件
+                for (const id in states) {
+                    // 找到對應 ID 的 checkbox 元素
+                    const checkbox = document.getElementById(id);
+                    // 如果 checkbox 存在，就設定它的勾選狀態為儲存的值
+                    if (checkbox) {
+                        checkbox.checked = states[id];
+                    }
+                }
+            }
+        }
+
+        function updateProgress() {
+            // 先更新每個科目的進度
+            for (const key in subjectData) {
+                updateSubjectProgress(key);
+            }
+
+            // 再更新總體統計數據
+            updateOverallStats();
+
+            // **重要：在更新完所有進度後，儲存當前的勾選狀態**
+            saveStates();
+        }
+
+        function updateSubjectProgress(subjectKey) {
+            const data = subjectData[subjectKey];
+            const checkboxes = document.querySelectorAll(`input[id^="${data.idPrefix}-"]`);
+            const checked = document.querySelectorAll(`input[id^="${data.idPrefix}-"]:checked`);
+
+            const total = checkboxes.length;
+            const completed = checked.length;
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+            const subjectCardElement = document.getElementById(`${subjectKey}-subject-card`);
+            if (subjectCardElement) {
+                const progressText = subjectCardElement.querySelector('.progress-text');
+                const progressFill = subjectCardElement.querySelector('.progress-fill');
+
+                if (progressText && progressFill) {
+                    progressText.textContent = `${completed}/${total}堂 (${percentage}%)`;
+                    progressFill.style.width = `${percentage}%`;
+                }
+            }
+        }
+
+        function updateOverallStats() {
+            const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            const allChecked = document.querySelectorAll('input[type="checkbox"]:checked');
+
+            const totalLessons = allCheckboxes.length;
+            const totalCompleted = allChecked.length;
+            const completionRate = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+
+            document.getElementById('total-completed').textContent = totalCompleted;
+            document.getElementById('total-lessons').textContent = totalLessons;
+            document.getElementById('completion-rate').textContent = `${completionRate}%`;
+        }
+
+        // **修改：網頁載入時的邏輯**
+        window.addEventListener('load', function () {
+            // 1. 先動態生成所有科目卡片 (這會創建所有的 checkbox)
+            for (const key in subjectData) {
+                createSubjectCard(key);
+            }
+
+            // 2. 接著，從 localStorage 載入之前儲存的狀態，並應用到剛創建的 checkbox 上
+            loadSavedStates();
+
+            // 3. 最後，根據當前 (已載入或預設) 的 checkbox 狀態來更新所有進度顯示
+            updateProgress();
+        });
+    </script>
+</body>
+
+</html>
