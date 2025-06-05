@@ -52,6 +52,8 @@
 
         <div class="subject-card" id="information-management-subject-card"></div>
 
+        <div class="subject-card" id="information-security-subject-card"></div>
+
     </div>
 
     <script>
@@ -107,11 +109,19 @@
             },
 
             'information-management': {
-                name: '資訊管理 (資料處理 + 資通安全)',
+                name: '資訊管理 (資料處理)',
                 icon: '📊',
-                normalLessons: 31,
+                normalLessons: 17,
                 reviewLessons: 3,
                 idPrefix: 'information-management'
+            },
+
+            'information-security': {
+                name: '資訊管理 (資通安全)',
+                icon: '📊',
+                normalLessons: 14,
+                reviewLessons: 0,
+                idPrefix: 'information-security'
             }
         };
 
@@ -209,9 +219,7 @@
 
         function updateProgress() {
             // 先更新每個科目的進度
-            for (const key in subjectData) {
-                updateSubjectProgress(key);
-            }
+            for (const key in subjectData) updateSubjectProgress(key);
 
             // 再更新總體統計數據
             updateOverallStats();
