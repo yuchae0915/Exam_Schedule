@@ -342,9 +342,17 @@ function updateCurrentActivity() {
                 timeUntilNext = formatTimeDiff(nextStartMinutes - currentMinutes);
             } else {
                 // 如果是今天最後一個活動，顯示明天第一個活動
-                const tomorrow = dayOfWeek === 'saturday' ? 'sunday' : Object.keys(schedules[stage])[Object.keys(schedules[stage]).indexOf(dayOfWeek) + 1];
-                const tomorrowSchedule = schedules[stage][tomorrow] || schedules.stage1[tomorrow];
-                nextActivity = `明日：${tomorrowSchedule[0].activity}`;
+                const daysOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+                const currentDayIndex = daysOrder.indexOf(dayOfWeek);
+                const tomorrowIndex = (currentDayIndex + 1) % 7;
+                const tomorrow = daysOrder[tomorrowIndex];
+
+                if (schedules[stage][tomorrow]) {
+                    const tomorrowSchedule = schedules[stage][tomorrow];
+                    nextActivity = `明日：${tomorrowSchedule[0].activity}`;
+                } else {
+                    nextActivity = "明日：休息日";
+                }
                 timeUntilNext = "";
             }
             break;
