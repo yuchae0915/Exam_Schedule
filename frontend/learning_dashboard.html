@@ -31,8 +31,12 @@
                 <div class="stat-label">完成率</div>
             </div>
         </div>
-
-        <h3 class="subject-group-title">共同科目</h3>
+        <!-- 新增共同科目統計 -->
+        <div class="subject-stats">
+            <h3 class="subject-group-title">共同科目
+                <span class="group-progress" id="common-progress">(0/0堂, 0%)</span>
+            </h3>
+        </div>
 
         <div class="subject-card" id="chinese-subject-card"></div>
 
@@ -41,8 +45,12 @@
         <div class="subject-card" id="constitution-subject-card"></div>
 
         <div class="subject-card" id="english-subject-card"></div>
-
-        <h3 class="subject-group-title">專業科目</h3>
+        <!-- 新增專業科目統計 -->
+        <div class="subject-stats">
+            <h3 class="subject-group-title">專業科目
+                <span class="group-progress" id="professional-progress">(0/0堂, 0%)</span>
+            </h3>
+        </div>
 
         <div class="subject-card" id="programming-subject-card"></div>
 
@@ -123,6 +131,11 @@
                 reviewLessons: 0,
                 idPrefix: 'information-security'
             }
+        };
+
+        const subjectCategories = {
+            common: ['chinese', 'law', 'constitution', 'english'],
+            professional: ['programming', 'network', 'computer', 'information-management', 'information-security']
         };
 
         function toggleCollapse(button) {
@@ -250,16 +263,77 @@
         }
 
         function updateOverallStats() {
-            const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-            const allChecked = document.querySelectorAll('input[type="checkbox"]:checked');
+            let commonCompleted = 0;
+            let commonTotal = 0;
+            let professionalCompleted = 0;
+            let professionalTotal = 0;
 
-            const totalLessons = allCheckboxes.length;
-            const totalCompleted = allChecked.length;
+            // 計算共同科目
+            subjectCategories.common.forEach(subjectKey => {
+                if (subjectData[subjectKey]) {
+                    const checkboxes = document.querySelectorAll(`input[id^="${subjectData[subjectKey].idPrefix}-"]`);
+                    const checked = document.querySelectorAll(`input[id^="${subjectData[subjectKey].idPrefix}-"]:checked`);
+                    commonTotal += checkboxes.length;
+                    commonCompleted += checked.length;
+                }
+            });
+
+            // 計算專業科目
+            subjectCategories.professional.forEach(subjectKey => {
+                if (subjectData[subjectKey]) {
+                    const checkboxes = document.querySelectorAll(`input[id^="${subjectData[subjectKey].idPrefix}-"]`);
+                    const checked = document.querySelectorAll(`input[id^="${subjectData[subjectKey].idPrefix}-"]:checked`);
+                    professionalTotal += checkboxes.length;
+                    professionalCompleted += checked.length;
+                }
+            });
+
+            // 計算總數和百分比
+            const totalLessons = commonTotal + professionalTotal;
+            const totalCompleted = commonCompleted + professionalCompleted;
             const completionRate = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+            const commonRate = commonTotal > 0 ? Math.round((commonCompleted / commonTotal) * 100) : 0;
+            const professionalRate = professionalTotal > 0 ? Math.round((professionalCompleted / professionalTotal) * 100) : 0;
 
+            // 更新總體統計
             document.getElementById('total-completed').textContent = totalCompleted;
             document.getElementById('total-lessons').textContent = totalLessons;
             document.getElementById('completion-rate').textContent = `${completionRate}%`;
+
+            // 在 updateOverallStats 函數中，修改更新分類統計的部分
+            // 更新分類統計
+            const commonProgress = document.getElementById('common-progress');
+            if (commonProgress) {
+                let rateClass = '';
+                if (commonRate === 100) rateClass = 'complete';
+                else if (commonRate >= 80) rateClass = 'high';
+                else if (commonRate >= 50) rateClass = 'medium';
+                else rateClass = 'low';
+
+                commonProgress.innerHTML = `
+        <span class="progress-badge" data-rate="${rateClass}">
+            <span class="progress-value">${commonCompleted}/${commonTotal}</span>
+            <span class="progress-percent">${commonRate}%</span>
+        </span>
+    `;
+            }
+
+            // 對專業科目做同樣處理
+            const professionalProgress = document.getElementById('professional-progress');
+            if (professionalProgress) {
+                let rateClass = '';
+                if (professionalRate === 100) rateClass = 'complete';
+                else if (professionalRate >= 80) rateClass = 'high';
+                else if (professionalRate >= 50) rateClass = 'medium';
+                else rateClass = 'low';
+
+                professionalProgress.innerHTML = `
+        <span class="progress-badge" data-rate="${rateClass}">
+            <span class="progress-value">${professionalCompleted}/${professionalTotal}</span>
+            <span class="progress-percent">${professionalRate}%</span>
+        </span>
+    `;
+            }
         }
 
         // **修改：網頁載入時的邏輯**
