@@ -210,27 +210,60 @@ tr:nth-child(even) {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 
 .time-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    min-width: 150px;
+}
+
+.date-display {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.weekday {
+    display: block;
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.date-number {
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.month-year {
+    display: block;
+    font-size: 0.85em;
+    opacity: 0.9;
 }
 
 .current-time {
-    font-size: 28px;
+    font-size: 1.8em;
     font-weight: bold;
+    text-align: center;
+    display: block;
 }
 
 .current-date {
-    font-size: 14px;
-    opacity: 0.9;
+    display: none;
 }
 
 .activity-info {
@@ -492,8 +525,17 @@ tr:nth-child(even) {
 /* 響應式設計 */
 @media (max-width: 768px) {
     .current-activity {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .date-display {
+        display: inline-block;
+        padding: 10px 20px;
+    }
+
+    .date-number {
+        font-size: 2em;
     }
 
     .activity-info {

@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>雲端課程進度</title>
     <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/time-display.css">
 </head>
 
 <body>
     <div class="progress-container">
 
         <h2 class="h2">📊 雲端課程進度</h2>
+
         <div class="links-group">
             <a href="index.html" class="nav-link">&lt;</a>
             <a href="proj.html" class="nav-link">讀書計畫</a>
             <a href="General_subject.html" class="nav-link">考古題記錄</a>
+            <!-- 新增時間顯示<div id="timeDisplayContainer"></div> -->
+
         </div>
         <div class="overall-stats">
             <div class="stat-card">
@@ -63,7 +67,7 @@
         <div class="subject-card" id="information-security-subject-card"></div>
 
     </div>
-
+    <script src="../script/time-display.js"></script>
     <script>
         const subjectData = {
             'chinese': {
@@ -348,8 +352,13 @@
 
             // 3. 最後，根據當前 (已載入或預設) 的 checkbox 狀態來更新所有進度顯示
             updateProgress();
+            initTimeDisplay({
+                containerId: 'timeDisplayContainer',
+                style: 'default'
+            });
         });
     </script>
+
 </body>
 
 </html>

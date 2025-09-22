@@ -309,10 +309,27 @@ function formatTimeDiff(minutes) {
 function updateCurrentActivity() {
     const now = new Date();
     const currentTime = now.toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' });
-    const currentDate = now.toLocaleDateString('zh-TW', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
+    // 更新時間
     document.getElementById('currentTime').textContent = currentTime;
-    document.getElementById('currentDate').textContent = currentDate;
+
+    // 更新日期顯示（新格式）
+    const weekdayElement = document.getElementById('currentWeekday');
+    const dateNumberElement = document.getElementById('currentDateNumber');
+    const monthYearElement = document.getElementById('currentMonthYear');
+
+    if (weekdayElement && dateNumberElement && monthYearElement) {
+        weekdayElement.textContent = now.toLocaleDateString('zh-TW', { weekday: 'long' });
+        dateNumberElement.textContent = now.getDate();
+        monthYearElement.textContent = now.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long' });
+    }
+
+    // 保留舊的日期元素更新（如果存在）
+    const currentDateElement = document.getElementById('currentDate');
+    if (currentDateElement) {
+        const currentDate = now.toLocaleDateString('zh-TW', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        currentDateElement.textContent = currentDate;
+    }
 
     const stage = getCurrentStage();
     const dayOfWeek = getDayOfWeek();
