@@ -41,7 +41,31 @@ h2 {
 }
 
 #subjectStatsContainer {
-    display: block;
+    max-height: calc(100vh - 200px);
+    /* 扣除標題和其他元素的高度 */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    /* 避免內容被滾動條遮擋 */
+}
+
+/* 美化滾動條（可選） */
+#subjectStatsContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+#subjectStatsContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#subjectStatsContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#subjectStatsContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .subject-card {
@@ -52,7 +76,6 @@ h2 {
     transition: all 0.3s;
     margin-bottom: 10px;
     width: 100%;
-    /* 確保寬度固定 */
     box-sizing: border-box;
 }
 
@@ -106,18 +129,39 @@ h2 {
 }
 
 .subject-content.show {
-    max-height: 500px;
-    transition: max-height 0.3s ease-in;
+    max-height: 300px;
+    /* 設定最大高度 */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .subject-records {
-    padding: 15px;
+    padding: 10px;
+}
+
+/* 美化滾動條（可選） */
+.subject-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.subject-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.subject-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.subject-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .subject-record-item {
     padding: 8px;
     margin-bottom: 5px;
-    background: white;
+    background: #f8f9fa;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
@@ -252,9 +296,11 @@ input[list]:focus {
 
 /* 為內部的 grid 容器添加固定寬度，防止收合時重排 */
 .type-subjects-grid {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    /* 垂直排列 */
+    padding: 15px;
     width: 100%;
-    box-sizing: border-box;
 }
 
 /* 按鈕樣式 */
