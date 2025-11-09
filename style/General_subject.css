@@ -488,27 +488,6 @@ input[list]:focus {
     font-size: 14px;
 }
 
-.countdown-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.countdown-link:active {
-    transform: translateY(2px);
-    box-shadow: none;
-}
-
-.countdown-link {
-    background: linear-gradient(135deg, #667eea 0%, #a81351 100%);
-    color: white;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    transition: all 0.3s ease;
-    display: inline-block;
-}
 
 @media (max-width: 1024px) {
     .input-grid {

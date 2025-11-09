@@ -1,0 +1,54 @@
+:root {
+    --link-gradient-start: #667eea;
+    --link-gradient-end: #764ba2;
+    --link-shadow-color: rgba(102, 126, 234, 0.3);
+}
+
+.links-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+    margin: 15px 0 25px;
+    width: 100%;
+}
+
+.nav-link,
+.countdown-link {
+    background: linear-gradient(135deg, var(--link-gradient-start) 0%, var(--link-gradient-end) 100%);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px var(--link-shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-link:hover,
+.countdown-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link:active,
+.countdown-link:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .links-group {
+        justify-content: center;
+    }
+
+    .nav-link,
+    .countdown-link {
+        flex: 1 1 140px;
+        text-align: center;
+    }
+}
