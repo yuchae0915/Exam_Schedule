@@ -15,6 +15,12 @@ body {
     margin-bottom: 20px;
 }
 
+.time-display-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
 .h2 {
     color: #080f17;
     text-align: center;
@@ -218,45 +224,6 @@ body {
     margin-bottom: 10px;
 }
 
-.nav-link {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.nav-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.nav-link:active {
-    transform: translateY(2px);
-    box-shadow: none;
-}
-
-.links-group {
-    display: flex;
-    /* 讓兩個連結也使用 Flexbox 排版 */
-    gap: 15px;
-    /* 設定連結之間的間距 */
-    /* **新增以下兩行來增加分隔線** */
-    border-bottom: 1px solid #e0e0e0;
-    /* 一條細灰色分隔線 */
-    padding-bottom: 15px;
-    /* 分隔線上方和連結之間留一些空間 */
-    margin-top: 15px;
-    /* 讓 links-group 和它上方的 h2 之間有間距 */
-    margin-bottom: 25px;
-    /* **關鍵：讓分隔線和下方的 overall-stats 之間有適當的間距** */
-    width: 100%;
-    /* 確保分隔線可以佔滿整個可用寬度 */
-}
 
 @media (max-width: 768px) {
     .subject-row {

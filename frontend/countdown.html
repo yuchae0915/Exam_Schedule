@@ -4,371 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>線上倒數計時器</title><a href="index.html" class="countdown-link">&lt;</a>
-    <link rel="stylesheet" href="../style/General_subject.css">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            min-width: 400px;
-        }
-
-        h1 {
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-            font-weight: 300;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .time-input {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .input-group label {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            opacity: 0.9;
-        }
-
-        .input-group input {
-            width: 80px;
-            height: 50px;
-            font-size: 1.5rem;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .input-group input:focus {
-            border-color: rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .display {
-            font-size: 4rem;
-            font-weight: bold;
-            margin: 30px 0;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            min-width: 100px;
-        }
-
-        .start-btn {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-        }
-
-        .start-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-        }
-
-        .pause-btn {
-            background: linear-gradient(45deg, #ff9800, #f57c00);
-            color: white;
-        }
-
-        .pause-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
-        }
-
-        .stop-btn {
-            background: linear-gradient(45deg, #f44336, #d32f2f);
-            color: white;
-        }
-
-        .stop-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
-        }
-
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        .finished {
-            animation: pulse 1s infinite;
-            color: #ff4757;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                min-width: 320px;
-                padding: 30px 20px;
-            }
-
-            .display {
-                font-size: 2.5rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>線上倒數計時器</title>
+    <link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/countdown.css">
+    <script src="../script/countdown.js" defer></script>
 </head>
 
 <body>
-    <div class="container">
-
-        <h1>倒數計時器</h1>
-
-        <div class="time-input">
-            <div class="input-group">
-                <label>小時</label>
-                <input type="number" id="hours" min="0" max="23" value="0" placeholder="0">
-            </div>
-            <div class="input-group">
-                <label>分鐘</label>
-                <input type="number" id="minutes" min="0" max="59" value="0" placeholder="0">
-            </div>
-            <div class="input-group">
-                <label>秒數</label>
-                <input type="number" id="seconds" min="0" max="59" value="0" placeholder="0">
-            </div>
+    <div class="countdown-page">
+        <div class="links-group">
+            <a href="index.html" class="countdown-link">返回考試時程</a>
         </div>
 
-        <div class="display" id="display">00:00</div>
+        <main class="countdown-card">
+            <h1>倒數計時器</h1>
 
-        <div class="controls">
-            <button class="start-btn" id="startBtn" onclick="startTimer()">開始</button>
-            <button class="pause-btn" id="pauseBtn" onclick="pauseTimer()" disabled>暫停</button>
-            <button class="stop-btn" id="stopBtn" onclick="stopTimer()" disabled>停止</button>
-        </div>
+            <div class="time-input">
+                <div class="input-group">
+                    <label for="hours">小時</label>
+                    <input type="number" id="hours" min="0" max="23" value="0" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="minutes">分鐘</label>
+                    <input type="number" id="minutes" min="0" max="59" value="0" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="seconds">秒數</label>
+                    <input type="number" id="seconds" min="0" max="59" value="0" placeholder="0">
+                </div>
+            </div>
+
+            <div class="display" id="display">00:00</div>
+
+            <div class="controls">
+                <button class="start-btn" id="startBtn" type="button">開始</button>
+                <button class="pause-btn" id="pauseBtn" type="button" disabled>暫停</button>
+                <button class="stop-btn" id="stopBtn" type="button" disabled>停止</button>
+            </div>
+        </main>
     </div>
-
-    <script>
-        let timerInterval = null;
-        let totalSeconds = 0;
-        let isRunning = false;
-        let isPaused = false;
-
-        const display = document.getElementById('display');
-        const startBtn = document.getElementById('startBtn');
-        const pauseBtn = document.getElementById('pauseBtn');
-        const stopBtn = document.getElementById('stopBtn');
-        const hoursInput = document.getElementById('hours');
-        const minutesInput = document.getElementById('minutes');
-        const secondsInput = document.getElementById('seconds');
-
-        // 更新顯示
-        function updateDisplay() {
-            const hours = Math.floor(totalSeconds / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            const seconds = totalSeconds % 60;
-
-            let displayText = '';
-            if (hours > 0) {
-                displayText = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            } else {
-                displayText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            }
-            display.textContent = displayText;
-        }
-
-        // 從輸入框設定時間
-        function setTimeFromInputs() {
-            const hours = parseInt(hoursInput.value) || 0;
-            const minutes = parseInt(minutesInput.value) || 0;
-            const seconds = parseInt(secondsInput.value) || 0;
-
-            totalSeconds = hours * 3600 + minutes * 60 + seconds;
-            updateDisplay();
-        }
-
-        // 開始計時
-        function startTimer() {
-            if (!isRunning) {
-                setTimeFromInputs();
-                if (totalSeconds <= 0) {
-                    alert('請設定大於0的時間！');
-                    return;
-                }
-            }
-
-            isRunning = true;
-            isPaused = false;
-
-            startBtn.textContent = '開始';
-            startBtn.disabled = true;
-            pauseBtn.disabled = false;
-            stopBtn.disabled = false;
-
-            // 禁用輸入框
-            hoursInput.disabled = true;
-            minutesInput.disabled = true;
-            secondsInput.disabled = true;
-
-            display.classList.remove('finished');
-
-            timerInterval = setInterval(() => {
-                totalSeconds--;
-                updateDisplay();
-
-                if (totalSeconds <= 0) {
-                    finishTimer();
-                }
-            }, 1000);
-        }
-
-        // 暫停計時
-        function pauseTimer() {
-            if (isPaused) {
-                // 繼續
-                startTimer();
-            } else {
-                // 暫停
-                clearInterval(timerInterval);
-                isPaused = true;
-                startBtn.disabled = false;
-                pauseBtn.textContent = '繼續';
-            }
-        }
-
-        // 停止計時
-        function stopTimer() {
-            clearInterval(timerInterval);
-            isRunning = false;
-            isPaused = false;
-
-            startBtn.disabled = false;
-            pauseBtn.disabled = true;
-            stopBtn.disabled = true;
-            pauseBtn.textContent = '暫停';
-
-            // 啟用輸入框
-            hoursInput.disabled = false;
-            minutesInput.disabled = false;
-            secondsInput.disabled = false;
-
-            display.classList.remove('finished');
-
-            // 重置顯示
-            setTimeFromInputs();
-        }
-
-        // 計時完成
-        function finishTimer() {
-            clearInterval(timerInterval);
-            isRunning = false;
-            isPaused = false;
-
-            startBtn.disabled = false;
-            pauseBtn.disabled = true;
-            stopBtn.disabled = true;
-            pauseBtn.textContent = '暫停';
-
-            // 啟用輸入框
-            hoursInput.disabled = false;
-            minutesInput.disabled = false;
-            secondsInput.disabled = false;
-
-            display.classList.add('finished');
-            display.textContent = '時間到！';
-
-            // 顯示完成訊息
-            const hours = Math.floor(originalSeconds / 3600);
-            const minutes = Math.floor((originalSeconds % 3600) / 60);
-            const seconds = originalSeconds % 60;
-
-            let completedText = '倒數完成！總時間: ';
-            if (hours > 0) completedText += `${hours}小時`;
-            if (minutes > 0) completedText += `${minutes}分`;
-            if (seconds > 0 || originalSeconds < 60) completedText += `${seconds}秒`;
-
-            alert(completedText);
-        }
-
-        // 輸入框變化時更新顯示
-        hoursInput.addEventListener('input', () => {
-            if (!isRunning) setTimeFromInputs();
-        });
-
-        minutesInput.addEventListener('input', () => {
-            if (!isRunning) setTimeFromInputs();
-        });
-
-        secondsInput.addEventListener('input', () => {
-            if (!isRunning) setTimeFromInputs();
-        });
-
-        // 初始化顯示
-        setTimeFromInputs();
-    </script>
 </body>
 
 </html>
