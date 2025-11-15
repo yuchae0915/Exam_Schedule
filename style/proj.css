@@ -482,6 +482,169 @@ tr:nth-child(even) {
     background-color: #7a72eb;
 }
 
+/* 月份进度条样式 */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.progress-bar-mini {
+    width: 150px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill-mini {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+
+.month-progress-text {
+    font-size: 0.9em;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* 高考科目监控样式 */
+.overall-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.gaokao-subject-card {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.collapse-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.collapse-btn:hover {
+    background: #e9ecef;
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.85em;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.progress-value {
+    font-weight: 500;
+}
+
+.progress-percent {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.collapse-arrow {
+    transition: transform 0.3s ease;
+}
+
+.collapse-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+.collapse-content {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: none;
+}
+
+.collapse-content.active {
+    display: block;
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 6px;
+}
+
+.lesson-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.lesson-item:hover {
+    background: #f8f9fa;
+}
+
+.lesson-item input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.lesson-item label {
+    cursor: pointer;
+}
+
+.lesson-item input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
 
 /* 響應式設計 */
 @media (max-width: 768px) {

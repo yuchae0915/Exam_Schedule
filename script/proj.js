@@ -429,3 +429,249 @@ btn.addEventListener("click", () => {
         behavior: "smooth"
     });
 });
+
+// ========== 月份进度管理 ==========
+function toggleMonth(month) {
+    const content = document.getElementById(`content-${month}`);
+    const toggle = document.getElementById(`toggle-${month}`);
+
+    if (content && toggle) {
+        content.classList.toggle('show');
+        toggle.classList.toggle('expanded');
+    }
+}
+
+function updateMonthProgress(month) {
+    const content = document.getElementById(`content-${month}`);
+    if (!content) return;
+
+    const checkboxes = content.querySelectorAll('input[type="checkbox"]');
+    const total = checkboxes.length;
+    const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
+
+    const progressBar = document.getElementById(`progress-${month}`);
+    const progressText = document.getElementById(`text-${month}`);
+
+    if (progressBar) {
+        progressBar.style.width = percentage + '%';
+    }
+
+    if (progressText) {
+        progressText.textContent = percentage + '%';
+    }
+
+    // 保存进度到localStorage
+    saveMonthProgress(month, checked, total);
+}
+
+function saveMonthProgress(month, checked, total) {
+    const progress = {
+        checked: checked,
+        total: total,
+        percentage: Math.round((checked / total) * 100)
+    };
+    localStorage.setItem(`month-progress-${month}`, JSON.stringify(progress));
+}
+
+function loadMonthProgress() {
+    const months = ['nov', 'dec', 'jan', 'feb', 'mar', 'apr', 'may', 'jun'];
+
+    months.forEach(month => {
+        const saved = localStorage.getItem(`month-progress-${month}`);
+        if (saved) {
+            const progress = JSON.parse(saved);
+            const progressBar = document.getElementById(`progress-${month}`);
+            const progressText = document.getElementById(`text-${month}`);
+
+            if (progressBar) {
+                progressBar.style.width = progress.percentage + '%';
+            }
+
+            if (progressText) {
+                progressText.textContent = progress.percentage + '%';
+            }
+        }
+    });
+}
+
+// ========== 区块折叠管理 ==========
+function toggleSection(section) {
+    const content = document.getElementById(`content-${section}`);
+    const toggle = document.getElementById(`toggle-${section}`);
+
+    if (content && toggle) {
+        content.classList.toggle('show');
+        toggle.classList.toggle('expanded');
+    }
+}
+
+// ========== 高考科目监控 ==========
+const gaokaoSubjects = {
+    mis: { name: '資訊管理', total: 17, lessons: [] },
+    db: { name: '資料庫', total: 16, lessons: [] },
+    net: { name: '資通網路', total: 15, lessons: [] },
+    ds: { name: '資料結構', total: 25, lessons: [] },
+    sec: { name: '資訊安全', total: 14, lessons: [] },
+    prog: { name: '程式設計', total: 4, lessons: [] }
+};
+
+function initGaokaoSubjects() {
+    Object.keys(gaokaoSubjects).forEach(subjectId => {
+        const subject = gaokaoSubjects[subjectId];
+        const container = document.getElementById(`lessons-${subjectId}`);
+
+        if (!container) return;
+
+        // 生成课程列表
+        for (let i = 1; i <= subject.total; i++) {
+            const lessonItem = document.createElement('div');
+            lessonItem.className = 'lesson-item';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `${subjectId}-lesson-${i}`;
+            checkbox.onchange = () => updateGaokaoProgress(subjectId);
+
+            const label = document.createElement('label');
+            label.htmlFor = `${subjectId}-lesson-${i}`;
+            label.textContent = `第 ${i} 堂`;
+
+            lessonItem.appendChild(checkbox);
+            lessonItem.appendChild(label);
+            container.appendChild(lessonItem);
+        }
+
+        // 加载保存的进度
+        loadGaokaoProgress(subjectId);
+    });
+
+    // 更新总体统计
+    updateGaokaoOverallStats();
+}
+
+function toggleSubject(subjectId) {
+    const content = document.getElementById(`subject-${subjectId}`);
+    const arrow = document.getElementById(`arrow-${subjectId}`);
+
+    if (content && arrow) {
+        content.classList.toggle('active');
+        arrow.classList.toggle('rotated');
+    }
+}
+
+function updateGaokaoProgress(subjectId) {
+    const subject = gaokaoSubjects[subjectId];
+    const container = document.getElementById(`lessons-${subjectId}`);
+
+    if (!container) return;
+
+    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    const total = checkboxes.length;
+    const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
+
+    // 更新进度显示
+    const progressText = document.getElementById(`progress-text-${subjectId}`);
+    const percentText = document.getElementById(`percent-${subjectId}`);
+    const badge = document.getElementById(`badge-${subjectId}`);
+
+    if (progressText) {
+        progressText.textContent = `${checked}/${total}堂`;
+    }
+
+    if (percentText) {
+        percentText.textContent = `${percentage}%`;
+    }
+
+    // 根据完成率改变徽章颜色
+    if (badge) {
+        badge.removeAttribute('data-rate');
+        if (percentage === 100) {
+            badge.setAttribute('data-rate', 'complete');
+        } else if (percentage >= 70) {
+            badge.setAttribute('data-rate', 'high');
+        } else if (percentage >= 40) {
+            badge.setAttribute('data-rate', 'medium');
+        } else {
+            badge.setAttribute('data-rate', 'low');
+        }
+    }
+
+    // 保存进度
+    saveGaokaoProgress(subjectId, checked);
+
+    // 更新总体统计
+    updateGaokaoOverallStats();
+}
+
+function saveGaokaoProgress(subjectId, checked) {
+    const checkboxStates = [];
+    const container = document.getElementById(`lessons-${subjectId}`);
+
+    if (container) {
+        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((cb, index) => {
+            checkboxStates[index] = cb.checked;
+        });
+    }
+
+    localStorage.setItem(`gaokao-${subjectId}`, JSON.stringify(checkboxStates));
+}
+
+function loadGaokaoProgress(subjectId) {
+    const saved = localStorage.getItem(`gaokao-${subjectId}`);
+
+    if (saved) {
+        const checkboxStates = JSON.parse(saved);
+        const container = document.getElementById(`lessons-${subjectId}`);
+
+        if (container) {
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((cb, index) => {
+                if (checkboxStates[index]) {
+                    cb.checked = true;
+                }
+            });
+        }
+    }
+
+    updateGaokaoProgress(subjectId);
+}
+
+function updateGaokaoOverallStats() {
+    let totalLessons = 0;
+    let totalCompleted = 0;
+
+    Object.keys(gaokaoSubjects).forEach(subjectId => {
+        const subject = gaokaoSubjects[subjectId];
+        const container = document.getElementById(`lessons-${subjectId}`);
+
+        if (container) {
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+
+            totalLessons += subject.total;
+            totalCompleted += checked;
+        }
+    });
+
+    const completionRate = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+
+    const completedEl = document.getElementById('gaokao-total-completed');
+    const totalEl = document.getElementById('gaokao-total-lessons');
+    const rateEl = document.getElementById('gaokao-completion-rate');
+
+    if (completedEl) completedEl.textContent = totalCompleted;
+    if (totalEl) totalEl.textContent = totalLessons;
+    if (rateEl) rateEl.textContent = completionRate + '%';
+}
+
+// ========== 初始化 ==========
+document.addEventListener('DOMContentLoaded', function() {
+    // 加载月份进度
+    loadMonthProgress();
+
+    // 初始化高考科目
+    initGaokaoSubjects();
+});
