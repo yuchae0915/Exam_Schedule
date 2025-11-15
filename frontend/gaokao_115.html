@@ -492,161 +492,11 @@
                         </div>
                     </div>
 
-                    <!-- 專業科目卡片 -->
-                    <div class="subject-card gaokao-subject-card">
-                        <button class="collapse-btn" onclick="toggleSubject('mis')">
-                            <span>📚 資訊管理 (MIS)</span>
-                            <div class="progress-info">
-                                <span class="progress-badge" id="badge-mis">
-                                    <span class="progress-value" id="progress-text-mis">17/17堂</span>
-                                    <span class="progress-percent" id="percent-mis">100%</span>
-                                </span>
-                                <span class="collapse-arrow" id="arrow-mis">▼</span>
-                            </div>
-                        </button>
-                        <div class="collapse-content active" id="subject-mis">
-                            <div class="lesson-grid" id="lessons-mis">
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-1" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-1">第 1 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-2" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-2">第 2 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-3" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-3">第 3 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-4" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-4">第 4 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-5" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-5">第 5 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-6" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-6">第 6 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-7" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-7">第 7 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-8" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-8">第 8 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-9" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-9">第 9 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-10" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-10">第 10 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-11" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-11">第 11 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-12" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-12">第 12 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-13" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-13">第 13 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-14" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-14">第 14 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-15" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-15">第 15 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-16" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-16">第 16 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-17" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-17">第 17 堂</label></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="subject-card gaokao-subject-card">
-                        <button class="collapse-btn" onclick="toggleSubject('db')">
-                            <span>💾 資料庫 (DB)</span>
-                            <div class="progress-info">
-                                <span class="progress-badge" id="badge-db">
-                                    <span class="progress-value" id="progress-text-db">0/16堂</span>
-                                    <span class="progress-percent" id="percent-db">0%</span>
-                                </span>
-                                <span class="collapse-arrow" id="arrow-db">▼</span>
-                            </div>
-                        </button>
-                        <div class="collapse-content active" id="subject-db">
-                            <div class="lesson-grid" id="lessons-db">
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-1" onchange="updateGaokaoProgress('db')"><label for="db-lesson-1">第 1 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-2" onchange="updateGaokaoProgress('db')"><label for="db-lesson-2">第 2 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-3" onchange="updateGaokaoProgress('db')"><label for="db-lesson-3">第 3 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-4" onchange="updateGaokaoProgress('db')"><label for="db-lesson-4">第 4 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-5" onchange="updateGaokaoProgress('db')"><label for="db-lesson-5">第 5 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-6" onchange="updateGaokaoProgress('db')"><label for="db-lesson-6">第 6 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-7" onchange="updateGaokaoProgress('db')"><label for="db-lesson-7">第 7 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-8" onchange="updateGaokaoProgress('db')"><label for="db-lesson-8">第 8 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-9" onchange="updateGaokaoProgress('db')"><label for="db-lesson-9">第 9 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-10" onchange="updateGaokaoProgress('db')"><label for="db-lesson-10">第 10 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-11" onchange="updateGaokaoProgress('db')"><label for="db-lesson-11">第 11 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-12" onchange="updateGaokaoProgress('db')"><label for="db-lesson-12">第 12 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-13" onchange="updateGaokaoProgress('db')"><label for="db-lesson-13">第 13 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-14" onchange="updateGaokaoProgress('db')"><label for="db-lesson-14">第 14 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-15" onchange="updateGaokaoProgress('db')"><label for="db-lesson-15">第 15 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="db-lesson-16" onchange="updateGaokaoProgress('db')"><label for="db-lesson-16">第 16 堂</label></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="subject-card gaokao-subject-card">
-                        <button class="collapse-btn" onclick="toggleSubject('ds')">
-                            <span>📊 資節 (DS)</span>
-                            <div class="progress-info">
-                                <span class="progress-badge" id="badge-ds">
-                                    <span class="progress-value" id="progress-text-ds">0/25堂</span>
-                                    <span class="progress-percent" id="percent-ds">0%</span>
-                                </span>
-                                <span class="collapse-arrow" id="arrow-ds">▼</span>
-                            </div>
-                        </button>
-                        <div class="collapse-content active" id="subject-ds">
-                            <div class="lesson-grid" id="lessons-ds">
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-1" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-1">第 1 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-2" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-2">第 2 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-3" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-3">第 3 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-4" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-4">第 4 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-5" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-5">第 5 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-6" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-6">第 6 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-7" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-7">第 7 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-8" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-8">第 8 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-9" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-9">第 9 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-10" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-10">第 10 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-11" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-11">第 11 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-12" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-12">第 12 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-13" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-13">第 13 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-14" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-14">第 14 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-15" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-15">第 15 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-16" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-16">第 16 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-17" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-17">第 17 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-18" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-18">第 18 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-19" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-19">第 19 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-20" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-20">第 20 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-21" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-21">第 21 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-22" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-22">第 22 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-23" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-23">第 23 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-24" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-24">第 24 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-25" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-25">第 25 堂</label></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="subject-card gaokao-subject-card">
-                        <button class="collapse-btn" onclick="toggleSubject('netsec')">
-                            <span>🌐🔒 網路+安全 (Net+Sec)</span>
-                            <div class="progress-info">
-                                <span class="progress-badge" id="badge-netsec">
-                                    <span class="progress-value" id="progress-text-netsec">0/29堂</span>
-                                    <span class="progress-percent" id="percent-netsec">0%</span>
-                                </span>
-                                <span class="collapse-arrow" id="arrow-netsec">▼</span>
-                            </div>
-                        </button>
-                        <div class="collapse-content active" id="subject-netsec">
-                            <div class="lesson-grid" id="lessons-netsec">
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-1" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-1">第 1 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-2" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-2">第 2 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-3" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-3">第 3 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-4" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-4">第 4 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-5" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-5">第 5 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-6" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-6">第 6 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-7" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-7">第 7 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-8" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-8">第 8 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-9" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-9">第 9 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-10" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-10">第 10 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-11" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-11">第 11 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-12" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-12">第 12 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-13" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-13">第 13 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-14" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-14">第 14 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-15" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-15">第 15 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-16" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-16">第 16 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-17" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-17">第 17 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-18" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-18">第 18 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-19" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-19">第 19 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-20" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-20">第 20 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-21" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-21">第 21 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-22" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-22">第 22 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-23" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-23">第 23 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-24" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-24">第 24 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-25" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-25">第 25 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-26" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-26">第 26 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-27" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-27">第 27 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-28" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-28">第 28 堂</label></div>
-                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-29" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-29">第 29 堂</label></div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- 專業科目卡片 - 動態生成 -->
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-mis"></div>
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-db"></div>
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-ds"></div>
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-netsec"></div>
                 </div>
             </div>
         </div>
@@ -654,7 +504,7 @@
         <button id="backToTopBtn" title="回到最上面">⬆️</button>
     </div>
 
-    <script src="../script/proj.js"></script>
+    <script src="../script/gaokao_115_dashboard.js"></script>
 </body>
 
 </html>
