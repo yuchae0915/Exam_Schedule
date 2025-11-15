@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 115高考專業科目學習監控</title>
+    <link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/proj.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📊 115高考專業科目學習監控</h1>
+        <p style="text-align: center; color: #666; font-size: 1.1em; margin-bottom: 20px;">
+            即時追蹤您的學習進度
+        </p>
+
+        <div class="links-group">
+            <a href="gaokao_115.html" class="countdown-link">&lt; 返回主頁</a>
+        </div>
+
+        <!-- 高考科目監控儀表板 -->
+        <div class="tips-section" style="margin-top: 30px;">
+            <h3 class="tips-header" onclick="toggleSection('dashboard')">
+                <span>📈 高考專業科目學習監控</span>
+                <span class="tips-toggle" id="toggle-dashboard">▼</span>
+            </h3>
+            <div class="tips-content show" id="content-dashboard">
+                <div class="tip-item">
+                    <!-- 總體統計 -->
+                    <div class="overall-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="gaokao-total-completed">0</div>
+                            <div class="stat-label">已完成堂數</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="gaokao-total-lessons">87</div>
+                            <div class="stat-label">總堂數</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="gaokao-completion-rate">0%</div>
+                            <div class="stat-label">完成率</div>
+                        </div>
+                    </div>
+
+                    <!-- 專業科目卡片 - 動態生成 -->
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-mis"></div>
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-db"></div>
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-ds"></div>
+                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-netsec"></div>
+                </div>
+            </div>
+        </div>
+
+        <button id="backToTopBtn" title="回到最上面">⬆️</button>
+    </div>
+
+    <script src="../script/gaokao_115_dashboard.js"></script>
+</body>
+
+</html>

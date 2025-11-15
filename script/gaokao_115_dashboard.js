@@ -13,7 +13,7 @@ const gaokaoSubjectData = {
         idPrefix: 'db'
     },
     ds: {
-        name: '資節 (DS)',
+        name: '資料結構 (DS)',
         icon: '📊',
         totalLessons: 25,
         idPrefix: 'ds'
@@ -63,7 +63,7 @@ function createGaokaoSubjectCard(subjectKey) {
                 <span class="collapse-arrow" id="arrow-${subjectKey}">▼</span>
             </div>
         </button>
-        <div class="collapse-content active" id="subject-${subjectKey}">
+        <div class="collapse-content" id="subject-${subjectKey}">
             <div class="lesson-grid" id="lessons-${subjectKey}">
                 ${lessonsMarkup}
             </div>
@@ -331,16 +331,30 @@ function toggleSection(section) {
  * 初始化儀表板
  */
 function initGaokao115Dashboard() {
-    // 創建所有科目卡片
-    Object.keys(gaokaoSubjectData).forEach(createGaokaoSubjectCard);
+    // 檢查是否存在科目監控容器（只在科目監控頁面初始化）
+    const hasSubjectMonitor = document.getElementById('gaokao-subject-mis') !== null;
 
-    // 載入保存的狀態
-    loadGaokaoStates();
-    loadMonthStates();
+    if (hasSubjectMonitor) {
+        // 創建所有科目卡片
+        Object.keys(gaokaoSubjectData).forEach(createGaokaoSubjectCard);
 
-    // 更新所有進度顯示
-    Object.keys(gaokaoSubjectData).forEach(updateGaokaoSubjectProgress);
-    initMonthProgress();
+        // 載入保存的狀態
+        loadGaokaoStates();
+
+        // 更新所有進度顯示
+        Object.keys(gaokaoSubjectData).forEach(updateGaokaoSubjectProgress);
+    }
+
+    // 檢查是否存在月份進度（只在主頁面初始化）
+    const hasMonthProgress = document.querySelector('.month-card') !== null;
+
+    if (hasMonthProgress) {
+        // 載入月份狀態
+        loadMonthStates();
+
+        // 初始化月份進度
+        initMonthProgress();
+    }
 }
 
 // ========== 時間顯示功能 ==========
@@ -376,11 +390,11 @@ function updateTimeDisplay() {
 }
 
 /**
- * 初始化時間顯示（每分鐘更新一次）
+ * 初始化時間顯示（每秒更新一次）
  */
 function initTimeDisplay() {
     updateTimeDisplay();
-    setInterval(updateTimeDisplay, 60000); // 每分鐘更新
+    setInterval(updateTimeDisplay, 1000); // 每秒更新
 }
 
 // ========== 返回頂部按鈕 ==========
@@ -410,8 +424,13 @@ function initBackToTop() {
 }
 
 // DOM載入完成後初始化
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initGaokao115Dashboard();
-    initTimeDisplay();
+
+    // 只有在存在時間顯示元素時才初始化時間顯示
+    if (document.getElementById('currentTime')) {
+        initTimeDisplay();
+    }
+
     initBackToTop();
 });
