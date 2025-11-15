@@ -270,13 +270,9 @@ function saveMonthStates() {
         if (monthCard) {
             const checkboxes = monthCard.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
-                // 為每個checkbox創建唯一ID（如果沒有的話）
-                if (!checkbox.id) {
-                    const label = checkbox.nextElementSibling;
-                    const text = label ? label.textContent.trim() : '';
-                    checkbox.id = `${month}-${text.replace(/\s+/g, '-')}`;
+                if (checkbox.id) {
+                    states[checkbox.id] = checkbox.checked;
                 }
-                states[checkbox.id] = checkbox.checked;
             });
         }
     });
@@ -347,5 +343,75 @@ function initGaokao115Dashboard() {
     initMonthProgress();
 }
 
+// ========== 時間顯示功能 ==========
+
+/**
+ * 更新當前時間和日期顯示
+ */
+function updateTimeDisplay() {
+    const now = new Date();
+
+    // 更新時間
+    const currentTimeEl = document.getElementById('currentTime');
+    if (currentTimeEl) {
+        currentTimeEl.textContent = now.toLocaleTimeString('zh-TW', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
+    // 更新日期顯示
+    const weekdayElement = document.getElementById('currentWeekday');
+    const dateNumberElement = document.getElementById('currentDateNumber');
+    const monthYearElement = document.getElementById('currentMonthYear');
+
+    if (weekdayElement && dateNumberElement && monthYearElement) {
+        weekdayElement.textContent = now.toLocaleDateString('zh-TW', { weekday: 'long' });
+        dateNumberElement.textContent = now.getDate();
+        monthYearElement.textContent = now.toLocaleDateString('zh-TW', {
+            year: 'numeric',
+            month: 'long'
+        });
+    }
+}
+
+/**
+ * 初始化時間顯示（每分鐘更新一次）
+ */
+function initTimeDisplay() {
+    updateTimeDisplay();
+    setInterval(updateTimeDisplay, 60000); // 每分鐘更新
+}
+
+// ========== 返回頂部按鈕 ==========
+
+/**
+ * 初始化返回頂部按鈕
+ */
+function initBackToTop() {
+    const btn = document.getElementById("backToTopBtn");
+
+    if (!btn) return;
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            btn.classList.add("show");
+        } else {
+            btn.classList.remove("show");
+        }
+    });
+
+    btn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
+
 // DOM載入完成後初始化
-document.addEventListener('DOMContentLoaded', initGaokao115Dashboard);
+document.addEventListener('DOMContentLoaded', function() {
+    initGaokao115Dashboard();
+    initTimeDisplay();
+    initBackToTop();
+});

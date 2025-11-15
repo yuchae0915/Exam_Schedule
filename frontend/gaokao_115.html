@@ -22,6 +22,32 @@
             <a href="learning_dashboard.html" class="countdown-link">科目監控進度</a>
         </div>
 
+        <div class="current-activity-container">
+            <div class="current-activity">
+                <div class="time-info">
+                    <div class="date-display">
+                        <span class="weekday" id="currentWeekday"></span>
+                        <span class="date-number" id="currentDateNumber"></span>
+                        <span class="month-year" id="currentMonthYear"></span>
+                    </div>
+                    <span class="current-time" id="currentTime"></span>
+                </div>
+                <div class="activity-info">
+                    <div class="now-activity">
+                        <i class="icon">📍</i>
+                        <span class="label">現在應該：</span>
+                        <span class="activity-name" id="currentActivity">準備學習</span>
+                    </div>
+                    <div class="next-activity">
+                        <i class="icon">⏰</i>
+                        <span class="label">下個活動：</span>
+                        <span class="activity-name" id="nextActivity">--</span>
+                        <span class="time-until" id="timeUntil"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 總體戰略配置 -->
         <h2>📊 總體戰略配置</h2>
 
@@ -64,7 +90,7 @@
                     <span class="month-progress-text" id="text-nov" style="margin-left: 10px;">100%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -75,9 +101,9 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('nov')"> MIS進度：6/17堂</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('nov')"> 預習進度：DS/DB各讀2章</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('nov')"> 114國營Net/Sec教材整理完畢</li>
+                        <li><input type="checkbox" id="nov-task-1" checked onchange="updateMonthProgress('nov')"> MIS進度：6/17堂</li>
+                        <li><input type="checkbox" id="nov-task-2" checked onchange="updateMonthProgress('nov')"> 預習進度：DS/DB各讀2章</li>
+                        <li><input type="checkbox" id="nov-task-3" checked onchange="updateMonthProgress('nov')"> 114國營Net/Sec教材整理完畢</li>
                     </ul>
                 </div>
             </div>
@@ -94,7 +120,7 @@
                     <span class="month-progress-text" id="text-dec" style="margin-left: 10px;">80%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -106,11 +132,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> MIS：17/17堂（100%）✅</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> DB：8/16堂（50%）</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> Net：差異筆記完成</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> 預習：DS前10章、Sec基礎概念</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('dec')"> 筆記：MIS v1.0完成</li>
+                        <li><input type="checkbox" id="dec-task-1" checked onchange="updateMonthProgress('dec')"> MIS：17/17堂（100%）✅</li>
+                        <li><input type="checkbox" id="dec-task-2" checked onchange="updateMonthProgress('dec')"> DB：8/16堂（50%）</li>
+                        <li><input type="checkbox" id="dec-task-3" checked onchange="updateMonthProgress('dec')"> Net：差異筆記完成</li>
+                        <li><input type="checkbox" id="dec-task-4" checked onchange="updateMonthProgress('dec')"> 預習：DS前10章、Sec基礎概念</li>
+                        <li><input type="checkbox" id="dec-task-5" onchange="updateMonthProgress('dec')"> 筆記：MIS v1.0完成</li>
                     </ul>
                 </div>
             </div>
@@ -127,7 +153,7 @@
                     <span class="month-progress-text" id="text-jan" style="margin-left: 10px;">60%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -139,11 +165,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" onchange="updateMonthProgress('jan')"> DB：16/16堂（100%）✅</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('jan')"> DS：5/25堂（20%）</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('jan')"> Net：15/15堂（100%）✅</li>
-                        <li><input type="checkbox" checked onchange="updateMonthProgress('jan')"> 考古：MIS近3年</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('jan')"> 筆記：DB、Net v1.0完成</li>
+                        <li><input type="checkbox" id="jan-task-1" onchange="updateMonthProgress('jan')"> DB：16/16堂（100%）✅</li>
+                        <li><input type="checkbox" id="jan-task-2" checked onchange="updateMonthProgress('jan')"> DS：5/25堂（20%）</li>
+                        <li><input type="checkbox" id="jan-task-3" checked onchange="updateMonthProgress('jan')"> Net：15/15堂（100%）✅</li>
+                        <li><input type="checkbox" id="jan-task-4" checked onchange="updateMonthProgress('jan')"> 考古：MIS近3年</li>
+                        <li><input type="checkbox" id="jan-task-5" onchange="updateMonthProgress('jan')"> 筆記：DB、Net v1.0完成</li>
                     </ul>
                 </div>
             </div>
@@ -160,7 +186,7 @@
                     <span class="month-progress-text" id="text-feb" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -171,10 +197,10 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> DS：20/25堂（80%）</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> 考古：DB/Net各3年</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> 預習：Sec完成70%</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> 筆記：持續優化</li>
+                        <li><input type="checkbox" id="feb-task-1" onchange="updateMonthProgress('feb')"> DS：20/25堂（80%）</li>
+                        <li><input type="checkbox" id="feb-task-2" onchange="updateMonthProgress('feb')"> 考古：DB/Net各3年</li>
+                        <li><input type="checkbox" id="feb-task-3" onchange="updateMonthProgress('feb')"> 預習：Sec完成70%</li>
+                        <li><input type="checkbox" id="feb-task-4" onchange="updateMonthProgress('feb')"> 筆記：持續優化</li>
                     </ul>
                 </div>
             </div>
@@ -191,7 +217,7 @@
                     <span class="month-progress-text" id="text-mar" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -202,11 +228,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> DS：25/25堂（100%）✅</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> Sec：7/14堂（50%）</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> 考古：各科近5年完成</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> 筆記：DS v1.0完成</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> 錯題本：開始建立</li>
+                        <li><input type="checkbox" id="mar-task-1" onchange="updateMonthProgress('mar')"> DS：25/25堂（100%）✅</li>
+                        <li><input type="checkbox" id="mar-task-2" onchange="updateMonthProgress('mar')"> Sec：7/14堂（50%）</li>
+                        <li><input type="checkbox" id="mar-task-3" onchange="updateMonthProgress('mar')"> 考古：各科近5年完成</li>
+                        <li><input type="checkbox" id="mar-task-4" onchange="updateMonthProgress('mar')"> 筆記：DS v1.0完成</li>
+                        <li><input type="checkbox" id="mar-task-5" onchange="updateMonthProgress('mar')"> 錯題本：開始建立</li>
                     </ul>
                 </div>
             </div>
@@ -223,7 +249,7 @@
                     <span class="month-progress-text" id="text-apr" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -234,11 +260,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> Sec：14/14堂（100%）✅</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 全科課程：87/87堂 ✅</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 考古：高考105-110年</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 筆記：全科v1.0完成</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 錯題本：累積50題</li>
+                        <li><input type="checkbox" id="apr-task-1" onchange="updateMonthProgress('apr')"> Sec：14/14堂（100%）✅</li>
+                        <li><input type="checkbox" id="apr-task-2" onchange="updateMonthProgress('apr')"> 全科課程：87/87堂 ✅</li>
+                        <li><input type="checkbox" id="apr-task-3" onchange="updateMonthProgress('apr')"> 考古：高考105-110年</li>
+                        <li><input type="checkbox" id="apr-task-4" onchange="updateMonthProgress('apr')"> 筆記：全科v1.0完成</li>
+                        <li><input type="checkbox" id="apr-task-5" onchange="updateMonthProgress('apr')"> 錯題本：累積50題</li>
                     </ul>
                 </div>
             </div>
@@ -255,7 +281,7 @@
                     <span class="month-progress-text" id="text-may" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -266,11 +292,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 高考：105-114年全部 ✅</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 地特：105-114年全部 ✅</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 錯題本：累積100題+</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 筆記：v2.0濃縮版完成</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 模擬考：每週2次</li>
+                        <li><input type="checkbox" id="may-task-1" onchange="updateMonthProgress('may')"> 高考：105-114年全部 ✅</li>
+                        <li><input type="checkbox" id="may-task-2" onchange="updateMonthProgress('may')"> 地特：105-114年全部 ✅</li>
+                        <li><input type="checkbox" id="may-task-3" onchange="updateMonthProgress('may')"> 錯題本：累積100題+</li>
+                        <li><input type="checkbox" id="may-task-4" onchange="updateMonthProgress('may')"> 筆記：v2.0濃縮版完成</li>
+                        <li><input type="checkbox" id="may-task-5" onchange="updateMonthProgress('may')"> 模擬考：每週2次</li>
                     </ul>
                 </div>
             </div>
@@ -287,7 +313,7 @@
                     <span class="month-progress-text" id="text-jun" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" style="display: block;">
+            <div class="tips-content">
                 <div class="tip-item">
                     <h4>前半月（6/1-6/15）：</h4>
                     <ul>
@@ -306,10 +332,10 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> Tier2：各科3-5年</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> 錯題：100%重做一遍</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> 心態：穩定自信</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> 準備：考試用品齊全</li>
+                        <li><input type="checkbox" id="jun-task-1" onchange="updateMonthProgress('jun')"> Tier2：各科3-5年</li>
+                        <li><input type="checkbox" id="jun-task-2" onchange="updateMonthProgress('jun')"> 錯題：100%重做一遍</li>
+                        <li><input type="checkbox" id="jun-task-3" onchange="updateMonthProgress('jun')"> 心態：穩定自信</li>
+                        <li><input type="checkbox" id="jun-task-4" onchange="updateMonthProgress('jun')"> 準備：考試用品齊全</li>
                     </ul>
                 </div>
             </div>
@@ -317,164 +343,13 @@
 
         </div><!-- 關閉 month-card-container -->
 
-        <!-- 關鍵里程碑檢核表 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleSection('milestone')">
-                <span>📊 關鍵里程碑檢核表</span>
-                <span class="tips-toggle" id="toggle-milestone">▼</span>
-            </h3>
-            <div class="tips-content" id="content-milestone">
-                <div class="tip-item">
-                    <!-- 課程完成進度表 -->
-                    <h3>🎯 課程完成進度</h3>
-        <div class="progress-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>科目</th>
-                        <th>堂數</th>
-                        <th>12月</th>
-                        <th>1月</th>
-                        <th>2月</th>
-                        <th>3月</th>
-                        <th>4月</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>資管 (MIS)</td>
-                        <td>17</td>
-                        <td class="subject-management">100%</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>資料庫 (DB)</td>
-                        <td>16</td>
-                        <td class="subject-computer">50%</td>
-                        <td class="subject-computer">100%</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>資節 (DS)</td>
-                        <td>25</td>
-                        <td class="subject-programming">預習</td>
-                        <td class="subject-programming">20%</td>
-                        <td class="subject-programming">80%</td>
-                        <td class="subject-programming">100%</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>網路+安全 (Net+Sec)</td>
-                        <td>29</td>
-                        <td class="subject-network">預習</td>
-                        <td class="subject-network">50%</td>
-                        <td class="subject-network">預習</td>
-                        <td class="subject-network">80%</td>
-                        <td class="subject-network">100%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- 考古題進度表 -->
-        <h3>📝 考古題進度</h3>
-        <div class="progress-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>月份</th>
-                        <th>重點任務</th>
-                        <th>完成題數</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1月</td>
-                        <td>MIS開始</td>
-                        <td>20題</td>
-                    </tr>
-                    <tr>
-                        <td>2月</td>
-                        <td>DB/Net加入</td>
-                        <td>60題</td>
-                    </tr>
-                    <tr>
-                        <td>3月</td>
-                        <td>五科並進</td>
-                        <td>100題</td>
-                    </tr>
-                    <tr>
-                        <td>4月</td>
-                        <td>Tier1開始</td>
-                        <td>150題</td>
-                    </tr>
-                    <tr>
-                        <td>5月</td>
-                        <td>Tier1完成</td>
-                        <td>250題</td>
-                    </tr>
-                    <tr>
-                        <td>6月</td>
-                        <td>Tier2+複習</td>
-                        <td>300題+</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 成功關鍵策略 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleSection('strategy')">
-                <span>🚀 成功關鍵策略</span>
-                <span class="tips-toggle" id="toggle-strategy">▼</span>
-            </h3>
-            <div class="tips-content" id="content-strategy">
-                <div class="tip-item">
-
-        <div class="note">
-            <h3>💡 倍速使用原則</h3>
-            <ul>
-                <li><strong>1.0x：</strong>DS全程、DB正規化、Sec法規</li>
-                <li><strong>1.5x：</strong>DB其他章節、Net新內容</li>
-                <li><strong>2.0x：</strong>Net重複內容、Sec已預習部分、MIS理論</li>
-            </ul>
-
-            <h3>📖 教材使用策略</h3>
-            <ul>
-                <li><strong>114國營：</strong>Net/Sec的基礎（省時間）</li>
-                <li><strong>三本書：</strong>預習用（搶先機）</li>
-                <li><strong>課程影片：</strong>主學習（抓重點）</li>
-                <li><strong>考古題：</strong>驗收用（找弱點）</li>
-            </ul>
-
-            <h3>⏰ 時間分配原則</h3>
-            <ul>
-                <li><strong>11-12月：</strong>追課為主（70%）+ 預習（30%）</li>
-                <li><strong>1-2月：</strong>新課（50%）+ 複習（30%）+ 練題（20%）</li>
-                <li><strong>3-4月：</strong>新課（30%）+ 練題（50%）+ 筆記（20%）</li>
-                <li><strong>5月：</strong>練題（70%）+ 複習（30%）</li>
-                <li><strong>6月：</strong>複習（60%）+ 維持（40%）</li>
-            </ul>
-        </div>
-                </div>
-            </div>
-        </div>
-
         <!-- 高考科目監控儀表板 -->
         <div class="tips-section">
             <h3 class="tips-header" onclick="toggleSection('dashboard')">
                 <span>📈 高考專業科目學習監控</span>
                 <span class="tips-toggle" id="toggle-dashboard">▼</span>
             </h3>
-            <div class="tips-content show" id="content-dashboard">
+            <div class="tips-content" id="content-dashboard">
                 <div class="tip-item">
                     <!-- 總體統計 -->
                     <div class="overall-stats">
