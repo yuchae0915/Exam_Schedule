@@ -482,6 +482,64 @@ tr:nth-child(even) {
     background-color: #7a72eb;
 }
 
+/* 月份切換按鈕樣式 */
+.month-tab-btn {
+    padding: 10px 20px;
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #495057;
+}
+
+.month-tab-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.month-tab-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* 月份卡片容器 */
+.month-card-container {
+    position: relative;
+    min-height: 400px;
+}
+
+/* 月份卡片樣式 */
+.month-card {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.month-card.active {
+    display: block;
+}
+
+/* 月份卡片內的內容不要折疊 */
+.month-card .tips-content {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* 月份进度条样式 */
 .header-right {
     display: flex;
@@ -580,6 +638,23 @@ tr:nth-child(even) {
     color: white;
     font-size: 0.85em;
     box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.progress-badge[data-rate="low"] {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.progress-badge[data-rate="medium"] {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.progress-badge[data-rate="high"] {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.progress-badge[data-rate="complete"] {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
 }
 
 .progress-value {

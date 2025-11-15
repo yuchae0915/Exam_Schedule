@@ -431,6 +431,34 @@ btn.addEventListener("click", () => {
 });
 
 // ========== 月份进度管理 ==========
+function switchMonth(month) {
+    // 隱藏所有月份卡片
+    const allMonthCards = document.querySelectorAll('.month-card');
+    allMonthCards.forEach(card => {
+        card.classList.remove('active');
+    });
+
+    // 顯示選中的月份卡片
+    const selectedCard = document.querySelector(`.month-card[data-month="${month}"]`);
+    if (selectedCard) {
+        selectedCard.classList.add('active');
+    }
+
+    // 更新按鈕狀態
+    const allButtons = document.querySelectorAll('.month-tab-btn');
+    allButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // 找到對應的按鈕並設為active
+    const buttons = document.querySelectorAll('.month-tab-btn');
+    buttons.forEach(btn => {
+        if (btn.getAttribute('onclick').includes(month)) {
+            btn.classList.add('active');
+        }
+    });
+}
+
 function toggleMonth(month) {
     const content = document.getElementById(`content-${month}`);
     const toggle = document.getElementById(`toggle-${month}`);
@@ -510,10 +538,8 @@ function toggleSection(section) {
 const gaokaoSubjects = {
     mis: { name: '資訊管理', total: 17, lessons: [] },
     db: { name: '資料庫', total: 16, lessons: [] },
-    net: { name: '資通網路', total: 15, lessons: [] },
-    ds: { name: '資料結構', total: 25, lessons: [] },
-    sec: { name: '資訊安全', total: 14, lessons: [] },
-    prog: { name: '程式設計', total: 4, lessons: [] }
+    ds: { name: '資節', total: 25, lessons: [] },
+    netsec: { name: '網路+安全', total: 29, lessons: [] }
 };
 
 function initGaokaoSubjects() {
@@ -522,25 +548,6 @@ function initGaokaoSubjects() {
         const container = document.getElementById(`lessons-${subjectId}`);
 
         if (!container) return;
-
-        // 生成课程列表
-        for (let i = 1; i <= subject.total; i++) {
-            const lessonItem = document.createElement('div');
-            lessonItem.className = 'lesson-item';
-
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.id = `${subjectId}-lesson-${i}`;
-            checkbox.onchange = () => updateGaokaoProgress(subjectId);
-
-            const label = document.createElement('label');
-            label.htmlFor = `${subjectId}-lesson-${i}`;
-            label.textContent = `第 ${i} 堂`;
-
-            lessonItem.appendChild(checkbox);
-            lessonItem.appendChild(label);
-            container.appendChild(lessonItem);
-        }
 
         // 加载保存的进度
         loadGaokaoProgress(subjectId);

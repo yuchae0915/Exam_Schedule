@@ -29,7 +29,7 @@
             <h3>🎯 核心資源盤點</h3>
             <ul style="line-height: 1.8;">
                 <li><strong>已有優勢：</strong>114國營教材（Net/Sec基礎）、本科背景、三本教科書</li>
-                <li><strong>課程投資：</strong>全科45,500（91堂）</li>
+                <li><strong>課程投資：</strong>全科45,500（87堂）</li>
                 <li><strong>時間資源：</strong>7.5個月（約32週）</li>
                 <li><strong>考古策略：</strong>Tier1（高考+地特10年）→ Tier2（調查+關務+國安7年）</li>
             </ul>
@@ -38,19 +38,33 @@
         <!-- 月度進度規劃表 -->
         <h2>📅 月度進度規劃表</h2>
 
+        <!-- 月份切換按鈕 -->
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center;">
+            <button class="month-tab-btn active" onclick="switchMonth('nov')">11月下旬</button>
+            <button class="month-tab-btn" onclick="switchMonth('dec')">12月</button>
+            <button class="month-tab-btn" onclick="switchMonth('jan')">1月</button>
+            <button class="month-tab-btn" onclick="switchMonth('feb')">2月</button>
+            <button class="month-tab-btn" onclick="switchMonth('mar')">3月</button>
+            <button class="month-tab-btn" onclick="switchMonth('apr')">4月</button>
+            <button class="month-tab-btn" onclick="switchMonth('may')">5月</button>
+            <button class="month-tab-btn" onclick="switchMonth('jun')">6月</button>
+        </div>
+
+        <!-- 月度進度卡片容器 -->
+        <div class="month-card-container">
+
         <!-- 11月下旬 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('nov')">
+        <div class="tips-section month-card active" data-month="nov">
+            <h3 style="margin-top: 0;">
                 <span>【11月下旬】啟動期（11/20-11/30）</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-nov" style="width: 100%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-nov">100%</span>
-                    <span class="tips-toggle" id="toggle-nov">▼</span>
+                    <span class="month-progress-text" id="text-nov" style="margin-left: 10px;">100%</span>
                 </div>
             </h3>
-            <div class="tips-content show" id="content-nov">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -70,18 +84,17 @@
         </div>
 
         <!-- 12月 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('dec')">
+        <div class="tips-section month-card" data-month="dec">
+            <h3 style="margin-top: 0;">
                 <span>【12月】追趕預習月</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-dec" style="width: 80%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-dec">80%</span>
-                    <span class="tips-toggle" id="toggle-dec">▼</span>
+                    <span class="month-progress-text" id="text-dec" style="margin-left: 10px;">80%</span>
                 </div>
             </h3>
-            <div class="tips-content show" id="content-dec">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -104,18 +117,17 @@
         </div>
 
         <!-- 1月 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('jan')">
+        <div class="tips-section month-card" data-month="jan">
+            <h3 style="margin-top: 0;">
                 <span>【1月】DB攻堅月</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-jan" style="width: 60%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-jan">60%</span>
-                    <span class="tips-toggle" id="toggle-jan">▼</span>
+                    <span class="month-progress-text" id="text-jan" style="margin-left: 10px;">60%</span>
                 </div>
             </h3>
-            <div class="tips-content" id="content-jan">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -138,18 +150,17 @@
         </div>
 
         <!-- 2月 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('feb')">
+        <div class="tips-section month-card" data-month="feb">
+            <h3 style="margin-top: 0;">
                 <span>【2月】DS決戰月（含農曆年）</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-feb" style="width: 0%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-feb">0%</span>
-                    <span class="tips-toggle" id="toggle-feb">▼</span>
+                    <span class="month-progress-text" id="text-feb" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" id="content-feb">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -170,18 +181,17 @@
         </div>
 
         <!-- 3月 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('mar')">
+        <div class="tips-section month-card" data-month="mar">
+            <h3 style="margin-top: 0;">
                 <span>【3月】DS收尾+Sec啟動月</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-mar" style="width: 0%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-mar">0%</span>
-                    <span class="tips-toggle" id="toggle-mar">▼</span>
+                    <span class="month-progress-text" id="text-mar" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" id="content-mar">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -203,18 +213,17 @@
         </div>
 
         <!-- 4月 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('apr')">
+        <div class="tips-section month-card" data-month="apr">
+            <h3 style="margin-top: 0;">
                 <span>【4月】全科完成月</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-apr" style="width: 0%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-apr">0%</span>
-                    <span class="tips-toggle" id="toggle-apr">▼</span>
+                    <span class="month-progress-text" id="text-apr" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" id="content-apr">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -226,7 +235,7 @@
                     <h4>完成標準：</h4>
                     <ul>
                         <li><input type="checkbox" onchange="updateMonthProgress('apr')"> Sec：14/14堂（100%）✅</li>
-                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 全科課程：91/91堂 ✅</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 全科課程：87/87堂 ✅</li>
                         <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 考古：高考105-110年</li>
                         <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 筆記：全科v1.0完成</li>
                         <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 錯題本：累積50題</li>
@@ -236,18 +245,17 @@
         </div>
 
         <!-- 5月 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('may')">
+        <div class="tips-section month-card" data-month="may">
+            <h3 style="margin-top: 0;">
                 <span>【5月】考古黃金月</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-may" style="width: 0%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-may">0%</span>
-                    <span class="tips-toggle" id="toggle-may">▼</span>
+                    <span class="month-progress-text" id="text-may" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" id="content-may">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -269,18 +277,17 @@
         </div>
 
         <!-- 6月 -->
-        <div class="tips-section">
-            <h3 class="tips-header" onclick="toggleMonth('jun')">
+        <div class="tips-section month-card" data-month="jun">
+            <h3 style="margin-top: 0;">
                 <span>【6月】巔峰調整月</span>
-                <div class="header-right">
-                    <div class="progress-bar-mini">
+                <div style="display: inline-block; margin-left: 15px;">
+                    <div class="progress-bar-mini" style="display: inline-block; width: 100px; vertical-align: middle;">
                         <div class="progress-fill-mini" id="progress-jun" style="width: 0%"></div>
                     </div>
-                    <span class="month-progress-text" id="text-jun">0%</span>
-                    <span class="tips-toggle" id="toggle-jun">▼</span>
+                    <span class="month-progress-text" id="text-jun" style="margin-left: 10px;">0%</span>
                 </div>
             </h3>
-            <div class="tips-content" id="content-jun">
+            <div class="tips-content" style="display: block;">
                 <div class="tip-item">
                     <h4>前半月（6/1-6/15）：</h4>
                     <ul>
@@ -308,6 +315,8 @@
             </div>
         </div>
 
+        </div><!-- 關閉 month-card-container -->
+
         <!-- 關鍵里程碑檢核表 -->
         <div class="tips-section">
             <h3 class="tips-header" onclick="toggleSection('milestone')">
@@ -333,7 +342,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>MIS</td>
+                        <td>資管 (MIS)</td>
                         <td>17</td>
                         <td class="subject-management">100%</td>
                         <td>-</td>
@@ -342,16 +351,7 @@
                         <td>-</td>
                     </tr>
                     <tr>
-                        <td>Net</td>
-                        <td>15</td>
-                        <td class="subject-network">50%</td>
-                        <td class="subject-network">100%</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>DB</td>
+                        <td>資料庫 (DB)</td>
                         <td>16</td>
                         <td class="subject-computer">50%</td>
                         <td class="subject-computer">100%</td>
@@ -360,7 +360,7 @@
                         <td>-</td>
                     </tr>
                     <tr>
-                        <td>DS</td>
+                        <td>資節 (DS)</td>
                         <td>25</td>
                         <td class="subject-programming">預習</td>
                         <td class="subject-programming">20%</td>
@@ -369,13 +369,13 @@
                         <td>-</td>
                     </tr>
                     <tr>
-                        <td>Sec</td>
-                        <td>14</td>
-                        <td class="subject-english">預習</td>
-                        <td class="subject-english">預習</td>
-                        <td class="subject-english">預習</td>
-                        <td class="subject-english">50%</td>
-                        <td class="subject-english">100%</td>
+                        <td>網路+安全 (Net+Sec)</td>
+                        <td>29</td>
+                        <td class="subject-network">預習</td>
+                        <td class="subject-network">50%</td>
+                        <td class="subject-network">預習</td>
+                        <td class="subject-network">80%</td>
+                        <td class="subject-network">100%</td>
                     </tr>
                 </tbody>
             </table>
@@ -483,7 +483,7 @@
                             <div class="stat-label">已完成堂數</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number" id="gaokao-total-lessons">91</div>
+                            <div class="stat-number" id="gaokao-total-lessons">87</div>
                             <div class="stat-label">總堂數</div>
                         </div>
                         <div class="stat-card">
@@ -505,7 +505,25 @@
                             </div>
                         </button>
                         <div class="collapse-content active" id="subject-mis">
-                            <div class="lesson-grid" id="lessons-mis"></div>
+                            <div class="lesson-grid" id="lessons-mis">
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-1" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-1">第 1 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-2" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-2">第 2 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-3" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-3">第 3 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-4" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-4">第 4 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-5" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-5">第 5 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-6" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-6">第 6 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-7" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-7">第 7 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-8" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-8">第 8 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-9" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-9">第 9 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-10" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-10">第 10 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-11" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-11">第 11 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-12" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-12">第 12 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-13" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-13">第 13 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-14" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-14">第 14 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-15" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-15">第 15 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-16" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-16">第 16 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="mis-lesson-17" onchange="updateGaokaoProgress('mis')"><label for="mis-lesson-17">第 17 堂</label></div>
+                            </div>
                         </div>
                     </div>
 
@@ -521,29 +539,30 @@
                             </div>
                         </button>
                         <div class="collapse-content active" id="subject-db">
-                            <div class="lesson-grid" id="lessons-db"></div>
-                        </div>
-                    </div>
-
-                    <div class="subject-card gaokao-subject-card">
-                        <button class="collapse-btn" onclick="toggleSubject('net')">
-                            <span>🌐 資通網路 (Net)</span>
-                            <div class="progress-info">
-                                <span class="progress-badge" id="badge-net">
-                                    <span class="progress-value" id="progress-text-net">0/15堂</span>
-                                    <span class="progress-percent" id="percent-net">0%</span>
-                                </span>
-                                <span class="collapse-arrow" id="arrow-net">▼</span>
+                            <div class="lesson-grid" id="lessons-db">
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-1" onchange="updateGaokaoProgress('db')"><label for="db-lesson-1">第 1 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-2" onchange="updateGaokaoProgress('db')"><label for="db-lesson-2">第 2 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-3" onchange="updateGaokaoProgress('db')"><label for="db-lesson-3">第 3 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-4" onchange="updateGaokaoProgress('db')"><label for="db-lesson-4">第 4 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-5" onchange="updateGaokaoProgress('db')"><label for="db-lesson-5">第 5 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-6" onchange="updateGaokaoProgress('db')"><label for="db-lesson-6">第 6 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-7" onchange="updateGaokaoProgress('db')"><label for="db-lesson-7">第 7 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-8" onchange="updateGaokaoProgress('db')"><label for="db-lesson-8">第 8 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-9" onchange="updateGaokaoProgress('db')"><label for="db-lesson-9">第 9 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-10" onchange="updateGaokaoProgress('db')"><label for="db-lesson-10">第 10 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-11" onchange="updateGaokaoProgress('db')"><label for="db-lesson-11">第 11 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-12" onchange="updateGaokaoProgress('db')"><label for="db-lesson-12">第 12 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-13" onchange="updateGaokaoProgress('db')"><label for="db-lesson-13">第 13 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-14" onchange="updateGaokaoProgress('db')"><label for="db-lesson-14">第 14 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-15" onchange="updateGaokaoProgress('db')"><label for="db-lesson-15">第 15 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="db-lesson-16" onchange="updateGaokaoProgress('db')"><label for="db-lesson-16">第 16 堂</label></div>
                             </div>
-                        </button>
-                        <div class="collapse-content active" id="subject-net">
-                            <div class="lesson-grid" id="lessons-net"></div>
                         </div>
                     </div>
 
                     <div class="subject-card gaokao-subject-card">
                         <button class="collapse-btn" onclick="toggleSubject('ds')">
-                            <span>📊 資料結構 (DS)</span>
+                            <span>📊 資節 (DS)</span>
                             <div class="progress-info">
                                 <span class="progress-badge" id="badge-ds">
                                     <span class="progress-value" id="progress-text-ds">0/25堂</span>
@@ -553,39 +572,79 @@
                             </div>
                         </button>
                         <div class="collapse-content active" id="subject-ds">
-                            <div class="lesson-grid" id="lessons-ds"></div>
+                            <div class="lesson-grid" id="lessons-ds">
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-1" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-1">第 1 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-2" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-2">第 2 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-3" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-3">第 3 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-4" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-4">第 4 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-5" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-5">第 5 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-6" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-6">第 6 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-7" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-7">第 7 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-8" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-8">第 8 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-9" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-9">第 9 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-10" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-10">第 10 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-11" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-11">第 11 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-12" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-12">第 12 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-13" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-13">第 13 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-14" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-14">第 14 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-15" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-15">第 15 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-16" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-16">第 16 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-17" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-17">第 17 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-18" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-18">第 18 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-19" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-19">第 19 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-20" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-20">第 20 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-21" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-21">第 21 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-22" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-22">第 22 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-23" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-23">第 23 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-24" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-24">第 24 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="ds-lesson-25" onchange="updateGaokaoProgress('ds')"><label for="ds-lesson-25">第 25 堂</label></div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subject-card gaokao-subject-card">
-                        <button class="collapse-btn" onclick="toggleSubject('sec')">
-                            <span>🔒 資訊安全 (Sec)</span>
+                        <button class="collapse-btn" onclick="toggleSubject('netsec')">
+                            <span>🌐🔒 網路+安全 (Net+Sec)</span>
                             <div class="progress-info">
-                                <span class="progress-badge" id="badge-sec">
-                                    <span class="progress-value" id="progress-text-sec">0/14堂</span>
-                                    <span class="progress-percent" id="percent-sec">0%</span>
+                                <span class="progress-badge" id="badge-netsec">
+                                    <span class="progress-value" id="progress-text-netsec">0/29堂</span>
+                                    <span class="progress-percent" id="percent-netsec">0%</span>
                                 </span>
-                                <span class="collapse-arrow" id="arrow-sec">▼</span>
+                                <span class="collapse-arrow" id="arrow-netsec">▼</span>
                             </div>
                         </button>
-                        <div class="collapse-content active" id="subject-sec">
-                            <div class="lesson-grid" id="lessons-sec"></div>
-                        </div>
-                    </div>
-
-                    <div class="subject-card gaokao-subject-card">
-                        <button class="collapse-btn" onclick="toggleSubject('prog')">
-                            <span>💻 程式設計 (Prog)</span>
-                            <div class="progress-info">
-                                <span class="progress-badge" id="badge-prog">
-                                    <span class="progress-value" id="progress-text-prog">0/4堂</span>
-                                    <span class="progress-percent" id="percent-prog">0%</span>
-                                </span>
-                                <span class="collapse-arrow" id="arrow-prog">▼</span>
+                        <div class="collapse-content active" id="subject-netsec">
+                            <div class="lesson-grid" id="lessons-netsec">
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-1" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-1">第 1 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-2" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-2">第 2 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-3" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-3">第 3 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-4" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-4">第 4 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-5" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-5">第 5 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-6" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-6">第 6 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-7" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-7">第 7 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-8" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-8">第 8 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-9" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-9">第 9 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-10" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-10">第 10 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-11" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-11">第 11 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-12" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-12">第 12 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-13" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-13">第 13 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-14" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-14">第 14 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-15" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-15">第 15 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-16" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-16">第 16 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-17" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-17">第 17 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-18" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-18">第 18 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-19" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-19">第 19 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-20" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-20">第 20 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-21" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-21">第 21 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-22" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-22">第 22 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-23" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-23">第 23 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-24" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-24">第 24 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-25" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-25">第 25 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-26" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-26">第 26 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-27" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-27">第 27 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-28" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-28">第 28 堂</label></div>
+                                <div class="lesson-item"><input type="checkbox" id="netsec-lesson-29" onchange="updateGaokaoProgress('netsec')"><label for="netsec-lesson-29">第 29 堂</label></div>
                             </div>
-                        </button>
-                        <div class="collapse-content active" id="subject-prog">
-                            <div class="lesson-grid" id="lessons-prog"></div>
                         </div>
                     </div>
                 </div>
