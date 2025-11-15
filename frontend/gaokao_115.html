@@ -40,10 +40,17 @@
 
         <!-- 11月下旬 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('nov')">
                 <span>【11月下旬】啟動期（11/20-11/30）</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-nov" style="width: 100%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-nov">100%</span>
+                    <span class="tips-toggle" id="toggle-nov">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content show" id="content-nov">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -54,9 +61,9 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ MIS進度：6/17堂</li>
-                        <li>□ 預習進度：DS/DB各讀2章</li>
-                        <li>□ 114國營Net/Sec教材整理完畢</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('nov')"> MIS進度：6/17堂</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('nov')"> 預習進度：DS/DB各讀2章</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('nov')"> 114國營Net/Sec教材整理完畢</li>
                     </ul>
                 </div>
             </div>
@@ -64,10 +71,17 @@
 
         <!-- 12月 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('dec')">
                 <span>【12月】追趕預習月</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-dec" style="width: 80%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-dec">80%</span>
+                    <span class="tips-toggle" id="toggle-dec">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content show" id="content-dec">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -79,11 +93,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ MIS：17/17堂（100%）✅</li>
-                        <li>□ DB：8/16堂（50%）</li>
-                        <li>□ Net：差異筆記完成</li>
-                        <li>□ 預習：DS前10章、Sec基礎概念</li>
-                        <li>□ 筆記：MIS v1.0完成</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> MIS：17/17堂（100%）✅</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> DB：8/16堂（50%）</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> Net：差異筆記完成</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('dec')"> 預習：DS前10章、Sec基礎概念</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('dec')"> 筆記：MIS v1.0完成</li>
                     </ul>
                 </div>
             </div>
@@ -91,10 +105,17 @@
 
         <!-- 1月 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('jan')">
                 <span>【1月】DB攻堅月</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-jan" style="width: 60%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-jan">60%</span>
+                    <span class="tips-toggle" id="toggle-jan">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content" id="content-jan">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -106,11 +127,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ DB：16/16堂（100%）✅</li>
-                        <li>□ DS：5/25堂（20%）</li>
-                        <li>□ Net：15/15堂（100%）✅</li>
-                        <li>□ 考古：MIS近3年</li>
-                        <li>□ 筆記：DB、Net v1.0完成</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('jan')"> DB：16/16堂（100%）✅</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('jan')"> DS：5/25堂（20%）</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('jan')"> Net：15/15堂（100%）✅</li>
+                        <li><input type="checkbox" checked onchange="updateMonthProgress('jan')"> 考古：MIS近3年</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('jan')"> 筆記：DB、Net v1.0完成</li>
                     </ul>
                 </div>
             </div>
@@ -118,10 +139,17 @@
 
         <!-- 2月 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('feb')">
                 <span>【2月】DS決戰月（含農曆年）</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-feb" style="width: 0%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-feb">0%</span>
+                    <span class="tips-toggle" id="toggle-feb">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content" id="content-feb">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -132,10 +160,10 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ DS：20/25堂（80%）</li>
-                        <li>□ 考古：DB/Net各3年</li>
-                        <li>□ 預習：Sec完成70%</li>
-                        <li>□ 筆記：持續優化</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> DS：20/25堂（80%）</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> 考古：DB/Net各3年</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> 預習：Sec完成70%</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('feb')"> 筆記：持續優化</li>
                     </ul>
                 </div>
             </div>
@@ -143,10 +171,17 @@
 
         <!-- 3月 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('mar')">
                 <span>【3月】DS收尾+Sec啟動月</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-mar" style="width: 0%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-mar">0%</span>
+                    <span class="tips-toggle" id="toggle-mar">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content" id="content-mar">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -157,11 +192,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ DS：25/25堂（100%）✅</li>
-                        <li>□ Sec：7/14堂（50%）</li>
-                        <li>□ 考古：各科近5年完成</li>
-                        <li>□ 筆記：DS v1.0完成</li>
-                        <li>□ 錯題本：開始建立</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> DS：25/25堂（100%）✅</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> Sec：7/14堂（50%）</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> 考古：各科近5年完成</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> 筆記：DS v1.0完成</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('mar')"> 錯題本：開始建立</li>
                     </ul>
                 </div>
             </div>
@@ -169,10 +204,17 @@
 
         <!-- 4月 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('apr')">
                 <span>【4月】全科完成月</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-apr" style="width: 0%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-apr">0%</span>
+                    <span class="tips-toggle" id="toggle-apr">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content" id="content-apr">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -183,11 +225,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ Sec：14/14堂（100%）✅</li>
-                        <li>□ 全科課程：91/91堂 ✅</li>
-                        <li>□ 考古：高考105-110年</li>
-                        <li>□ 筆記：全科v1.0完成</li>
-                        <li>□ 錯題本：累積50題</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> Sec：14/14堂（100%）✅</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 全科課程：91/91堂 ✅</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 考古：高考105-110年</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 筆記：全科v1.0完成</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('apr')"> 錯題本：累積50題</li>
                     </ul>
                 </div>
             </div>
@@ -195,10 +237,17 @@
 
         <!-- 5月 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('may')">
                 <span>【5月】考古黃金月</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-may" style="width: 0%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-may">0%</span>
+                    <span class="tips-toggle" id="toggle-may">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content" id="content-may">
                 <div class="tip-item">
                     <h4>主要任務：</h4>
                     <ul>
@@ -209,11 +258,11 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ 高考：105-114年全部 ✅</li>
-                        <li>□ 地特：105-114年全部 ✅</li>
-                        <li>□ 錯題本：累積100題+</li>
-                        <li>□ 筆記：v2.0濃縮版完成</li>
-                        <li>□ 模擬考：每週2次</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 高考：105-114年全部 ✅</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 地特：105-114年全部 ✅</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 錯題本：累積100題+</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 筆記：v2.0濃縮版完成</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('may')"> 模擬考：每週2次</li>
                     </ul>
                 </div>
             </div>
@@ -221,10 +270,17 @@
 
         <!-- 6月 -->
         <div class="tips-section">
-            <h3 class="tips-header" style="cursor: default;">
+            <h3 class="tips-header" onclick="toggleMonth('jun')">
                 <span>【6月】巔峰調整月</span>
+                <div class="header-right">
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="progress-jun" style="width: 0%"></div>
+                    </div>
+                    <span class="month-progress-text" id="text-jun">0%</span>
+                    <span class="tips-toggle" id="toggle-jun">▼</span>
+                </div>
             </h3>
-            <div class="tips-content show">
+            <div class="tips-content" id="content-jun">
                 <div class="tip-item">
                     <h4>前半月（6/1-6/15）：</h4>
                     <ul>
@@ -243,20 +299,25 @@
 
                     <h4>完成標準：</h4>
                     <ul>
-                        <li>□ Tier2：各科3-5年</li>
-                        <li>□ 錯題：100%重做一遍</li>
-                        <li>□ 心態：穩定自信</li>
-                        <li>□ 準備：考試用品齊全</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> Tier2：各科3-5年</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> 錯題：100%重做一遍</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> 心態：穩定自信</li>
+                        <li><input type="checkbox" onchange="updateMonthProgress('jun')"> 準備：考試用品齊全</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- 關鍵里程碑檢核表 -->
-        <h2>📊 關鍵里程碑檢核表</h2>
-
-        <!-- 課程完成進度表 -->
-        <h3>🎯 課程完成進度</h3>
+        <div class="tips-section">
+            <h3 class="tips-header" onclick="toggleSection('milestone')">
+                <span>📊 關鍵里程碑檢核表</span>
+                <span class="tips-toggle" id="toggle-milestone">▼</span>
+            </h3>
+            <div class="tips-content" id="content-milestone">
+                <div class="tip-item">
+                    <!-- 課程完成進度表 -->
+                    <h3>🎯 課程完成進度</h3>
         <div class="progress-table">
             <table>
                 <thead>
@@ -365,9 +426,18 @@
                 </tbody>
             </table>
         </div>
+                </div>
+            </div>
+        </div>
 
         <!-- 成功關鍵策略 -->
-        <h2>🚀 成功關鍵策略</h2>
+        <div class="tips-section">
+            <h3 class="tips-header" onclick="toggleSection('strategy')">
+                <span>🚀 成功關鍵策略</span>
+                <span class="tips-toggle" id="toggle-strategy">▼</span>
+            </h3>
+            <div class="tips-content" id="content-strategy">
+                <div class="tip-item">
 
         <div class="note">
             <h3>💡 倍速使用原則</h3>
@@ -393,6 +463,133 @@
                 <li><strong>5月：</strong>練題（70%）+ 複習（30%）</li>
                 <li><strong>6月：</strong>複習（60%）+ 維持（40%）</li>
             </ul>
+        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 高考科目監控儀表板 -->
+        <div class="tips-section">
+            <h3 class="tips-header" onclick="toggleSection('dashboard')">
+                <span>📈 高考專業科目學習監控</span>
+                <span class="tips-toggle" id="toggle-dashboard">▼</span>
+            </h3>
+            <div class="tips-content show" id="content-dashboard">
+                <div class="tip-item">
+                    <!-- 總體統計 -->
+                    <div class="overall-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="gaokao-total-completed">0</div>
+                            <div class="stat-label">已完成堂數</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="gaokao-total-lessons">91</div>
+                            <div class="stat-label">總堂數</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="gaokao-completion-rate">0%</div>
+                            <div class="stat-label">完成率</div>
+                        </div>
+                    </div>
+
+                    <!-- 專業科目卡片 -->
+                    <div class="subject-card gaokao-subject-card">
+                        <button class="collapse-btn" onclick="toggleSubject('mis')">
+                            <span>📚 資訊管理 (MIS)</span>
+                            <div class="progress-info">
+                                <span class="progress-badge" id="badge-mis">
+                                    <span class="progress-value" id="progress-text-mis">17/17堂</span>
+                                    <span class="progress-percent" id="percent-mis">100%</span>
+                                </span>
+                                <span class="collapse-arrow" id="arrow-mis">▼</span>
+                            </div>
+                        </button>
+                        <div class="collapse-content active" id="subject-mis">
+                            <div class="lesson-grid" id="lessons-mis"></div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card gaokao-subject-card">
+                        <button class="collapse-btn" onclick="toggleSubject('db')">
+                            <span>💾 資料庫 (DB)</span>
+                            <div class="progress-info">
+                                <span class="progress-badge" id="badge-db">
+                                    <span class="progress-value" id="progress-text-db">0/16堂</span>
+                                    <span class="progress-percent" id="percent-db">0%</span>
+                                </span>
+                                <span class="collapse-arrow" id="arrow-db">▼</span>
+                            </div>
+                        </button>
+                        <div class="collapse-content active" id="subject-db">
+                            <div class="lesson-grid" id="lessons-db"></div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card gaokao-subject-card">
+                        <button class="collapse-btn" onclick="toggleSubject('net')">
+                            <span>🌐 資通網路 (Net)</span>
+                            <div class="progress-info">
+                                <span class="progress-badge" id="badge-net">
+                                    <span class="progress-value" id="progress-text-net">0/15堂</span>
+                                    <span class="progress-percent" id="percent-net">0%</span>
+                                </span>
+                                <span class="collapse-arrow" id="arrow-net">▼</span>
+                            </div>
+                        </button>
+                        <div class="collapse-content active" id="subject-net">
+                            <div class="lesson-grid" id="lessons-net"></div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card gaokao-subject-card">
+                        <button class="collapse-btn" onclick="toggleSubject('ds')">
+                            <span>📊 資料結構 (DS)</span>
+                            <div class="progress-info">
+                                <span class="progress-badge" id="badge-ds">
+                                    <span class="progress-value" id="progress-text-ds">0/25堂</span>
+                                    <span class="progress-percent" id="percent-ds">0%</span>
+                                </span>
+                                <span class="collapse-arrow" id="arrow-ds">▼</span>
+                            </div>
+                        </button>
+                        <div class="collapse-content active" id="subject-ds">
+                            <div class="lesson-grid" id="lessons-ds"></div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card gaokao-subject-card">
+                        <button class="collapse-btn" onclick="toggleSubject('sec')">
+                            <span>🔒 資訊安全 (Sec)</span>
+                            <div class="progress-info">
+                                <span class="progress-badge" id="badge-sec">
+                                    <span class="progress-value" id="progress-text-sec">0/14堂</span>
+                                    <span class="progress-percent" id="percent-sec">0%</span>
+                                </span>
+                                <span class="collapse-arrow" id="arrow-sec">▼</span>
+                            </div>
+                        </button>
+                        <div class="collapse-content active" id="subject-sec">
+                            <div class="lesson-grid" id="lessons-sec"></div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card gaokao-subject-card">
+                        <button class="collapse-btn" onclick="toggleSubject('prog')">
+                            <span>💻 程式設計 (Prog)</span>
+                            <div class="progress-info">
+                                <span class="progress-badge" id="badge-prog">
+                                    <span class="progress-value" id="progress-text-prog">0/4堂</span>
+                                    <span class="progress-percent" id="percent-prog">0%</span>
+                                </span>
+                                <span class="collapse-arrow" id="arrow-prog">▼</span>
+                            </div>
+                        </button>
+                        <div class="collapse-content active" id="subject-prog">
+                            <div class="lesson-grid" id="lessons-prog"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <button id="backToTopBtn" title="回到最上面">⬆️</button>
