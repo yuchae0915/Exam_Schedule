@@ -20,6 +20,14 @@ h1 {
     margin-bottom: 30px;
 }
 
+/* 页面副标题 */
+.page-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
 h2 {
     color: #34495e;
     border-bottom: 2px solid #3498db;
@@ -195,6 +203,20 @@ tr:nth-child(even) {
     border-radius: 5px;
     margin-bottom: 20px;
     border-left: 4px solid #3498db;
+}
+
+/* 资源列表 */
+.resource-list {
+    line-height: 1.8;
+}
+
+/* 月份按钮容器 */
+.month-buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .current-activity-container {
@@ -575,7 +597,8 @@ tr:nth-child(even) {
 }
 
 /* 月份卡片內的標題美化 */
-.month-card h3 {
+.month-card h3,
+.month-card-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 20px 25px;
@@ -1214,4 +1237,65 @@ tr:nth-child(even) {
     .progress-percent {
         font-size: 1.1em;
     }
+}
+
+/* 科目监控入口卡片 */
+.subject-monitor-entrance {
+    margin-top: 30px;
+}
+
+.entrance-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.entrance-title {
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 1.5em;
+}
+
+.entrance-description {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.entrance-button {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.entrance-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.entrance-subjects {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.subjects-text {
+    color: white;
+    font-size: 0.9em;
+}
+
+/* 科目监控仪表板 */
+.subject-monitor-dashboard {
+    margin-top: 30px;
 }

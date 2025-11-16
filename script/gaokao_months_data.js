@@ -1,4 +1,31 @@
-// 高考115月度进度数据配置
+/**
+ * 高考115月度进度数据配置
+ *
+ * 本文件定义了从11月下旬到6月的7.5个月学习计划
+ * 包含每个月的：
+ * - 标题和时间范围
+ * - 主要任务（tasks）
+ * - 完成标准（milestones）
+ * - 任务状态（completed/in-progress/pending）
+ *
+ * 数据格式说明：
+ * - icon: 月份图标
+ * - title: 月份标题
+ * - date: 时间范围
+ * - tasks: 主要任务数组
+ *   - icon: 任务图标
+ *   - text: 任务描述
+ *   - detail: 详细说明（可选）
+ *   - status: 'completed' | 'in-progress' | 'pending'
+ * - milestones: 里程碑数组
+ *   - text: 里程碑描述
+ *   - status: 'completed' | 'pending'
+ *
+ * @author Claude
+ * @version 1.0
+ * @date 2025-01-16
+ */
+
 const monthsData = {
     nov: {
         title: '【11月下旬】啟動期',

@@ -1,4 +1,24 @@
-// 高考115專業科目數據配置
+/**
+ * 高考115仪表板主控制脚本
+ *
+ * 功能模块：
+ * 1. 科目学习监控 - 跟踪各科目课程进度
+ * 2. 月度进度管理 - 动态生成和管理月份卡片
+ * 3. 进度可视化 - 计算和显示完成进度
+ * 4. 时间显示 - 实时更新当前时间和日期
+ * 5. 数据持久化 - localStorage保存用户进度
+ *
+ * @author Claude
+ * @version 2.0
+ * @date 2025-01-16
+ */
+
+// ========== 数据配置 ==========
+
+/**
+ * 高考专业科目数据配置
+ * 定义各科目的名称、图标、总课程数等信息
+ */
 const gaokaoSubjectData = {
     mis: {
         name: '資訊管理 (MIS)',
@@ -313,7 +333,7 @@ function generateMonthCard(monthKey, data) {
 
         return `
             <div class="tips-section month-card" data-month="${monthKey}">
-                <h3 style="margin-top: 0;">
+                <h3 class="month-card-header">
                     <span class="month-icon">${data.icon}</span>
                     <span>${data.title}</span>
                     <span class="month-date">${data.date}</span>
@@ -340,7 +360,7 @@ function generateMonthCard(monthKey, data) {
     // 其他月份的标准结构
     return `
         <div class="tips-section month-card" data-month="${monthKey}">
-            <h3 style="margin-top: 0;">
+            <h3 class="month-card-header">
                 <span class="month-icon">${data.icon}</span>
                 <span>${data.title}</span>
                 <span class="month-date">${data.date}</span>
@@ -669,6 +689,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('currentTime')) {
         initTimeDisplay();
     }
+
+    // 使用事件委托处理 toggle section
+    document.addEventListener('click', function(e) {
+        const toggleHeader = e.target.closest('[data-toggle]');
+        if (toggleHeader) {
+            const section = toggleHeader.getAttribute('data-toggle');
+            toggleSection(section);
+        }
+    });
 
     initBackToTop();
 });
