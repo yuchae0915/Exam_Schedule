@@ -602,5 +602,15 @@ document.addEventListener('DOMContentLoaded', function () {
         initTimeDisplay();
     }
 
+    // 初始化活動追蹤（如果函數存在）
+    if (typeof initActivityTracking === 'function') {
+        initActivityTracking();
+    }
+
+    // 自動切換到當前月份（如果函數存在）
+    if (typeof autoSwitchToCurrentMonth === 'function') {
+        autoSwitchToCurrentMonth();
+    }
+
     initBackToTop();
 });
