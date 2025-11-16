@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h1>📚 115高考資訊處理「7.5個月征戰計畫」</h1>
-        <p class="page-subtitle">
+        <p style="text-align: center; color: #666; font-size: 1.1em; margin-bottom: 20px;">
             11月下旬～6月底｜精準進度控管版
         </p>
 
@@ -52,7 +52,7 @@
 
         <div class="stage-description">
             <h3>🎯 核心資源盤點</h3>
-            <ul class="resource-list">
+            <ul style="line-height: 1.8;">
                 <li><strong>已有優勢：</strong>114國營教材（資通網路/資通安全基礎）、本科背景、三本教科書</li>
                 <li><strong>課程投資：</strong>全科45,500（87堂）</li>
                 <li><strong>時間資源：</strong>7.5個月（約32週）</li>
@@ -64,29 +64,549 @@
         <h2>📅 月度進度規劃表</h2>
 
         <!-- 月份切換按鈕 -->
-        <div class="month-buttons-container">
-            <!-- 按鈕將由 JavaScript 動態生成 -->
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center;">
+            <button class="month-tab-btn active" onclick="switchMonth('nov')">11月下旬</button>
+            <button class="month-tab-btn" onclick="switchMonth('dec')">12月</button>
+            <button class="month-tab-btn" onclick="switchMonth('jan')">1月</button>
+            <button class="month-tab-btn" onclick="switchMonth('feb')">2月</button>
+            <button class="month-tab-btn" onclick="switchMonth('mar')">3月</button>
+            <button class="month-tab-btn" onclick="switchMonth('apr')">4月</button>
+            <button class="month-tab-btn" onclick="switchMonth('may')">5月</button>
+            <button class="month-tab-btn" onclick="switchMonth('jun')">6月</button>
         </div>
 
         <!-- 月度進度卡片容器 -->
         <div class="month-card-container">
-            <!-- 卡片將由 JavaScript 動態生成 -->
+
+        <!-- 11月下旬 -->
+        <div class="tips-section month-card active" data-month="nov">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">🚀</span>
+                <span>【11月下旬】啟動期</span>
+                <span class="month-date">11/20-11/30</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card completed">
+                                <div class="task-icon">📚</div>
+                                <div class="task-text">購買全科課程</div>
+                            </div>
+                            <div class="task-card completed">
+                                <div class="task-icon">📖</div>
+                                <div class="task-text">資訊管理追趕30%<br><small>5-6堂/17堂</small></div>
+                            </div>
+                            <div class="task-card completed">
+                                <div class="task-icon">📦</div>
+                                <div class="task-text">三本書到貨<br><small>開始預習</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>資訊管理進度：6/17堂</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>預習進度：資料結構/資料庫各讀2章</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>114國營資通網路/資通安全教材整理完畢</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- 12月 -->
+        <div class="tips-section month-card" data-month="dec">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">⚡</span>
+                <span>【12月】追趕預習月</span>
+                <span class="month-date">全月</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card completed">
+                                <div class="task-icon">📚</div>
+                                <div class="task-text">資訊管理完課<br><small>剩11堂</small></div>
+                            </div>
+                            <div class="task-card completed">
+                                <div class="task-icon">💾</div>
+                                <div class="task-text">資料庫跟課50%<br><small>8/16堂</small></div>
+                            </div>
+                            <div class="task-card completed">
+                                <div class="task-icon">🌐</div>
+                                <div class="task-text">資通網路比對差異<br><small>114教材</small></div>
+                            </div>
+                            <div class="task-card completed">
+                                <div class="task-icon">📖</div>
+                                <div class="task-text">資料結構/資通安全<br><small>深度預習</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>資訊管理：17/17堂（100%）✅</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>資料庫：8/16堂（50%）</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>資通網路：差異筆記完成</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>預習：資料結構前10章、資通安全基礎概念</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>筆記：資訊管理 v1.0完成</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1月 -->
+        <div class="tips-section month-card" data-month="jan">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">💪</span>
+                <span>【1月】DB攻堅月</span>
+                <span class="month-date">全月</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card in-progress">
+                                <div class="task-icon">💾</div>
+                                <div class="task-text">資料庫完課<br><small>剩8堂</small></div>
+                            </div>
+                            <div class="task-card in-progress">
+                                <div class="task-icon">📊</div>
+                                <div class="task-text">資料結構開課跟進<br><small>1/23開始</small></div>
+                            </div>
+                            <div class="task-card in-progress">
+                                <div class="task-icon">🌐</div>
+                                <div class="task-text">資通網路完成<br><small>1.5x-2.0x倍速</small></div>
+                            </div>
+                            <div class="task-card in-progress">
+                                <div class="task-icon">📝</div>
+                                <div class="task-text">資訊管理考古題<br><small>開始練習</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>資料庫：16/16堂（100%）✅</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>資料結構：5/25堂（20%）</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>資通網路：15/15堂（100%）✅</span>
+                            </div>
+                            <div class="milestone-item completed">
+                                <span class="milestone-marker">✓</span>
+                                <span>考古：資訊管理近3年</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>筆記：資料庫、資通網路 v1.0完成</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2月 -->
+        <div class="tips-section month-card" data-month="feb">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">🔥</span>
+                <span>【2月】DS決戰月</span>
+                <span class="month-date">含農曆年</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card pending">
+                                <div class="task-icon">📊</div>
+                                <div class="task-text">資料結構密集攻堅<br><small>農曆年加速</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">📝</div>
+                                <div class="task-text">考古題練習<br><small>資訊管理/資料庫/資通網路</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">🔒</div>
+                                <div class="task-text">資通安全預習<br><small>持續進行</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>資料結構：20/25堂（80%）</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>考古：資料庫/資通網路各3年</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>預習：資通安全完成70%</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>筆記：持續優化</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3月 -->
+        <div class="tips-section month-card" data-month="mar">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">🌸</span>
+                <span>【3月】DS收尾+Sec啟動月</span>
+                <span class="month-date">全月</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card pending">
+                                <div class="task-icon">📊</div>
+                                <div class="task-text">資料結構完課<br><small>3/13前</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">🔒</div>
+                                <div class="task-text">資通安全開始<br><small>3/13起 2.0x倍速</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">📝</div>
+                                <div class="task-text">考古題練習<br><small>全面啟動</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>資料結構：25/25堂（100%）✅</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>資通安全：7/14堂（50%）</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>考古：各科近5年完成</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>筆記：資料結構 v1.0完成</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>錯題本：開始建立</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4月 -->
+        <div class="tips-section month-card" data-month="apr">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">🎓</span>
+                <span>【4月】全科完成月</span>
+                <span class="month-date">全月</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card pending">
+                                <div class="task-icon">🔒</div>
+                                <div class="task-text">資通安全完課<br><small>4/24前</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">📝</div>
+                                <div class="task-text">Tier1開戰<br><small>考古題全面</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">📓</div>
+                                <div class="task-text">筆記精修<br><small>濃縮版</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>資通安全：14/14堂（100%）✅</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>全科課程：87/87堂 ✅</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>考古：高考105-110年</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>筆記：全科v1.0完成</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>錯題本：累積50題</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5月 -->
+        <div class="tips-section month-card" data-month="may">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">⭐</span>
+                <span>【5月】考古黃金月</span>
+                <span class="month-date">全月</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card pending">
+                                <div class="task-icon">🏆</div>
+                                <div class="task-text">Tier1制霸<br><small>高考+地特10年</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">📝</div>
+                                <div class="task-text">錯題深度複習<br><small>累積題庫</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">💪</div>
+                                <div class="task-text">弱點補強<br><small>持續優化</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>高考：105-114年全部 ✅</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>地特：105-114年全部 ✅</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>錯題本：累積100題+</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>筆記：v2.0濃縮版完成</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>模擬考：每週2次</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6月 -->
+        <div class="tips-section month-card" data-month="jun">
+            <h3 style="margin-top: 0;">
+                <span class="month-icon">🎯</span>
+                <span>【6月】巔峰調整月</span>
+                <span class="month-date">決戰時刻</span>
+            </h3>
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">📅</span>
+                            <span>前半月（6/1-6/15）</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card pending">
+                                <div class="task-icon">📝</div>
+                                <div class="task-text">Tier2補充<br><small>調查/關務/國安</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">🔄</div>
+                                <div class="task-text">錯題二次複習<br><small>全面檢視</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">💪</div>
+                                <div class="task-text">維持手感<br><small>穩定練習</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🏁</span>
+                            <span>後半月（6/16-6/30）</span>
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card pending">
+                                <div class="task-icon">📓</div>
+                                <div class="task-text">濃縮筆記<br><small>只看精華</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">😴</div>
+                                <div class="task-text">調整作息<br><small>巔峰狀態</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">✨</div>
+                                <div class="task-text">輕量練習<br><small>保持手感</small></div>
+                            </div>
+                            <div class="task-card pending">
+                                <div class="task-icon">🚀</div>
+                                <div class="task-text">最後衝刺<br><small>全力以赴</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>Tier2：各科3-5年</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>錯題：100%重做一遍</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>心態：穩定自信</span>
+                            </div>
+                            <div class="milestone-item">
+                                <span class="milestone-marker">○</span>
+                                <span>準備：考試用品齊全</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div><!-- 關閉 month-card-container -->
+
         <!-- 科目監控入口卡片 -->
-        <div class="subject-monitor-entrance">
-            <div class="entrance-card">
-                <h3 class="entrance-title">
+        <div class="tips-section" style="margin-top: 30px;">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
+                <h3 style="color: white; margin: 0 0 15px 0; font-size: 1.5em;">
                     📊 高考專業科目學習監控
                 </h3>
-                <p class="entrance-description">
+                <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1em;">
                     追蹤您的課程學習進度，掌握每一個學習細節
                 </p>
-                <a href="gaokao_subject_monitor.html" class="entrance-button">
+                <a href="gaokao_subject_monitor.html" style="display: inline-block; background: white; color: #667eea; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0, 0, 0, 0.2)';">
                     進入科目監控 →
                 </a>
-                <div class="entrance-subjects">
-                    <div class="subjects-text">
+                <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <div style="color: white; font-size: 0.9em;">
                         <strong>📚 資訊管理</strong> · <strong>💾 資料庫</strong> · <strong>📊 資料結構</strong> · <strong>🌐 資通網路+資通安全</strong>
                     </div>
                 </div>
@@ -96,8 +616,6 @@
         <button id="backToTopBtn" title="回到最上面">⬆️</button>
     </div>
 
-    <!-- 先載入數據配置，再載入功能腳本 -->
-    <script src="../script/gaokao_months_data.js"></script>
     <script src="../script/gaokao_115_dashboard.js"></script>
 </body>
 
