@@ -1,4 +1,24 @@
-// 高考115專業科目數據配置
+/**
+ * 高考115仪表板主控制脚本
+ *
+ * 功能模块：
+ * 1. 科目学习监控 - 跟踪各科目课程进度
+ * 2. 月度进度管理 - 动态生成和管理月份卡片
+ * 3. 进度可视化 - 计算和显示完成进度
+ * 4. 时间显示 - 实时更新当前时间和日期
+ * 5. 数据持久化 - localStorage保存用户进度
+ *
+ * @author Claude
+ * @version 2.0
+ * @date 2025-01-16
+ */
+
+// ========== 数据配置 ==========
+
+/**
+ * 高考专业科目数据配置
+ * 定义各科目的名称、图标、总课程数等信息
+ */
 const gaokaoSubjectData = {
     mis: {
         name: '資訊管理 (MIS)',
@@ -198,6 +218,235 @@ function updateGaokaoOverallStats() {
     if (rateEl) rateEl.textContent = completionRate + '%';
 }
 
+// ========== 月度卡片生成 ==========
+
+/**
+ * 生成任务卡片 HTML
+ */
+function generateTaskCard(task) {
+    const detailHtml = task.detail ? `<br><small>${task.detail}</small>` : '';
+    return `
+        <div class="task-card ${task.status}">
+            <div class="task-icon">${task.icon}</div>
+            <div class="task-text">${task.text}${detailHtml}</div>
+        </div>
+    `;
+}
+
+/**
+ * 生成里程碑项 HTML
+ */
+function generateMilestoneItem(milestone) {
+    const marker = milestone.status === 'completed' ? '✓' : '○';
+    const statusClass = milestone.status === 'completed' ? 'completed' : '';
+    return `
+        <div class="milestone-item ${statusClass}">
+            <span class="milestone-marker">${marker}</span>
+            <span>${milestone.text}</span>
+        </div>
+    `;
+}
+
+/**
+ * 计算月份完成进度
+ */
+function calculateMonthProgress(data) {
+    let totalItems = 0;
+    let completedItems = 0;
+
+    // 计算任务完成数
+    if (data.tasks) {
+        totalItems += data.tasks.length;
+        completedItems += data.tasks.filter(t => t.status === 'completed').length;
+    }
+
+    // 处理6月份的特殊结构
+    if (data.phases) {
+        data.phases.forEach(phase => {
+            if (phase.tasks) {
+                totalItems += phase.tasks.length;
+                completedItems += phase.tasks.filter(t => t.status === 'completed').length;
+            }
+        });
+    }
+
+    // 计算里程碑完成数
+    if (data.milestones) {
+        totalItems += data.milestones.length;
+        completedItems += data.milestones.filter(m => m.status === 'completed').length;
+    }
+
+    const percentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+
+    return {
+        completed: completedItems,
+        total: totalItems,
+        percentage: percentage
+    };
+}
+
+/**
+ * 生成进度条 HTML
+ */
+function generateProgressBar(monthKey, progress) {
+    const progressClass =
+        progress.percentage === 100 ? 'progress-complete' :
+        progress.percentage >= 70 ? 'progress-high' :
+        progress.percentage >= 40 ? 'progress-medium' : 'progress-low';
+
+    return `
+        <div class="month-progress-container">
+            <div class="progress-stats">
+                <span class="progress-label">月度完成度</span>
+                <span class="progress-value">${progress.completed}/${progress.total}</span>
+                <span class="progress-percent">${progress.percentage}%</span>
+            </div>
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill ${progressClass}" style="width: ${progress.percentage}%"></div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * 生成单个月份卡片
+ */
+function generateMonthCard(monthKey, data) {
+    const progress = calculateMonthProgress(data);
+    const progressBarHtml = generateProgressBar(monthKey, progress);
+
+    // 6月份有特殊的两阶段结构
+    if (monthKey === 'jun') {
+        const phasesHtml = data.phases.map(phase => `
+            <div class="task-category">
+                <div class="category-header">
+                    <span class="category-icon">${phase.icon}</span>
+                    <span>${phase.title}</span>
+                </div>
+                <div class="task-grid">
+                    ${phase.tasks.map(generateTaskCard).join('')}
+                </div>
+            </div>
+        `).join('');
+
+        return `
+            <div class="tips-section month-card" data-month="${monthKey}">
+                <h3 class="month-card-header">
+                    <span class="month-icon">${data.icon}</span>
+                    <span>${data.title}</span>
+                    <span class="month-date">${data.date}</span>
+                </h3>
+                ${progressBarHtml}
+                <div class="tips-content">
+                    <div class="tip-item">
+                        ${phasesHtml}
+                        <div class="task-category">
+                            <div class="category-header">
+                                <span class="category-icon">✅</span>
+                                <span>完成標準</span>
+                            </div>
+                            <div class="milestone-list">
+                                ${data.milestones.map(generateMilestoneItem).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // 其他月份的标准结构
+    return `
+        <div class="tips-section month-card" data-month="${monthKey}">
+            <h3 class="month-card-header">
+                <span class="month-icon">${data.icon}</span>
+                <span>${data.title}</span>
+                <span class="month-date">${data.date}</span>
+            </h3>
+            ${progressBarHtml}
+            <div class="tips-content">
+                <div class="tip-item">
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span>主要任務</span>
+                        </div>
+                        <div class="task-grid">
+                            ${data.tasks.map(generateTaskCard).join('')}
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <div class="category-header">
+                            <span class="category-icon">✅</span>
+                            <span>完成標準</span>
+                        </div>
+                        <div class="milestone-list">
+                            ${data.milestones.map(generateMilestoneItem).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * 渲染所有月份卡片
+ */
+function renderMonthCards() {
+    if (typeof monthsData === 'undefined' || typeof monthsOrder === 'undefined') {
+        console.error('月份数据未加载');
+        return;
+    }
+
+    const container = document.querySelector('.month-card-container');
+    if (!container) return;
+
+    // 生成所有月份卡片
+    const cardsHtml = monthsOrder.map(monthKey =>
+        generateMonthCard(monthKey, monthsData[monthKey])
+    ).join('');
+
+    container.innerHTML = cardsHtml;
+
+    // 默认显示第一个月份
+    const firstCard = container.querySelector('.month-card');
+    if (firstCard) {
+        firstCard.classList.add('active');
+    }
+}
+
+/**
+ * 渲染月份切换按钮
+ */
+function renderMonthButtons() {
+    if (typeof monthsButtonLabels === 'undefined' || typeof monthsOrder === 'undefined') {
+        console.error('月份按钮数据未加载');
+        return;
+    }
+
+    const container = document.querySelector('.month-buttons-container');
+    if (!container) return;
+
+    const buttonsHtml = monthsOrder.map((monthKey, index) => {
+        const activeClass = index === 0 ? 'active' : '';
+        return `<button class="month-tab-btn ${activeClass}" data-month="${monthKey}">${monthsButtonLabels[monthKey]}</button>`;
+    }).join('');
+
+    container.innerHTML = buttonsHtml;
+
+    // 使用事件委托处理按钮点击
+    container.addEventListener('click', (e) => {
+        if (e.target.classList.contains('month-tab-btn')) {
+            const month = e.target.getAttribute('data-month');
+            switchMonth(month);
+        }
+    });
+}
+
 // ========== 月度進度管理 ==========
 
 /**
@@ -222,13 +471,11 @@ function switchMonth(month) {
         btn.classList.remove('active');
     });
 
-    // 找到對應的按鈕並設為active
-    const buttons = document.querySelectorAll('.month-tab-btn');
-    buttons.forEach(btn => {
-        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(month)) {
-            btn.classList.add('active');
-        }
-    });
+    // 設置當前月份按鈕為active
+    const currentButton = document.querySelector(`.month-tab-btn[data-month="${month}"]`);
+    if (currentButton) {
+        currentButton.classList.add('active');
+    }
 }
 
 /**
@@ -345,10 +592,21 @@ function initGaokao115Dashboard() {
         Object.keys(gaokaoSubjectData).forEach(updateGaokaoSubjectProgress);
     }
 
-    // 檢查是否存在月份進度（只在主頁面初始化）
-    const hasMonthProgress = document.querySelector('.month-card') !== null;
+    // 檢查是否存在月份容器（只在主頁面初始化）
+    const hasMonthContainer = document.querySelector('.month-card-container') !== null;
+    const hasMonthButtonContainer = document.querySelector('.month-buttons-container') !== null;
 
-    if (hasMonthProgress) {
+    if (hasMonthContainer || hasMonthButtonContainer) {
+        // 渲染月份按鈕
+        if (hasMonthButtonContainer) {
+            renderMonthButtons();
+        }
+
+        // 渲染月份卡片
+        if (hasMonthContainer) {
+            renderMonthCards();
+        }
+
         // 載入月份狀態
         loadMonthStates();
 
@@ -431,6 +689,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('currentTime')) {
         initTimeDisplay();
     }
+
+    // 使用事件委托处理 toggle section
+    document.addEventListener('click', function(e) {
+        const toggleHeader = e.target.closest('[data-toggle]');
+        if (toggleHeader) {
+            const section = toggleHeader.getAttribute('data-toggle');
+            toggleSection(section);
+        }
+    });
 
     initBackToTop();
 });
