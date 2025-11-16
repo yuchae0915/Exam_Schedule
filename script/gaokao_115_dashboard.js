@@ -248,75 +248,9 @@ function generateMilestoneItem(milestone) {
 }
 
 /**
- * 计算月份完成进度
- */
-function calculateMonthProgress(data) {
-    let totalItems = 0;
-    let completedItems = 0;
-
-    // 计算任务完成数
-    if (data.tasks) {
-        totalItems += data.tasks.length;
-        completedItems += data.tasks.filter(t => t.status === 'completed').length;
-    }
-
-    // 处理6月份的特殊结构
-    if (data.phases) {
-        data.phases.forEach(phase => {
-            if (phase.tasks) {
-                totalItems += phase.tasks.length;
-                completedItems += phase.tasks.filter(t => t.status === 'completed').length;
-            }
-        });
-    }
-
-    // 计算里程碑完成数
-    if (data.milestones) {
-        totalItems += data.milestones.length;
-        completedItems += data.milestones.filter(m => m.status === 'completed').length;
-    }
-
-    const percentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
-
-    return {
-        completed: completedItems,
-        total: totalItems,
-        percentage: percentage
-    };
-}
-
-/**
- * 生成进度条 HTML
- */
-function generateProgressBar(monthKey, progress) {
-    const progressClass =
-        progress.percentage === 100 ? 'progress-complete' :
-        progress.percentage >= 70 ? 'progress-high' :
-        progress.percentage >= 40 ? 'progress-medium' : 'progress-low';
-
-    return `
-        <div class="month-progress-container">
-            <div class="progress-stats">
-                <span class="progress-label">月度完成度</span>
-                <span class="progress-value">${progress.completed}/${progress.total}</span>
-                <span class="progress-percent">${progress.percentage}%</span>
-            </div>
-            <div class="progress-bar-wrapper">
-                <div class="progress-bar-bg">
-                    <div class="progress-bar-fill ${progressClass}" style="width: ${progress.percentage}%"></div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-/**
  * 生成单个月份卡片
  */
 function generateMonthCard(monthKey, data) {
-    const progress = calculateMonthProgress(data);
-    const progressBarHtml = generateProgressBar(monthKey, progress);
-
     // 6月份有特殊的两阶段结构
     if (monthKey === 'jun') {
         const phasesHtml = data.phases.map(phase => `
@@ -338,7 +272,6 @@ function generateMonthCard(monthKey, data) {
                     <span>${data.title}</span>
                     <span class="month-date">${data.date}</span>
                 </h3>
-                ${progressBarHtml}
                 <div class="tips-content">
                     <div class="tip-item">
                         ${phasesHtml}
@@ -365,7 +298,6 @@ function generateMonthCard(monthKey, data) {
                 <span>${data.title}</span>
                 <span class="month-date">${data.date}</span>
             </h3>
-            ${progressBarHtml}
             <div class="tips-content">
                 <div class="tip-item">
                     <div class="task-category">
@@ -689,15 +621,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('currentTime')) {
         initTimeDisplay();
     }
-
-    // 使用事件委托处理 toggle section
-    document.addEventListener('click', function(e) {
-        const toggleHeader = e.target.closest('[data-toggle]');
-        if (toggleHeader) {
-            const section = toggleHeader.getAttribute('data-toggle');
-            toggleSection(section);
-        }
-    });
 
     initBackToTop();
 });
