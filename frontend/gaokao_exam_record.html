@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高考戰情室：考古題特訓</title>
+    <link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/gaokao_exam_record.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 頂部導航 -->
+        <div class="page-header">
+            <div class="page-title">
+                <h1>🛡️ 高考戰情室：考古題特訓</h1>
+            </div>
+            <div class="header-actions" style="display: flex; gap: 10px;">
+                <a href="gaokao_115.html" class="back-btn">
+                    ⬅️ 返回戰略總覽
+                </a>
+                <a href="gaokao_subject_monitor.html" class="back-btn">
+                    📊 進入科目監控
+                </a>
+                <a href="gaokao_exam_record.html" class="back-btn"
+                    style="background: var(--war-room-accent); color: white; border-color: var(--war-room-accent);">
+                    📝 考古題練習記錄
+                </a>
+            </div>
+        </div>
+
+        <!-- 統計儀表板 -->
+        <div class="stats-dashboard" id="statsDashboard">
+            <div class="stat-card">
+                <div class="stat-number" id="totalPapers">0</div>
+                <div class="stat-label">總練習卷數</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalSubjects">0</div>
+                <div class="stat-label">涵蓋科目數</div>
+            </div>
+            <!-- 更多統計卡片可在此擴充 -->
+        </div>
+
+        <!-- 新增記錄區 -->
+        <div class="input-section">
+            <div class="section-header">
+                <h2>📝 新增作戰記錄</h2>
+            </div>
+            <div class="input-grid">
+                <div class="form-group">
+                    <label>年度</label>
+                    <input type="text" id="inputYear" placeholder="例: 113" maxlength="3" list="yearList">
+                    <datalist id="yearList"></datalist>
+                </div>
+
+                <div class="form-group">
+                    <label>考別</label>
+                    <input type="text" id="inputExam" placeholder="例: 高考" list="examList">
+                    <datalist id="examList"></datalist>
+                </div>
+
+                <div class="form-group">
+                    <label>科目類型</label>
+                    <select id="inputType">
+                        <option value="">選擇類型</option>
+                        <option value="共同科目">共同科目</option>
+                        <option value="專業科目">專業科目</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>科目</label>
+                    <input type="text" id="inputSubject" placeholder="例: 資料結構" list="subjectList">
+                    <datalist id="subjectList"></datalist>
+                </div>
+
+                <div class="form-group">
+                    <label>分數</label>
+                    <input type="number" id="inputScore" placeholder="0-100" min="0" max="100">
+                </div>
+
+                <div class="form-group">
+                    <label>費時 (分)</label>
+                    <input type="number" id="inputTime" placeholder="分鐘">
+                </div>
+
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label>備註</label>
+                    <input type="text" id="inputNote" placeholder="重點筆記或檢討...">
+                </div>
+
+                <button class="btn-add" onclick="addRecord()">
+                    <span>➕ 新增記錄</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 科目詳細統計 -->
+        <div class="section-header">
+            <h2>📊 各科戰力分析</h2>
+        </div>
+        <div id="subjectStatsContainer" class="subject-stats-grid">
+            <!-- 動態生成科目卡片 -->
+        </div>
+
+        <br><br>
+
+        <!-- 篩選與列表 -->
+        <div class="display-section">
+            <div class="section-header">
+                <h2>🗂️ 作戰檔案庫</h2>
+            </div>
+
+            <div class="filter-section" style="margin-bottom: 20px;">
+                <div class="input-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <select id="filterYear" onchange="filterRecords()">
+                        <option value="">📅 全部年度</option>
+                    </select>
+                    <select id="filterExam" onchange="filterRecords()">
+                        <option value="">📝 全部考別</option>
+                    </select>
+                    <select id="filterSubject" onchange="filterRecords()">
+                        <option value="">📚 全部科目</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="recordsContainer">
+                <!-- 記錄列表將在此顯示 -->
+            </div>
+
+            <div class="danger-zone">
+                <h3>⚠️ 危險操作區</h3>
+                <p>以下操作將永久刪除資料，請謹慎使用</p>
+                <div class="danger-confirm" style="margin-bottom: 15px;">
+                    <input type="checkbox" id="confirmDelete" onchange="toggleDeleteButton()">
+                    <label for="confirmDelete">我了解這將刪除所有資料</label>
+                </div>
+                <button class="btn btn-clear" id="deleteButton" onclick="clearAllRecords()" disabled>
+                    🗑️ 清除所有記錄
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/gaokao_exam_record.js"></script>
+</body>
+
+</html>
