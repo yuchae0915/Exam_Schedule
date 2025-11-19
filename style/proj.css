@@ -798,6 +798,7 @@ tr:nth-child(even) {
         opacity: 0;
         transform: translateY(20px) scale(0.98);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -858,6 +859,7 @@ tr:nth-child(even) {
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(100%);
     }
@@ -1017,7 +1019,173 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 
-.lesson-item input[type="checkbox"]:checked + label {
+.lesson-item input[type="checkbox"]:checked+label {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .current-activity {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .date-display {
+        display: inline-block;
+        padding: 10px 20px;
+    }
+
+    .date-number {
+        font-size: 2em;
+    }
+
+    .activity-info {
+        align-items: center;
+    }
+
+    .now-activity,
+    .next-activity {
+        flex-direction: column;
+    }
+
+    .pdca-flow {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.gaokao-subject-card {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.collapse-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.collapse-btn:hover {
+    background: #e9ecef;
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.85em;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.progress-badge[data-rate="low"] {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.progress-badge[data-rate="medium"] {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.progress-badge[data-rate="high"] {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.progress-badge[data-rate="complete"] {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.progress-value {
+    font-weight: 500;
+}
+
+.progress-percent {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.collapse-arrow {
+    transition: transform 0.3s ease;
+}
+
+.collapse-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+.collapse-content {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: none;
+}
+
+.collapse-content.active {
+    display: block;
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 6px;
+}
+
+.lesson-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.lesson-item:hover {
+    background: #f8f9fa;
+}
+
+.lesson-item input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.lesson-item label {
+    cursor: pointer;
+}
+
+.lesson-item input[type="checkbox"]:checked+label {
     text-decoration: line-through;
     color: #6c757d;
 }
@@ -1069,4 +1237,203 @@ tr:nth-child(even) {
     .container {
         box-shadow: none;
     }
+}
+
+/* =========================================
+   UI Optimization for gaokao_115.html
+   ========================================= */
+
+/* Timeline Tabs Container */
+.timeline-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+/* Enhanced Month Tab Buttons */
+.month-tab-btn {
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    /* Pill shape */
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #666;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.month-tab-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: #667eea;
+    border-color: #667eea;
+}
+
+.month-tab-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Vertical Timeline for Milestones */
+.milestone-list {
+    position: relative;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.milestone-list::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    /* Adjust based on marker size */
+    top: 15px;
+    bottom: 15px;
+    width: 2px;
+    background: #e0e0e0;
+    z-index: 0;
+}
+
+.milestone-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: none;
+    /* Remove old border */
+    position: relative;
+    z-index: 1;
+}
+
+.milestone-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.milestone-marker {
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 0 0 4px white;
+    /* Create gap effect from line */
+    border: 2px solid #e0e0e0;
+}
+
+.milestone-item.completed .milestone-marker {
+    background: #4caf50;
+    color: white;
+    border-color: #4caf50;
+}
+
+.milestone-item.completed {
+    background: linear-gradient(to right, #f0f9f0, white);
+    border: 1px solid #e8f5e9;
+}
+
+/* Subject Monitor Card (Extracted from HTML) */
+.monitor-card-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.monitor-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.monitor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=');
+    opacity: 0.3;
+}
+
+.monitor-card h3 {
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 1.8em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.monitor-card p {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.monitor-btn {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 16px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.1em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.monitor-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    background: #f8f9fa;
+}
+
+.monitor-tags {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.monitor-tag {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
