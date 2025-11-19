@@ -356,6 +356,73 @@ function toggleSection(section) {
     }
 }
 
+// ========== 自動選擇當前月份與階段 ==========
+
+/**
+ * 根據當前日期自動選擇月份和階段
+ */
+function autoSelectCurrentMonthAndPhase() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // 0-11 -> 1-12
+
+    let monthKey = '';
+    let phaseKey = '';
+
+
+    switch (month) {
+        case 11:
+            monthKey = 'nov';
+            phaseKey = 'phase1';
+            break;
+        case 12:
+            monthKey = 'dec';
+            phaseKey = 'phase1';
+            break;
+        case 1:
+            monthKey = 'jan';
+            phaseKey = 'phase1';
+            break;
+        case 2:
+            monthKey = 'feb';
+            phaseKey = 'phase1';
+            break;
+        case 3:
+            monthKey = 'mar';
+            phaseKey = 'phase2';
+            break;
+        case 4:
+            monthKey = 'apr';
+            phaseKey = 'phase2';
+            break;
+        case 5:
+            monthKey = 'may';
+            phaseKey = 'phase3';
+            break;
+        case 6:
+            monthKey = 'jun';
+            phaseKey = 'phase3';
+            break;
+    }
+
+    // 如果有對應的月份，則切換
+    if (monthKey) {
+        // 檢查該月份的按鈕是否存在，避免報錯
+        const btn = document.querySelector(`.month-tab-btn[onclick*="${monthKey}"]`);
+        if (btn) {
+            switchMonth(monthKey);
+        }
+    }
+
+    // 如果有對應的階段，則切換
+    if (phaseKey) {
+        // 檢查該階段的按鈕是否存在
+        const btn = document.querySelector(`.month-tab-btn[onclick*="${phaseKey}"]`);
+        if (btn) {
+            switchPhase(phaseKey);
+        }
+    }
+}
+
 // ========== 初始化 ==========
 
 /**
@@ -457,6 +524,9 @@ function initBackToTop() {
 // DOM載入完成後初始化
 document.addEventListener('DOMContentLoaded', function () {
     initGaokao115Dashboard();
+
+    // 自動選擇當前月份和階段
+    autoSelectCurrentMonthAndPhase();
 
     // 只有在存在時間顯示元素時才初始化時間顯示
     if (document.getElementById('currentTime')) {
