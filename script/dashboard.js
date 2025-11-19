@@ -217,27 +217,22 @@ function updateSubjectProgress(subjectKey) {
 }
 
 function updateOverallStats(subjectStats) {
-    const totals = {
-        common: { completed: 0, total: 0 },
-        professional: { completed: 0, total: 0 }
+    const calculateCategoryStats = (categories) => {
+        return categories.reduce((acc, subjectKey) => {
+            const stats = subjectStats[subjectKey];
+            if (stats) {
+                acc.completed += stats.completed;
+                acc.total += stats.total;
+            }
+            return acc;
+        }, { completed: 0, total: 0 });
     };
 
-    subjectCategories.common.forEach(subjectKey => {
-        const stats = subjectStats[subjectKey];
-        if (!stats) return;
-        totals.common.completed += stats.completed;
-        totals.common.total += stats.total;
-    });
+    const commonStats = calculateCategoryStats(subjectCategories.common);
+    const professionalStats = calculateCategoryStats(subjectCategories.professional);
 
-    subjectCategories.professional.forEach(subjectKey => {
-        const stats = subjectStats[subjectKey];
-        if (!stats) return;
-        totals.professional.completed += stats.completed;
-        totals.professional.total += stats.total;
-    });
-
-    const totalCompleted = totals.common.completed + totals.professional.completed;
-    const totalLessons = totals.common.total + totals.professional.total;
+    const totalCompleted = commonStats.completed + professionalStats.completed;
+    const totalLessons = commonStats.total + professionalStats.total;
     const completionRate = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
 
     const totalCompletedElement = document.getElementById('total-completed');
@@ -248,8 +243,8 @@ function updateOverallStats(subjectStats) {
     if (totalLessonsElement) totalLessonsElement.textContent = totalLessons;
     if (completionRateElement) completionRateElement.textContent = `${completionRate}%`;
 
-    renderProgressBadge('common-progress', totals.common.completed, totals.common.total);
-    renderProgressBadge('professional-progress', totals.professional.completed, totals.professional.total);
+    renderProgressBadge('common-progress', commonStats.completed, commonStats.total);
+    renderProgressBadge('professional-progress', professionalStats.completed, professionalStats.total);
 }
 
 function renderProgressBadge(elementId, completed, total) {

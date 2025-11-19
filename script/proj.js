@@ -2,27 +2,27 @@
 
 function showTab(tabId) {
     // 隱藏所有tab內容
-    var tabContents = document.getElementsByClassName('tab-content');
-    for (var i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove('active');
-    }
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
 
     // 移除所有按鈕的active類
-    var tabButtons = document.getElementsByClassName('tab-button');
-    for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove('active');
-    }
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
 
     // 顯示選中的tab
-    document.getElementById(tabId).classList.add('active');
+    const selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+        selectedTab.classList.add('active');
+    }
 
     // 為對應按鈕添加active類
-    var buttons = document.getElementsByClassName('tab-button');
-    for (var i = 0; i < buttons.length; i++) {
-        if (buttons[i].onclick.toString().includes(tabId)) {
-            buttons[i].classList.add('active');
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        if (btn.onclick && btn.onclick.toString().includes(tabId)) {
+            btn.classList.add('active');
         }
-    }
+    });
 }
 // 定義各階段的時間表
 const schedules = {
@@ -305,13 +305,66 @@ function formatTimeDiff(minutes) {
     return `${mins}分鐘後`;
 }
 
+// 查找當前和下一個活動狀態
+function findScheduleStatus(schedule, currentMinutes, dayOfWeek, stage) {
+    let currentActivity = "休息時間";
+    let nextActivity = "";
+    let timeUntilNext = "";
+
+    for (let i = 0; i < schedule.length; i++) {
+        const item = schedule[i];
+        const startMinutes = timeToMinutes(item.start);
+        const endMinutes = timeToMinutes(item.end);
+
+        // 處理跨午夜的情況
+        const adjustedEndMinutes = endMinutes < startMinutes ? endMinutes + 24 * 60 : endMinutes;
+        const adjustedCurrentMinutes = currentMinutes < startMinutes && endMinutes < startMinutes ? currentMinutes + 24 * 60 : currentMinutes;
+
+        if (adjustedCurrentMinutes >= startMinutes && adjustedCurrentMinutes < adjustedEndMinutes) {
+            currentActivity = item.activity;
+
+            // 找下一個活動
+            if (i < schedule.length - 1) {
+                nextActivity = schedule[i + 1].activity;
+                const nextStartMinutes = timeToMinutes(schedule[i + 1].start);
+                timeUntilNext = formatTimeDiff(nextStartMinutes - currentMinutes);
+            } else {
+                // 如果是今天最後一個活動，顯示明天第一個活動
+                const daysOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+                const currentDayIndex = daysOrder.indexOf(dayOfWeek);
+                const tomorrowIndex = (currentDayIndex + 1) % 7;
+                const tomorrow = daysOrder[tomorrowIndex];
+
+                if (schedules[stage] && schedules[stage][tomorrow]) {
+                    const tomorrowSchedule = schedules[stage][tomorrow];
+                    nextActivity = `明日：${tomorrowSchedule[0].activity}`;
+                } else {
+                    nextActivity = "明日：休息日";
+                }
+                timeUntilNext = "";
+            }
+            return { currentActivity, nextActivity, timeUntilNext };
+        }
+    }
+
+    // 如果當前時間在所有活動之前
+    if (schedule.length > 0 && currentMinutes < timeToMinutes(schedule[0].start)) {
+        currentActivity = "準備開始學習";
+        nextActivity = schedule[0].activity;
+        timeUntilNext = formatTimeDiff(timeToMinutes(schedule[0].start) - currentMinutes);
+    }
+
+    return { currentActivity, nextActivity, timeUntilNext };
+}
+
 // 更新當前活動顯示
 function updateCurrentActivity() {
     const now = new Date();
     const currentTime = now.toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' });
 
     // 更新時間
-    document.getElementById('currentTime').textContent = currentTime;
+    const timeEl = document.getElementById('currentTime');
+    if (timeEl) timeEl.textContent = currentTime;
 
     // 更新日期顯示（新格式）
     const weekdayElement = document.getElementById('currentWeekday');
@@ -333,59 +386,20 @@ function updateCurrentActivity() {
 
     const stage = getCurrentStage();
     const dayOfWeek = getDayOfWeek();
-    const todaySchedule = schedules[stage][dayOfWeek] || schedules.stage1[dayOfWeek];
+    const todaySchedule = (schedules[stage] && schedules[stage][dayOfWeek]) || schedules.stage1[dayOfWeek];
+
+    if (!todaySchedule) return; // 防止錯誤
 
     const currentMinutes = now.getHours() * 60 + now.getMinutes();
+    const status = findScheduleStatus(todaySchedule, currentMinutes, dayOfWeek, stage);
 
-    let currentActivity = "休息時間";
-    let nextActivity = "";
-    let timeUntilNext = "";
+    const currentActivityEl = document.getElementById('currentActivity');
+    const nextActivityEl = document.getElementById('nextActivity');
+    const timeUntilEl = document.getElementById('timeUntil');
 
-    for (let i = 0; i < todaySchedule.length; i++) {
-        const startMinutes = timeToMinutes(todaySchedule[i].start);
-        const endMinutes = timeToMinutes(todaySchedule[i].end);
-
-        // 處理跨午夜的情況
-        const adjustedEndMinutes = endMinutes < startMinutes ? endMinutes + 24 * 60 : endMinutes;
-        const adjustedCurrentMinutes = currentMinutes < startMinutes && endMinutes < startMinutes ? currentMinutes + 24 * 60 : currentMinutes;
-
-        if (adjustedCurrentMinutes >= startMinutes && adjustedCurrentMinutes < adjustedEndMinutes) {
-            currentActivity = todaySchedule[i].activity;
-
-            // 找下一個活動
-            if (i < todaySchedule.length - 1) {
-                nextActivity = todaySchedule[i + 1].activity;
-                const nextStartMinutes = timeToMinutes(todaySchedule[i + 1].start);
-                timeUntilNext = formatTimeDiff(nextStartMinutes - currentMinutes);
-            } else {
-                // 如果是今天最後一個活動，顯示明天第一個活動
-                const daysOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-                const currentDayIndex = daysOrder.indexOf(dayOfWeek);
-                const tomorrowIndex = (currentDayIndex + 1) % 7;
-                const tomorrow = daysOrder[tomorrowIndex];
-
-                if (schedules[stage][tomorrow]) {
-                    const tomorrowSchedule = schedules[stage][tomorrow];
-                    nextActivity = `明日：${tomorrowSchedule[0].activity}`;
-                } else {
-                    nextActivity = "明日：休息日";
-                }
-                timeUntilNext = "";
-            }
-            break;
-        }
-    }
-
-    // 如果當前時間在所有活動之前
-    if (currentMinutes < timeToMinutes(todaySchedule[0].start)) {
-        currentActivity = "準備開始學習";
-        nextActivity = todaySchedule[0].activity;
-        timeUntilNext = formatTimeDiff(timeToMinutes(todaySchedule[0].start) - currentMinutes);
-    }
-
-    document.getElementById('currentActivity').textContent = currentActivity;
-    document.getElementById('nextActivity').textContent = nextActivity;
-    document.getElementById('timeUntil').textContent = timeUntilNext;
+    if (currentActivityEl) currentActivityEl.textContent = status.currentActivity;
+    if (nextActivityEl) nextActivityEl.textContent = status.nextActivity;
+    if (timeUntilEl) timeUntilEl.textContent = status.timeUntilNext;
 }
 
 // 切換技巧內容顯示
@@ -469,108 +483,15 @@ function toggleMonth(month) {
     }
 }
 
-function updateMonthProgress(month) {
-    const content = document.getElementById(`content-${month}`);
-    if (!content) return;
+// ========== 通用進度管理邏輯 ==========
 
-    const checkboxes = content.querySelectorAll('input[type="checkbox"]');
-    const total = checkboxes.length;
-    const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
-    const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
-
-    const progressBar = document.getElementById(`progress-${month}`);
-    const progressText = document.getElementById(`text-${month}`);
-
-    if (progressBar) {
-        progressBar.style.width = percentage + '%';
-    }
-
-    if (progressText) {
-        progressText.textContent = percentage + '%';
-    }
-
-    // 保存进度到localStorage
-    saveMonthProgress(month, checked, total);
-}
-
-function saveMonthProgress(month, checked, total) {
-    const progress = {
-        checked: checked,
-        total: total,
-        percentage: Math.round((checked / total) * 100)
-    };
-    localStorage.setItem(`month-progress-${month}`, JSON.stringify(progress));
-}
-
-function loadMonthProgress() {
-    const months = ['nov', 'dec', 'jan', 'feb', 'mar', 'apr', 'may', 'jun'];
-
-    months.forEach(month => {
-        const saved = localStorage.getItem(`month-progress-${month}`);
-        if (saved) {
-            const progress = JSON.parse(saved);
-            const progressBar = document.getElementById(`progress-${month}`);
-            const progressText = document.getElementById(`text-${month}`);
-
-            if (progressBar) {
-                progressBar.style.width = progress.percentage + '%';
-            }
-
-            if (progressText) {
-                progressText.textContent = progress.percentage + '%';
-            }
-        }
-    });
-}
-
-// ========== 区块折叠管理 ==========
-function toggleSection(section) {
-    const content = document.getElementById(`content-${section}`);
-    const toggle = document.getElementById(`toggle-${section}`);
-
-    if (content && toggle) {
-        content.classList.toggle('show');
-        toggle.classList.toggle('expanded');
-    }
-}
-
-// ========== 高考科目监控 ==========
-const gaokaoSubjects = {
-    mis: { name: '資訊管理', total: 17, lessons: [] },
-    db: { name: '資料庫', total: 16, lessons: [] },
-    ds: { name: '資節', total: 25, lessons: [] },
-    netsec: { name: '網路+安全', total: 29, lessons: [] }
-};
-
-function initGaokaoSubjects() {
-    Object.keys(gaokaoSubjects).forEach(subjectId => {
-        const subject = gaokaoSubjects[subjectId];
-        const container = document.getElementById(`lessons-${subjectId}`);
-
-        if (!container) return;
-
-        // 加载保存的进度
-        loadGaokaoProgress(subjectId);
-    });
-
-    // 更新总体统计
-    updateGaokaoOverallStats();
-}
-
-function toggleSubject(subjectId) {
-    const content = document.getElementById(`subject-${subjectId}`);
-    const arrow = document.getElementById(`arrow-${subjectId}`);
-
-    if (content && arrow) {
-        content.classList.toggle('active');
-        arrow.classList.toggle('rotated');
-    }
-}
-
-function updateGaokaoProgress(subjectId) {
-    const subject = gaokaoSubjects[subjectId];
-    const container = document.getElementById(`lessons-${subjectId}`);
-
+/**
+ * 計算並更新進度
+ * @param {HTMLElement} container - 包含 checkbox 的容器
+ * @param {string} storageKey - localStorage 的 key
+ * @param {Function} onUpdate - 更新 UI 的回調函數 (percentage, checked, total)
+ */
+function calculateAndUpdateProgress(container, storageKey, onUpdate) {
     if (!container) return;
 
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
@@ -578,72 +499,155 @@ function updateGaokaoProgress(subjectId) {
     const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
     const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
 
-    // 更新进度显示
-    const progressText = document.getElementById(`progress-text-${subjectId}`);
-    const percentText = document.getElementById(`percent-${subjectId}`);
-    const badge = document.getElementById(`badge-${subjectId}`);
-
-    if (progressText) {
-        progressText.textContent = `${checked}/${total}堂`;
+    // 更新 UI
+    if (onUpdate) {
+        onUpdate(percentage, checked, total);
     }
 
-    if (percentText) {
-        percentText.textContent = `${percentage}%`;
-    }
+    // 保存狀態
+    const checkboxStates = Array.from(checkboxes).map(cb => cb.checked);
+    localStorage.setItem(storageKey, JSON.stringify(checkboxStates));
+}
 
-    // 根据完成率改变徽章颜色
-    if (badge) {
-        badge.removeAttribute('data-rate');
-        if (percentage === 100) {
-            badge.setAttribute('data-rate', 'complete');
-        } else if (percentage >= 70) {
-            badge.setAttribute('data-rate', 'high');
-        } else if (percentage >= 40) {
-            badge.setAttribute('data-rate', 'medium');
-        } else {
-            badge.setAttribute('data-rate', 'low');
+/**
+ * 加載進度
+ * @param {HTMLElement} container - 包含 checkbox 的容器
+ * @param {string} storageKey - localStorage 的 key
+ * @param {Function} onUpdate - 更新 UI 的回調函數
+ */
+function loadProgress(container, storageKey, onUpdate) {
+    if (!container) return;
+
+    const saved = localStorage.getItem(storageKey);
+    if (saved) {
+        try {
+            const checkboxStates = JSON.parse(saved);
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+
+            // 兼容舊格式 (Month progress 存的是對象, Gaokao 存的是數組)
+            // 這裡統一處理為數組邏輯，如果舊格式是對象，可能需要特殊處理
+            // 但為了簡化，我們假設這裡主要處理 checkbox 狀態數組
+            // 對於 Month progress，舊代碼存的是 {checked, total, percentage}，沒有存每個 checkbox 的狀態！
+            // 這是一個潛在問題。舊代碼 Month progress 其實無法恢復具體哪個 checkbox 被勾選，只能恢復統計數據？
+            // 檢查舊代碼：saveMonthProgress 存的是統計數據，但 loadMonthProgress 只是更新進度條，沒有恢復 checkbox 狀態！
+            // 這意味著刷新頁面後 checkbox 會重置？
+            // 讓我們修正這個行為：我們應該保存 checkbox 的狀態。
+
+            if (Array.isArray(checkboxStates)) {
+                checkboxes.forEach((cb, index) => {
+                    if (checkboxStates[index]) cb.checked = true;
+                });
+            }
+        } catch (e) {
+            console.error("Error loading progress for " + storageKey, e);
         }
     }
 
-    // 保存进度
-    saveGaokaoProgress(subjectId, checked);
-
-    // 更新总体统计
-    updateGaokaoOverallStats();
+    // 觸發一次更新以同步 UI
+    calculateAndUpdateProgress(container, storageKey, onUpdate);
 }
 
-function saveGaokaoProgress(subjectId, checked) {
-    const checkboxStates = [];
+// ========== 月份進度管理 ==========
+
+function updateMonthProgress(month) {
+    const content = document.getElementById(`content-${month}`);
+    calculateAndUpdateProgress(
+        content,
+        `month-checkboxes-${month}`, // 改用新 key 以保存 checkbox 狀態
+        (percentage, checked, total) => {
+            const progressBar = document.getElementById(`progress-${month}`);
+            const progressText = document.getElementById(`text-${month}`);
+            if (progressBar) progressBar.style.width = percentage + '%';
+            if (progressText) progressText.textContent = percentage + '%';
+        }
+    );
+}
+
+function loadMonthProgress() {
+    const months = ['nov', 'dec', 'jan', 'feb', 'mar', 'apr', 'may', 'jun'];
+    months.forEach(month => {
+        const content = document.getElementById(`content-${month}`);
+        // 綁定事件
+        if (content) {
+            const checkboxes = content.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.onchange = () => updateMonthProgress(month);
+            });
+
+            loadProgress(
+                content,
+                `month-checkboxes-${month}`,
+                (percentage, checked, total) => {
+                    const progressBar = document.getElementById(`progress-${month}`);
+                    const progressText = document.getElementById(`text-${month}`);
+                    if (progressBar) progressBar.style.width = percentage + '%';
+                    if (progressText) progressText.textContent = percentage + '%';
+                }
+            );
+        }
+    });
+}
+
+// ========== 高考科目監控 ==========
+
+function updateGaokaoProgress(subjectId) {
     const container = document.getElementById(`lessons-${subjectId}`);
+    calculateAndUpdateProgress(
+        container,
+        `gaokao-${subjectId}`,
+        (percentage, checked, total) => {
+            const progressText = document.getElementById(`progress-text-${subjectId}`);
+            const percentText = document.getElementById(`percent-${subjectId}`);
+            const badge = document.getElementById(`badge-${subjectId}`);
 
-    if (container) {
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((cb, index) => {
-            checkboxStates[index] = cb.checked;
-        });
-    }
+            if (progressText) progressText.textContent = `${checked}/${total}堂`;
+            if (percentText) percentText.textContent = `${percentage}%`;
 
-    localStorage.setItem(`gaokao-${subjectId}`, JSON.stringify(checkboxStates));
+            if (badge) {
+                badge.removeAttribute('data-rate');
+                if (percentage === 100) badge.setAttribute('data-rate', 'complete');
+                else if (percentage >= 70) badge.setAttribute('data-rate', 'high');
+                else if (percentage >= 40) badge.setAttribute('data-rate', 'medium');
+                else badge.setAttribute('data-rate', 'low');
+            }
+
+            updateGaokaoOverallStats();
+        }
+    );
 }
 
-function loadGaokaoProgress(subjectId) {
-    const saved = localStorage.getItem(`gaokao-${subjectId}`);
-
-    if (saved) {
-        const checkboxStates = JSON.parse(saved);
+function initGaokaoSubjects() {
+    Object.keys(gaokaoSubjects).forEach(subjectId => {
         const container = document.getElementById(`lessons-${subjectId}`);
-
         if (container) {
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach((cb, index) => {
-                if (checkboxStates[index]) {
-                    cb.checked = true;
-                }
+            checkboxes.forEach(cb => {
+                cb.onchange = () => updateGaokaoProgress(subjectId);
             });
-        }
-    }
 
-    updateGaokaoProgress(subjectId);
+            loadProgress(
+                container,
+                `gaokao-${subjectId}`,
+                (percentage, checked, total) => {
+                    const progressText = document.getElementById(`progress-text-${subjectId}`);
+                    const percentText = document.getElementById(`percent-${subjectId}`);
+                    const badge = document.getElementById(`badge-${subjectId}`);
+
+                    if (progressText) progressText.textContent = `${checked}/${total}堂`;
+                    if (percentText) percentText.textContent = `${percentage}%`;
+
+                    if (badge) {
+                        badge.removeAttribute('data-rate');
+                        if (percentage === 100) badge.setAttribute('data-rate', 'complete');
+                        else if (percentage >= 70) badge.setAttribute('data-rate', 'high');
+                        else if (percentage >= 40) badge.setAttribute('data-rate', 'medium');
+                        else badge.setAttribute('data-rate', 'low');
+                    }
+                }
+            );
+        }
+    });
+    updateGaokaoOverallStats();
 }
 
 function updateGaokaoOverallStats() {
@@ -675,7 +679,7 @@ function updateGaokaoOverallStats() {
 }
 
 // ========== 初始化 ==========
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // 加载月份进度
     loadMonthProgress();
 
