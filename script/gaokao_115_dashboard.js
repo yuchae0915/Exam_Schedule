@@ -232,6 +232,37 @@ function switchMonth(month) {
 }
 
 /**
+ * 切換戰略時間軸階段顯示
+ */
+function switchPhase(phase) {
+    // 隱藏所有階段
+    const allPhases = document.querySelectorAll('.timeline-phase');
+    allPhases.forEach(phaseEl => {
+        phaseEl.classList.remove('active');
+    });
+
+    // 顯示選中的階段
+    const selectedPhase = document.querySelector(`.timeline-phase[data-phase="${phase}"]`);
+    if (selectedPhase) {
+        selectedPhase.classList.add('active');
+    }
+
+    // 更新按鈕狀態
+    const allButtons = document.querySelectorAll('.month-tab-btn');
+    allButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // 找到對應的按鈕並設為active
+    const buttons = document.querySelectorAll('.month-tab-btn');
+    buttons.forEach(btn => {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(phase)) {
+            btn.classList.add('active');
+        }
+    });
+}
+
+/**
  * 更新月度進度
  */
 function updateMonthProgress(month) {

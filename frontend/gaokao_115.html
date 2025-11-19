@@ -583,9 +583,16 @@
             <!-- 進度規劃表 -->
             <h2>📊 高考戰略時間軸</h2>
 
-            <div class="strategic-timeline">
+            <!-- 阶段切换按钮 -->
+            <div class="timeline-tabs">
+                <button class="month-tab-btn active" onclick="switchPhase('phase1')">第一阶段</button>
+                <button class="month-tab-btn" onclick="switchPhase('phase2')">第二阶段</button>
+                <button class="month-tab-btn" onclick="switchPhase('phase3')">第三阶段</button>
+            </div>
+
+            <div class="strategic-timeline-container">
                 <!-- Phase 1 -->
-                <div class="timeline-phase phase-1">
+                <div class="timeline-phase phase-1 active" data-phase="phase1">
                     <div class="phase-header">
                         <div class="phase-icon">🏗️</div>
                         <div class="phase-title">
@@ -645,7 +652,7 @@
                 </div>
 
                 <!-- Phase 2 -->
-                <div class="timeline-phase phase-2">
+                <div class="timeline-phase phase-2" data-phase="phase2">
                     <div class="phase-header">
                         <div class="phase-icon">🚀</div>
                         <div class="phase-title">
@@ -706,7 +713,7 @@
                 </div>
 
                 <!-- Phase 3 -->
-                <div class="timeline-phase phase-3">
+                <div class="timeline-phase phase-3" data-phase="phase3">
                     <div class="phase-header">
                         <div class="phase-icon">🏆</div>
                         <div class="phase-title">

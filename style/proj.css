@@ -1657,3 +1657,27 @@ tr:hover td {
     border-radius: 4px;
     display: inline-block;
 }
+
+/* Strategic Timeline Container */
+.strategic-timeline-container {
+    position: relative;
+    min-height: 400px;
+}
+
+.strategic-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 0;
+    position: relative;
+}
+
+/* Timeline Phase Toggle */
+.timeline-phase {
+    display: none;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-phase.active {
+    display: block;
+}
