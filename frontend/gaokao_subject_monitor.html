@@ -7,50 +7,63 @@
     <title>📊 115高考專業科目學習監控</title>
     <link rel="stylesheet" href="../style/common.css">
     <link rel="stylesheet" href="../style/proj.css">
+    <link rel="stylesheet" href="../style/gaokao_exam_record.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>📊 115高考專業科目學習監控</h1>
-        <p style="text-align: center; color: #666; font-size: 1.1em; margin-bottom: 20px;">
-            即時追蹤您的學習進度
-        </p>
+        <!-- 頂部導航 -->
+        <div class="page-header">
+            <div class="page-title">
+                <h1>📊 115高考專業科目學習監控</h1>
+            </div>
+            <div class="header-actions" style="display: flex; gap: 10px;">
+                <a href="gaokao_115.html" class="back-btn">
+                    ⬅️ 返回主頁
+                </a>
+                <a href="gaokao_exam_record.html" class="back-btn">
+                    📝 考古題記錄
+                </a>
+                <a href="gaokao_subject_monitor.html" class="back-btn"
+                    style="background: var(--war-room-accent); color: white; border-color: var(--war-room-accent);">
+                    📊 科目監控
+                </a>
+            </div>
+        </div>
 
-        <div class="links-group">
-            <a href="gaokao_115.html" class="countdown-link">&lt; 返回主頁</a>
+        <div style="text-align: center; background: var(--war-room-card-bg); padding: 15px; border-radius: 12px; margin-bottom: 30px; box-shadow: var(--war-room-shadow);">
+            <p style="color: var(--war-room-text-muted); font-size: 1.1em; margin: 0;">
+                即時追蹤您的學習進度
+            </p>
         </div>
 
         <!-- 高考科目監控儀表板 -->
-        <div class="tips-section" style="margin-top: 30px;">
-            <h3 class="tips-header" onclick="toggleSection('dashboard')">
-                <span>📈 高考專業科目學習監控</span>
-                <span class="tips-toggle" id="toggle-dashboard">▼</span>
-            </h3>
-            <div class="tips-content show" id="content-dashboard">
-                <div class="tip-item">
-                    <!-- 總體統計 -->
-                    <div class="overall-stats">
-                        <div class="stat-card">
-                            <div class="stat-number" id="gaokao-total-completed">0</div>
-                            <div class="stat-label">已完成堂數</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="gaokao-total-lessons">87</div>
-                            <div class="stat-label">總堂數</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="gaokao-completion-rate">0%</div>
-                            <div class="stat-label">完成率</div>
-                        </div>
-                    </div>
+        <div class="input-section">
+            <div class="section-header">
+                <h2>📈 高考專業科目學習監控</h2>
+            </div>
 
-                    <!-- 專業科目卡片 - 動態生成 -->
-                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-mis"></div>
-                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-db"></div>
-                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-ds"></div>
-                    <div class="subject-card gaokao-subject-card" id="gaokao-subject-netsec"></div>
+            <!-- 總體統計 -->
+            <div class="stats-dashboard" style="margin-bottom: 30px;">
+                <div class="stat-card">
+                    <div class="stat-number" id="gaokao-total-completed">0</div>
+                    <div class="stat-label">已完成堂數</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="gaokao-total-lessons">87</div>
+                    <div class="stat-label">總堂數</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="gaokao-completion-rate">0%</div>
+                    <div class="stat-label">完成率</div>
                 </div>
             </div>
+
+            <!-- 專業科目卡片 - 動態生成 -->
+            <div class="subject-card gaokao-subject-card" id="gaokao-subject-mis"></div>
+            <div class="subject-card gaokao-subject-card" id="gaokao-subject-db"></div>
+            <div class="subject-card gaokao-subject-card" id="gaokao-subject-ds"></div>
+            <div class="subject-card gaokao-subject-card" id="gaokao-subject-netsec"></div>
         </div>
 
         <button id="backToTopBtn" title="回到最上面">⬆️</button>

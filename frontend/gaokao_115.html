@@ -7,19 +7,33 @@
     <title>📚 115高考資訊處理「7.5個月征戰計畫」</title>
     <link rel="stylesheet" href="../style/common.css">
     <link rel="stylesheet" href="../style/proj.css">
+    <link rel="stylesheet" href="../style/gaokao_exam_record.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>📚 115高考資訊處理「7.5個月征戰計畫」</h1>
-        <p style="text-align: center; color: #666; font-size: 1.1em; margin-bottom: 20px;">
-            11月下旬～6月底｜精準進度控管版
-        </p>
+        <!-- 頂部導航 -->
+        <div class="page-header">
+            <div class="page-title">
+                <h1>📚 115高考資訊處理「7.5個月征戰計畫」</h1>
+            </div>
+            <div class="header-actions" style="display: flex; gap: 10px;">
+                <a href="index.html" class="back-btn">
+                    ⬅️ 返回首頁
+                </a>
+                <a href="gaokao_subject_monitor.html" class="back-btn">
+                    📊 科目監控
+                </a>
+                <a href="gaokao_exam_record.html" class="back-btn">
+                    📝 考古題記錄
+                </a>
+            </div>
+        </div>
 
-        <div class="links-group">
-            <a href="index.html" class="countdown-link">&lt; 返回</a>
-            <a href="gaokao_subject_monitor.html" class="countdown-link">📊 專業科目監控</a>
-            <a href="gaokao_exam_record.html" class="countdown-link">📝 考古題練習記錄</a>
+        <div style="text-align: center; background: var(--war-room-card-bg); padding: 15px; border-radius: 12px; margin-bottom: 20px; box-shadow: var(--war-room-shadow);">
+            <p style="color: var(--war-room-text-muted); font-size: 1.1em; margin: 0;">
+                11月下旬～6月底｜精準進度控管版
+            </p>
         </div>
 
         <div class="current-activity-container">
@@ -49,20 +63,25 @@
         </div>
 
         <!-- 總體戰略配置 -->
-        <h2>📊 總體戰略配置</h2>
-
-        <div class="stage-description">
-            <h3>🎯 核心資源盤點</h3>
-            <ul style="line-height: 1.8;">
-                <li><strong>已有優勢：</strong>114國營教材（資通網路/資通安全基礎）、本科背景、三本教科書</li>
-                <li><strong>課程投資：</strong>全科45,500（87堂）</li>
-                <li><strong>時間資源：</strong>7.5個月（約32週）</li>
-                <li><strong>考古策略：</strong>Tier1（高考+地特10年）→ Tier2（調查+關務+國安7年）</li>
-            </ul>
+        <div class="input-section">
+            <div class="section-header">
+                <h2>📊 總體戰略配置</h2>
+            </div>
+            <div class="stage-description" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-left: 5px solid var(--war-room-accent); padding: 25px; border-radius: 12px; box-shadow: var(--war-room-shadow);">
+                <h3 style="color: var(--war-room-primary); margin-top: 0;">🎯 核心資源盤點</h3>
+                <ul style="line-height: 1.8; color: var(--war-room-text);">
+                    <li><strong style="color: var(--war-room-accent);">已有優勢：</strong>114國營教材（資通網路/資通安全基礎）、本科背景、三本教科書</li>
+                    <li><strong style="color: var(--war-room-accent);">課程投資：</strong>全科45,500（87堂）</li>
+                    <li><strong style="color: var(--war-room-accent);">時間資源：</strong>7.5個月（約32週）</li>
+                    <li><strong style="color: var(--war-room-accent);">考古策略：</strong>Tier1（高考+地特10年）→ Tier2（調查+關務+國安7年）</li>
+                </ul>
+            </div>
         </div>
 
         <!-- 月度進度規劃表 -->
-        <h2>📅 月度進度規劃表</h2>
+        <div class="section-header">
+            <h2>📅 月度進度規劃表</h2>
+        </div>
 
         <!-- 月份切換按鈕 -->
         <div class="timeline-tabs">
@@ -578,12 +597,14 @@
                         </div>
                     </div>
                 </div> <!-- Close month-card -->
-            </div> <!-- Close month-card-container -->
+        </div> <!-- Close month-card-container -->
 
-            <!-- 進度規劃表 -->
+        <!-- 進度規劃表 -->
+        <div class="section-header" style="margin-top: 40px;">
             <h2>📊 高考戰略時間軸</h2>
+        </div>
 
-            <!-- 阶段切换按钮 -->
+        <!-- 阶段切换按钮 -->
             <div class="timeline-tabs">
                 <button class="month-tab-btn active" onclick="switchPhase('phase1')">第一阶段</button>
                 <button class="month-tab-btn" onclick="switchPhase('phase2')">第二阶段</button>
