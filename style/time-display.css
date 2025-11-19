@@ -1,12 +1,12 @@
 /* time-display.css - 時間顯示樣式 */
 
-/* 預設樣式 - 類似你原本的設計 */
+/* 預設樣式 */
 .time-display-widget {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-glow);
     display: inline-block;
 }
 
@@ -54,7 +54,7 @@
 
 /* 精簡樣式 */
 .time-display-compact {
-    background: #2c3e50;
+    background: var(--text-main);
     color: white;
     padding: 10px 20px;
     border-radius: 20px;
