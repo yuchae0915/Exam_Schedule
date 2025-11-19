@@ -1,202 +1,190 @@
+/* =========================================
+   1. Reset & Base Styles (Variables are in common.css)
+   ========================================= */
 body {
-    font-family: 'Microsoft JhengHei', sans-serif;
+    font-family: 'Microsoft JhengHei', 'Segoe UI', Roboto, sans-serif;
     margin: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
 }
 
-
+/* =========================================
+   2. Layout & Typography
+   ========================================= */
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #080f17;
+    color: var(--text-dark);
     text-align: center;
     margin-bottom: 30px;
+    font-weight: 800;
 }
 
 h2 {
-    color: #34495e;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-    margin-top: 30px;
+    color: var(--text-secondary);
+    border-bottom: 3px solid var(--accent-blue);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
 h3 {
-    color: #7f8c8d;
+    color: var(--text-muted);
     margin-top: 20px;
+    font-weight: 600;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.important {
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+/* =========================================
+   3. Components: Tables & Schedule
+   ========================================= */
 .week-schedule {
     margin: 20px 0;
     overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 10px 0;
+    background: white;
 }
 
 th,
 td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #eee;
+    padding: 12px 15px;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 th {
-    background-color: #3498db;
+    background-color: var(--accent-blue);
     color: white;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f8f9fa;
 }
 
+tr:hover td {
+    background-color: #f1f2f6;
+}
+
+/* Subject Colors */
 .subject-computer {
-    background-color: #e3f2fd;
+    background-color: var(--subj-computer);
 }
 
 .subject-programming {
-    background-color: #f3e5f5;
+    background-color: var(--subj-programming);
 }
 
 .subject-network {
-    background-color: #e8f5e9;
+    background-color: var(--subj-network);
 }
 
 .subject-management {
-    background-color: #fff3e0;
+    background-color: var(--subj-management);
 }
 
 .subject-english {
-    background-color: #fce4ec;
+    background-color: var(--subj-english);
 }
 
 .subject-review {
-    background-color: #f0f4c3;
+    background-color: var(--subj-review);
 }
 
 .subject-rest {
-    background-color: #e0e0e0;
+    background-color: var(--subj-rest);
 }
 
 .subject-gym {
-    background-color: #ffcdd2;
-}
-
-/* 新增申論練習的樣式 */
-.subject-essay {
-    background-color: #fff3cd;
-    border-left: 3px solid #ffc107;
-}
-
-/* 新增考古題練習的樣式 */
-.subject-practice {
-    background-color: #d1ecf1;
-    border-left: 3px solid #17a2b8;
-}
-
-/* 新增Notion筆記整理的樣式 */
-.subject-notion {
-    background-color: #f8d7da;
-    border-left: 3px solid #dc3545;
+    background-color: var(--subj-gym);
 }
 
 .subject-law {
-    background-color: #d7ccc8;
+    background-color: var(--subj-law);
 }
 
+/* Special Practice Styles */
+.subject-essay {
+    background-color: var(--task-essay-bg);
+    border-left: 4px solid var(--task-essay-border);
+}
+
+.subject-practice {
+    background-color: var(--task-practice-bg);
+    border-left: 4px solid var(--task-practice-border);
+}
+
+.subject-notion {
+    background-color: var(--task-notion-bg);
+    border-left: 4px solid var(--task-notion-border);
+}
+
+/* Progress Table Specifics */
 .progress-table {
     margin: 20px 0;
 }
 
 .progress-table th {
-    background-color: #2ecc71;
+    background-color: var(--accent-green);
 }
 
+/* Legend */
 .legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    font-size: 0.9em;
 }
 
 .legend-color {
     width: 20px;
     height: 20px;
-    border: 1px solid #ddd;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.note {
-    background-color: #ffeaa7;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 20px 0;
-}
+/* =========================================
+   4. Components: Cards & Dashboard
+   ========================================= */
 
-.important {
-    color: #e74c3c;
-    font-weight: bold;
-}
-
-/* Tab styles */
-.tabs {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ddd;
-}
-
-.tab-button {
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px 5px 0 0;
-    transition: all 0.3s;
-}
-
-.tab-button:hover {
-    background-color: #e0e0e0;
-}
-
-.tab-button.active {
-    background-color: #3498db;
-    color: white;
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.stage-description {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    border-left: 4px solid #3498db;
-}
-
+/* Current Activity Card */
 .current-activity-container {
     position: sticky;
     top: 20px;
@@ -205,32 +193,32 @@ tr:nth-child(even) {
 }
 
 .current-activity {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-glow);
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     gap: 30px;
+    backdrop-filter: blur(10px);
 }
 
 .time-info {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-width: 150px;
+    min-width: 160px;
 }
 
 .date-display {
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 15px;
     text-align: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -243,8 +231,8 @@ tr:nth-child(even) {
 
 .date-number {
     display: block;
-    font-size: 2.5em;
-    font-weight: bold;
+    font-size: 2.8em;
+    font-weight: 800;
     line-height: 1;
     margin: 5px 0;
 }
@@ -256,20 +244,17 @@ tr:nth-child(even) {
 }
 
 .current-time {
-    font-size: 1.8em;
-    font-weight: bold;
+    font-size: 2em;
+    font-weight: 700;
     text-align: center;
     display: block;
-}
-
-.current-date {
-    display: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .activity-info {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     flex-grow: 1;
 }
 
@@ -277,11 +262,14 @@ tr:nth-child(even) {
 .next-activity {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
 
 .icon {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .label {
@@ -291,241 +279,177 @@ tr:nth-child(even) {
 }
 
 .activity-name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .time-until {
     font-size: 14px;
     opacity: 0.9;
-    margin-left: 10px;
+    margin-left: auto;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
 }
 
-
-/* 讀書技巧容器 */
-.study-tips-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-/* 技巧區塊 */
-.tips-section {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-
-/* 標題樣式 */
-.tips-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-}
-
-.tips-header:hover {
-    opacity: 0.9;
-}
-
-.tips-toggle {
-    font-size: 1.2em;
-    transition: transform 0.3s;
-}
-
-.tips-toggle.expanded {
-    transform: rotate(180deg);
-}
-
-/* 內容區域 */
-.tips-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    background: #f8f9fa;
-}
-
-.tips-content.show {
-    max-height: 2000px;
-    transition: max-height 0.3s ease-in;
-}
-
-/* 提示項目 */
-.tip-item {
-    padding: 20px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.tip-item:last-child {
-    border-bottom: none;
-}
-
-.tip-item h4 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-size: 1.2em;
-}
-
-.tip-item p {
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 10px;
-}
-
-.tip-item ul {
-    margin-left: 20px;
-    color: #555;
-    line-height: 1.8;
-}
-
-.tip-item li {
-    margin-bottom: 8px;
-}
-
-/* 答題架構 */
-.answer-structure {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 15px;
-}
-
-.structure-item {
-    margin-bottom: 15px;
-    padding: 10px;
-    background: #ecf0f1;
-    border-radius: 5px;
-}
-
-.structure-item strong {
-    color: #e74c3c;
-    font-size: 1.1em;
-}
-
-/* PDCA 流程 */
-.pdca-flow {
+/* Stat Cards */
+.overall-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-.flow-item {
-    background: #3498db;
+.stat-card {
+    background: var(--primary-gradient);
     color: white;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 15px;
     text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
 }
 
-.flow-item strong {
-    display: block;
-    font-size: 1.2em;
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5em;
+    font-weight: 800;
     margin-bottom: 5px;
 }
 
-/* 題型表格 */
-.question-types {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+.stat-label {
+    font-size: 0.95em;
+    opacity: 0.9;
 }
 
-.question-types th {
-    background: #34495e;
+/* Monitor Card */
+.monitor-card-container {
+    margin: 40px 0 20px;
+}
+
+.monitor-card {
+    background: var(--primary-gradient);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
     color: white;
-    padding: 12px;
-    text-align: left;
-}
-
-.question-types td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    background: white;
-}
-
-.question-types tr:hover td {
-    background: #f5f5f5;
-}
-
-#backToTopBtn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 99;
-    font-size: 18px;
-    background-color: #7a72eb;
-    color: white;
-    border: none;
-    outline: none;
-    padding: 10px 12px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-}
-
-#backToTopBtn.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-#backToTopBtn:hover {
-    background-color: #7a72eb;
-}
-
-/* 月份切換按鈕樣式 */
-.month-tab-btn {
-    padding: 12px 24px;
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #495057;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
 }
 
-.month-tab-btn::before {
+.monitor-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=');
+    opacity: 0.3;
 }
 
-.month-tab-btn:hover::before {
-    left: 100%;
+.monitor-card h3 {
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 2em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.monitor-card p {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.monitor-btn {
+    display: inline-block;
+    background: white;
+    color: var(--primary-color);
+    padding: 16px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.1em;
+    transition: var(--transition-normal);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.monitor-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    background: #f8f9fa;
+}
+
+.monitor-tags {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.monitor-tag {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   5. Components: Navigation & Tabs
+   ========================================= */
+.timeline-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.month-tab-btn {
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--transition-normal);
+    color: #666;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
 }
 
 .month-tab-btn:hover {
-    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-    border-color: #adb5bd;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 .month-tab-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
     border-color: transparent;
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px) scale(1.05);
 }
 
 .month-tab-btn.active::after {
@@ -534,14 +458,52 @@ tr:nth-child(even) {
     font-size: 12px;
 }
 
-/* 月份卡片容器 */
+/* Standard Tabs */
+.tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    padding: 12px 25px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px 8px 0 0;
+    transition: var(--transition-fast);
+    color: #666;
+}
+
+.tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-button.active {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* =========================================
+   6. Components: Month Cards & Tasks
+   ========================================= */
 .month-card-container {
     position: relative;
     min-height: 400px;
     padding: 10px 0;
 }
 
-/* 月份卡片樣式 */
 .month-card {
     display: none;
     animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -549,50 +511,27 @@ tr:nth-child(even) {
     background: white;
     background-clip: padding-box;
     position: relative;
-}
-
-.month-card::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    border-radius: 12px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 25px;
 }
 
 .month-card.active {
     display: block;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.month-card.active::before {
-    opacity: 0.3;
-}
-
-/* 月份卡片內的標題美化 */
 .month-card h3 {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
     padding: 20px 25px;
     margin: 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 13px 13px 0 0;
     font-size: 1.3em;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-}
-
-.month-card h3 span:first-child {
-    flex: 1;
-    min-width: 200px;
 }
 
 .month-icon {
@@ -602,36 +541,36 @@ tr:nth-child(even) {
 }
 
 .month-date {
-    font-size: 0.7em;
+    font-size: 0.75em;
     background: rgba(255, 255, 255, 0.2);
-    padding: 5px 15px;
+    padding: 6px 16px;
     border-radius: 20px;
     opacity: 0.95;
+    letter-spacing: 0.5px;
 }
 
-/* 月份卡片內的內容不要折疊 */
 .month-card .tips-content {
     max-height: none !important;
     overflow: visible !important;
     background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 15px 15px;
     padding: 25px;
 }
 
-/* 任務分類容器 */
+/* Task Categories */
 .task-category {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .category-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     padding: 12px 20px;
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     color: white;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-weight: bold;
     font-size: 1.1em;
     box-shadow: 0 3px 10px rgba(245, 87, 108, 0.3);
@@ -639,24 +578,22 @@ tr:nth-child(even) {
 
 .category-icon {
     font-size: 1.3em;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
-/* 任務網格佈局 */
+/* Task Grid */
 .task-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
-/* 任務卡片 */
 .task-card {
     background: white;
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 25px 20px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
     border: 2px solid transparent;
     display: flex;
     flex-direction: column;
@@ -673,25 +610,25 @@ tr:nth-child(even) {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .task-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
-    border-color: #667eea;
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 .task-card:hover::before {
     opacity: 1;
 }
 
-/* 任務卡片狀態 */
+/* Task Card States */
 .task-card.completed {
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-    border-color: #4caf50;
+    background: var(--status-completed-bg);
+    border-color: var(--status-completed-border);
 }
 
 .task-card.completed::before {
@@ -700,8 +637,8 @@ tr:nth-child(even) {
 }
 
 .task-card.in-progress {
-    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-    border-color: #ff9800;
+    background: var(--status-progress-bg);
+    border-color: var(--status-progress-border);
 }
 
 .task-card.in-progress::before {
@@ -710,21 +647,19 @@ tr:nth-child(even) {
 }
 
 .task-card.pending {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    background: var(--status-pending-bg);
 }
 
-/* 任務圖標 */
 .task-icon {
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-/* 任務文字 */
 .task-text {
-    font-size: 0.95em;
+    font-size: 1em;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--text-main);
     line-height: 1.5;
 }
 
@@ -733,85 +668,77 @@ tr:nth-child(even) {
     font-size: 0.85em;
     font-weight: 400;
     color: #666;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
-/* 里程碑列表 */
+/* =========================================
+   7. Components: Milestones & Progress
+   ========================================= */
 .milestone-list {
+    position: relative;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
-/* 里程碑項目 */
+.milestone-list::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 15px;
+    bottom: 15px;
+    width: 2px;
+    background: #e0e0e0;
+    z-index: 0;
+}
+
 .milestone-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 15px;
+    gap: 15px;
+    padding: 15px 20px;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    border-left: 4px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+    position: relative;
+    z-index: 1;
 }
 
 .milestone-item:hover {
     transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
-.milestone-item.completed {
-    border-left-color: #4caf50;
-    background: linear-gradient(90deg, #e8f5e9 0%, white 100%);
-}
-
-.milestone-item.completed .milestone-marker {
-    background: #4caf50;
-    color: white;
-}
-
-/* 里程碑標記 */
 .milestone-marker {
-    min-width: 28px;
-    height: 28px;
+    min-width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background: #e0e0e0;
-    color: #757575;
+    background: #f5f5f5;
+    color: #aaa;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.9em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    box-shadow: 0 0 0 4px white;
+    border: 2px solid #e0e0e0;
     transition: all 0.3s ease;
 }
 
-.milestone-item span:not(.milestone-marker) {
-    flex: 1;
-    font-size: 0.95em;
-    color: #2c3e50;
+.milestone-item.completed {
+    background: linear-gradient(to right, #f0f9f0, white);
+    border: 1px solid #e8f5e9;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+.milestone-item.completed .milestone-marker {
+    background: var(--accent-green);
+    color: white;
+    border-color: var(--accent-green);
 }
 
-/* 月份进度条样式 */
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
+/* Progress Bars */
 .progress-bar-mini {
     width: 150px;
     height: 12px;
@@ -821,17 +748,6 @@ tr:nth-child(even) {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
-}
-
-.progress-bar-mini::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
-    border-radius: 20px 20px 0 0;
 }
 
 .progress-fill-mini {
@@ -855,6 +771,191 @@ tr:nth-child(even) {
     animation: shimmer 2s infinite;
 }
 
+/* =========================================
+   8. Components: Subject Details (Collapsible)
+   ========================================= */
+.gaokao-subject-card {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+}
+
+.collapse-btn {
+    width: 100%;
+    padding: 18px 25px;
+    background: #f8f9fa;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.collapse-btn:hover {
+    background: #e9ecef;
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.progress-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary-gradient);
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.85em;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.progress-badge[data-rate="low"] {
+    background: var(--rate-low-bg);
+}
+
+.progress-badge[data-rate="medium"] {
+    background: var(--rate-medium-bg);
+}
+
+.progress-badge[data-rate="high"] {
+    background: var(--header-gradient);
+}
+
+.progress-badge[data-rate="complete"] {
+    background: var(--rate-complete-bg);
+}
+
+.progress-percent {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.collapse-arrow {
+    transition: transform 0.3s ease;
+}
+
+.collapse-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+.collapse-content {
+    padding: 25px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: none;
+}
+
+.collapse-content.active {
+    display: block;
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+}
+
+.lesson-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.lesson-item:hover {
+    background: #f8f9fa;
+}
+
+.lesson-item input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.lesson-item label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.lesson-item input[type="checkbox"]:checked+label {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+/* =========================================
+   9. Utilities & Animations
+   ========================================= */
+.note {
+    background-color: #ffeaa7;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 5px solid #fdcb6e;
+}
+
+.stage-description {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-blue);
+}
+
+#backToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+#backToTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#backToTopBtn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 @keyframes shimmer {
     0% {
         transform: translateX(-100%);
@@ -865,575 +966,139 @@ tr:nth-child(even) {
     }
 }
 
-.month-progress-text {
-    font-size: 1em;
-    font-weight: bold;
-    min-width: 45px;
-    text-align: right;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* 高考科目监控样式 */
-.overall-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.stat-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    font-size: 0.9em;
-    opacity: 0.9;
-}
-
-.gaokao-subject-card {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.collapse-btn {
-    width: 100%;
-    padding: 15px 20px;
-    background: #f8f9fa;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
-
-.collapse-btn:hover {
-    background: #e9ecef;
-}
-
-.progress-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.progress-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 5px 15px;
-    border-radius: 20px;
-    color: white;
-    font-size: 0.85em;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-    transition: all 0.3s ease;
-}
-
-.progress-badge[data-rate="low"] {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.progress-badge[data-rate="medium"] {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-}
-
-.progress-badge[data-rate="high"] {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-.progress-badge[data-rate="complete"] {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-}
-
-.progress-value {
-    font-weight: 500;
-}
-
-.progress-percent {
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 2px 8px;
-    border-radius: 12px;
-}
-
-.collapse-arrow {
-    transition: transform 0.3s ease;
-}
-
-.collapse-arrow.rotated {
-    transform: rotate(180deg);
-}
-
-.collapse-content {
-    padding: 20px;
-    background: white;
-    border-top: 1px solid #eee;
-    display: none;
-}
-
-.collapse-content.active {
-    display: block;
-}
-
-.lesson-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 6px;
-}
-
-.lesson-item {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease;
-}
-
-.lesson-item:hover {
-    background: #f8f9fa;
-}
-
-.lesson-item input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-.lesson-item label {
-    cursor: pointer;
-}
-
-.lesson-item input[type="checkbox"]:checked+label {
-    text-decoration: line-through;
-    color: #6c757d;
-}
-
-
-/* 響應式設計 */
+/* =========================================
+   10. Media Queries (Consolidated)
+   ========================================= */
 @media (max-width: 768px) {
-    .current-activity {
-        grid-template-columns: 1fr;
-        text-align: center;
+    body {
+        margin: 10px;
     }
 
-    .date-display {
-        display: inline-block;
-        padding: 10px 20px;
-    }
-
-    .date-number {
-        font-size: 2em;
-    }
-
-    .activity-info {
-        align-items: center;
-    }
-
-    .now-activity,
-    .next-activity {
-        flex-direction: column;
-    }
-
-    .pdca-flow {
-        grid-template-columns: 1fr;
-    }
-}
-
-.stat-number {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    font-size: 0.9em;
-    opacity: 0.9;
-}
-
-.gaokao-subject-card {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.collapse-btn {
-    width: 100%;
-    padding: 15px 20px;
-    background: #f8f9fa;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
-
-.collapse-btn:hover {
-    background: #e9ecef;
-}
-
-.progress-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.progress-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 5px 15px;
-    border-radius: 20px;
-    color: white;
-    font-size: 0.85em;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-    transition: all 0.3s ease;
-}
-
-.progress-badge[data-rate="low"] {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.progress-badge[data-rate="medium"] {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-}
-
-.progress-badge[data-rate="high"] {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-.progress-badge[data-rate="complete"] {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-}
-
-.progress-value {
-    font-weight: 500;
-}
-
-.progress-percent {
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 2px 8px;
-    border-radius: 12px;
-}
-
-.collapse-arrow {
-    transition: transform 0.3s ease;
-}
-
-.collapse-arrow.rotated {
-    transform: rotate(180deg);
-}
-
-.collapse-content {
-    padding: 20px;
-    background: white;
-    border-top: 1px solid #eee;
-    display: none;
-}
-
-.collapse-content.active {
-    display: block;
-}
-
-.lesson-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 6px;
-}
-
-.lesson-item {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease;
-}
-
-.lesson-item:hover {
-    background: #f8f9fa;
-}
-
-.lesson-item input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-.lesson-item label {
-    cursor: pointer;
-}
-
-.lesson-item input[type="checkbox"]:checked+label {
-    text-decoration: line-through;
-    color: #6c757d;
-}
-
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-    .current-activity {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .date-display {
-        display: inline-block;
-        padding: 10px 20px;
-    }
-
-    .date-number {
-        font-size: 2em;
-    }
-
-    .activity-info {
-        align-items: center;
-    }
-
-    .now-activity,
-    .next-activity {
-        flex-direction: column;
-    }
-
-    .pdca-flow {
-        grid-template-columns: 1fr;
-    }
-
-    .answer-structure {
+    .container {
         padding: 15px;
     }
 
-    .tips-header {
-        font-size: 0.9em;
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-top: 30px;
+    }
+
+    /* Current Activity */
+    .current-activity {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .time-info {
+        min-width: auto;
+    }
+
+    .date-display {
+        display: inline-block;
+        padding: 10px 20px;
+    }
+
+    .date-number {
+        font-size: 2.2em;
+    }
+
+    .activity-info {
+        align-items: center;
+    }
+
+    .now-activity,
+    .next-activity {
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .time-until {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    /* Tabs & Buttons */
+    .timeline-tabs {
+        gap: 8px;
+    }
+
+    .month-tab-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    /* Cards */
+    .month-card h3 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .month-date {
+        align-self: flex-start;
+    }
+
+    /* Monitor Card */
+    .monitor-card {
+        padding: 25px;
+    }
+
+    .monitor-card h3 {
+        font-size: 1.5em;
+    }
+
+    .monitor-btn {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+    }
+
+    /* Tables & Grids */
+    .pdca-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Misc */
+    .progress-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .progress-badge {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
     }
 }
 
 @media print {
     body {
         margin: 0;
+        background: white;
     }
 
     .container {
         box-shadow: none;
+        width: 100%;
+        max-width: none;
+        padding: 0;
     }
-}
 
-/* =========================================
-   UI Optimization for gaokao_115.html
-   ========================================= */
-
-/* Timeline Tabs Container */
-.timeline-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
-}
-
-/* Enhanced Month Tab Buttons */
-.month-tab-btn {
-    padding: 12px 24px;
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 50px;
-    /* Pill shape */
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #666;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    position: relative;
-    overflow: hidden;
-}
-
-.month-tab-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    color: #667eea;
-    border-color: #667eea;
-}
-
-.month-tab-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-    transform: translateY(-2px) scale(1.05);
-}
-
-/* Vertical Timeline for Milestones */
-.milestone-list {
-    position: relative;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.milestone-list::before {
-    content: '';
-    position: absolute;
-    left: 14px;
-    /* Adjust based on marker size */
-    top: 15px;
-    bottom: 15px;
-    width: 2px;
-    background: #e0e0e0;
-    z-index: 0;
-}
-
-.milestone-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    border-left: none;
-    /* Remove old border */
-    position: relative;
-    z-index: 1;
-}
-
-.milestone-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.milestone-marker {
-    min-width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #f5f5f5;
-    color: #aaa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 0 0 4px white;
-    /* Create gap effect from line */
-    border: 2px solid #e0e0e0;
-}
-
-.milestone-item.completed .milestone-marker {
-    background: #4caf50;
-    color: white;
-    border-color: #4caf50;
-}
-
-.milestone-item.completed {
-    background: linear-gradient(to right, #f0f9f0, white);
-    border: 1px solid #e8f5e9;
-}
-
-/* Subject Monitor Card (Extracted from HTML) */
-.monitor-card-container {
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-.monitor-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.monitor-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=');
-    opacity: 0.3;
-}
-
-.monitor-card h3 {
-    color: white;
-    margin: 0 0 15px 0;
-    font-size: 1.8em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.monitor-card p {
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 30px;
-    font-size: 1.2em;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.monitor-btn {
-    display: inline-block;
-    background: white;
-    color: #667eea;
-    padding: 16px 45px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 1.1em;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 1;
-}
-
-.monitor-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    background: #f8f9fa;
-}
-
-.monitor-tags {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.monitor-tag {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-size: 0.9em;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    .current-activity-container,
+    #backToTopBtn,
+    .timeline-tabs {
+        display: none;
+    }
 }

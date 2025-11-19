@@ -1,6 +1,9 @@
+/* =========================================
+   1. Reset & Base Styles
+   ========================================= */
 body {
     font-family: 'Microsoft JhengHei', Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     margin: 0;
     padding: 20px;
     min-height: 100vh;
@@ -15,8 +18,11 @@ body {
     overflow: hidden;
 }
 
+/* =========================================
+   2. Header
+   ========================================= */
 .header {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: var(--header-gradient);
     color: white;
     padding: 30px;
     text-align: center;
@@ -35,6 +41,9 @@ body {
     font-size: 1.1em;
 }
 
+/* =========================================
+   3. Table Styles
+   ========================================= */
 .table-container {
     padding: 30px;
     overflow-x: auto;
@@ -46,11 +55,11 @@ table {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
 }
 
 th {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
     padding: 15px 10px;
     text-align: center;
@@ -71,41 +80,29 @@ td {
 tr:hover {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
     transform: translateY(-1px);
-    transition: all 0.3s ease;
+    transition: var(--transition-fast);
 }
 
 .exam-name {
     font-weight: bold;
-    color: #4a5568;
+    color: var(--text-secondary);
     text-align: left;
     padding-left: 15px;
 }
 
-
+/* =========================================
+   4. Status & Rates
+   ========================================= */
 .rate-high {
-    background: linear-gradient(135deg, #48bb78, #38a169);
+    background: var(--rate-high-bg);
 }
 
 .rate-medium {
-    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    background: var(--rate-medium-bg);
 }
 
 .rate-low {
-    background: linear-gradient(135deg, #f56565, #e53e3e);
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
-
-    100% {
-        opacity: 1;
-    }
+    background: var(--rate-low-bg);
 }
 
 .subject-list {
@@ -126,7 +123,7 @@ tr:hover {
 
 .date-cell {
     font-weight: 500;
-    color: #2d3748;
+    color: var(--text-main);
 }
 
 .update-time {
@@ -137,13 +134,16 @@ tr:hover {
     font-style: italic;
 }
 
+/* =========================================
+   5. Components
+   ========================================= */
 .refresh-btn {
     display: block;
     width: 100%;
     max-width: 200px;
     margin: 20px auto;
     padding: 12px 20px;
-    background: linear-gradient(135deg, #48bb78, #38a169);
+    background: var(--rate-high-bg);
     color: white;
     border: none;
     border-radius: 25px;
@@ -151,7 +151,7 @@ tr:hover {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    transition: var(--transition-normal);
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -159,27 +159,28 @@ tr:hover {
     transform: scale(0.95);
 }
 
+/* Countdown Styles */
 .countdown {
     font-weight: bold;
-    color: #2d3748;
+    color: var(--text-main);
     font-size: 0.95em;
 }
 
 .countdown.countdown--urgent {
-    color: #e53e3e;
+    color: var(--accent-red);
     animation: pulse 2s infinite;
 }
 
 .countdown.countdown--near {
-    color: #dd6b20;
+    color: var(--accent-orange);
 }
 
 .countdown.countdown--far {
-    color: #38a169;
+    color: var(--accent-green);
 }
 
 .countdown.countdown--today {
-    color: #3182ce;
+    color: var(--accent-blue);
     font-weight: 700;
 }
 
@@ -188,6 +189,23 @@ tr:hover {
     font-weight: 500;
 }
 
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   6. Media Queries
+   ========================================= */
 @media (max-width: 768px) {
     .container {
         margin: 10px;

@@ -1,9 +1,86 @@
+/* =========================================
+   1. Global Variables & Reset
+   ========================================= */
 :root {
+    /* Brand Colors */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+
+    /* Accent Colors */
+    --accent-blue: #3498db;
+    --accent-green: #2ecc71;
+    --accent-red: #e74c3c;
+    --accent-yellow: #f1c40f;
+    --accent-orange: #ff9800;
+    --accent-teal: #1abc9c;
+
+    /* Text Colors */
+    --text-main: #2c3e50;
+    --text-dark: #080f17;
+    --text-secondary: #34495e;
+    --text-muted: #7f8c8d;
+    --text-light: #ffffff;
+
+    /* Background Colors */
+    --bg-body: #f0f2f5;
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --bg-hover: #f5f5f5;
+
+    /* Status/Rate Gradients */
+    --rate-high-bg: linear-gradient(135deg, #48bb78, #38a169);
+    --rate-medium-bg: linear-gradient(135deg, #ed8936, #dd6b20);
+    --rate-low-bg: linear-gradient(135deg, #f56565, #e53e3e);
+    --rate-complete-bg: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --header-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --header-gradient-dark: linear-gradient(135deg, #2c3e50, #000000);
+
+    /* Subject Colors */
+    --subj-computer: #e3f2fd;
+    --subj-programming: #f3e5f5;
+    --subj-network: #e8f5e9;
+    --subj-management: #fff3e0;
+    --subj-english: #fce4ec;
+    --subj-review: #f0f4c3;
+    --subj-rest: #e0e0e0;
+    --subj-gym: #ffcdd2;
+    --subj-law: #d7ccc8;
+
+    /* Special Task Colors */
+    --task-essay-bg: #fff3cd;
+    --task-essay-border: #ffc107;
+    --task-practice-bg: #d1ecf1;
+    --task-practice-border: #17a2b8;
+    --task-notion-bg: #f8d7da;
+    --task-notion-border: #dc3545;
+
+    /* Status Colors */
+    --status-completed-bg: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    --status-completed-border: #4caf50;
+    --status-progress-bg: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    --status-progress-border: #ff9800;
+    --status-pending-bg: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 5px 15px rgba(102, 126, 234, 0.3);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Link Variables */
     --link-gradient-start: #667eea;
     --link-gradient-end: #764ba2;
     --link-shadow-color: rgba(102, 126, 234, 0.3);
 }
 
+/* =========================================
+   2. Shared Components
+   ========================================= */
 .links-group {
     display: flex;
     flex-wrap: wrap;
@@ -17,7 +94,7 @@
 .nav-link,
 .countdown-link {
     background: linear-gradient(135deg, var(--link-gradient-start) 0%, var(--link-gradient-end) 100%);
-    color: #fff;
+    color: var(--text-light);
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 25px;
@@ -41,6 +118,9 @@
     box-shadow: none;
 }
 
+/* =========================================
+   3. Shared Media Queries
+   ========================================= */
 @media (max-width: 768px) {
     .links-group {
         justify-content: center;

@@ -1,17 +1,28 @@
+/* =========================================
+   1. Reset & Base Styles
+   ========================================= */
 body {
     font-family: Arial, sans-serif;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
 }
 
+.h2 {
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 30px;
+}
 
+/* =========================================
+   2. Stats & Progress
+   ========================================= */
 .progress-container {
     background: white;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     margin-bottom: 20px;
 }
 
@@ -19,12 +30,6 @@ body {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
-}
-
-.h2 {
-    color: #080f17;
-    text-align: center;
-    margin-bottom: 30px;
 }
 
 .overall-stats {
@@ -35,7 +40,7 @@ body {
 }
 
 .stat-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -53,6 +58,9 @@ body {
     opacity: 0.9;
 }
 
+/* =========================================
+   3. Subject Groups
+   ========================================= */
 .subject-stats {
     margin: 20px 0;
 }
@@ -63,7 +71,7 @@ body {
     gap: 10px;
     margin: 25px 0 15px 0;
     font-size: 1.3em;
-    color: #2c3e50;
+    color: var(--text-main);
 }
 
 .group-progress {
@@ -74,7 +82,6 @@ body {
 .subject-row {
     display: flex;
     gap: 15px;
-    /* 卡片之間的間距 */
     margin-bottom: 15px;
 }
 
@@ -84,8 +91,12 @@ body {
     border-radius: 8px;
     overflow: hidden;
     flex: 1;
+    background: white;
 }
 
+/* =========================================
+   4. Collapsible Components
+   ========================================= */
 .collapse-btn {
     width: 100%;
     padding: 15px 20px;
@@ -129,7 +140,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     padding: 5px 15px;
     border-radius: 20px;
     color: white;
@@ -148,13 +159,12 @@ body {
     border-radius: 12px;
 }
 
-/* 可選：為不同完成率添加不同顏色 */
 .progress-badge[data-rate="low"] {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: var(--rate-low-bg);
 }
 
 .progress-badge[data-rate="medium"] {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    background: var(--rate-medium-bg);
 }
 
 .progress-badge[data-rate="high"] {
@@ -162,7 +172,7 @@ body {
 }
 
 .progress-badge[data-rate="complete"] {
-    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    background: var(--rate-complete-bg);
 }
 
 .collapse-content {
@@ -176,6 +186,9 @@ body {
     display: block;
 }
 
+/* =========================================
+   5. Lesson Grid
+   ========================================= */
 .lesson-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -220,11 +233,13 @@ body {
 
 .review-title {
     font-weight: bold;
-    color: #dc3545;
+    color: var(--accent-red);
     margin-bottom: 10px;
 }
 
-
+/* =========================================
+   6. Media Queries
+   ========================================= */
 @media (max-width: 768px) {
     .subject-row {
         flex-direction: column;

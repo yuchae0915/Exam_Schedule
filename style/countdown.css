@@ -1,6 +1,9 @@
+/* =========================================
+   1. Reset & Base Styles
+   ========================================= */
 body {
     font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     min-height: 100vh;
     margin: 0;
     padding: 20px;
@@ -15,6 +18,9 @@ body {
     max-width: 520px;
 }
 
+/* =========================================
+   2. Card & Display
+   ========================================= */
 .countdown-card {
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(10px);
@@ -31,6 +37,23 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.display {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 30px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 3px;
+}
+
+.display.finished {
+    animation: pulse 1s infinite;
+    color: #ff4757;
+}
+
+/* =========================================
+   3. Inputs
+   ========================================= */
 .time-input {
     display: flex;
     justify-content: center;
@@ -61,7 +84,7 @@ body {
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
     outline: none;
-    transition: all 0.3s ease;
+    transition: var(--transition-normal);
 }
 
 .input-group input:focus {
@@ -73,15 +96,9 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.display {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 30px 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    font-family: 'Courier New', monospace;
-    letter-spacing: 3px;
-}
-
+/* =========================================
+   4. Controls
+   ========================================= */
 .controls {
     display: flex;
     justify-content: center;
@@ -138,12 +155,8 @@ button:disabled {
     box-shadow: none !important;
 }
 
-.display.finished {
-    animation: pulse 1s infinite;
-    color: #ff4757;
-}
-
 @keyframes pulse {
+
     0%,
     100% {
         transform: scale(1);
@@ -154,6 +167,9 @@ button:disabled {
     }
 }
 
+/* =========================================
+   5. Media Queries
+   ========================================= */
 @media (max-width: 480px) {
     body {
         align-items: flex-start;

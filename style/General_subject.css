@@ -1,3 +1,6 @@
+/* =========================================
+   1. Reset & Base Styles
+   ========================================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,6 +10,7 @@
 body {
     font-family: 'Microsoft JhengHei', sans-serif;
     background: linear-gradient(135deg, #667eea 50%, #764ba2 100%);
+    /* Keeping original gradient as it has specific stop */
     padding: 20px;
     line-height: 1.6;
 }
@@ -17,24 +21,26 @@ body {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
 
 h1 {
     text-align: center;
-    color: #2c3e50;
+    color: var(--text-main);
     margin-bottom: 30px;
 }
 
 h2 {
-    color: #34495e;
+    color: var(--text-secondary);
     margin-bottom: 15px;
     font-size: 1.3em;
 }
 
-/* 科目統計區域 - 修改為網格布局 */
+/* =========================================
+   2. Subject Stats
+   ========================================= */
 .subject-stats {
-    background: #f8f9fa;
+    background: var(--bg-light);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
@@ -42,14 +48,12 @@ h2 {
 
 #subjectStatsContainer {
     max-height: calc(100vh - 200px);
-    /* 扣除標題和其他元素的高度 */
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 10px;
-    /* 避免內容被滾動條遮擋 */
 }
 
-/* 美化滾動條（可選） */
+/* Scrollbar Styling */
 #subjectStatsContainer::-webkit-scrollbar {
     width: 8px;
 }
@@ -73,10 +77,9 @@ h2 {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
-    transition: all 0.3s;
+    transition: var(--transition-normal);
     margin-bottom: 10px;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .subject-header {
@@ -85,7 +88,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #3498db;
+    background: var(--accent-blue);
     color: white;
     user-select: none;
 }
@@ -125,12 +128,11 @@ h2 {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    background: #f8f9fa;
+    background: var(--bg-light);
 }
 
 .subject-content.show {
     max-height: 300px;
-    /* 設定最大高度 */
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -139,7 +141,7 @@ h2 {
     padding: 10px;
 }
 
-/* 美化滾動條（可選） */
+/* Content Scrollbar */
 .subject-content::-webkit-scrollbar {
     width: 6px;
 }
@@ -161,7 +163,7 @@ h2 {
 .subject-record-item {
     padding: 8px;
     margin-bottom: 5px;
-    background: #f8f9fa;
+    background: var(--bg-light);
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
@@ -172,9 +174,11 @@ h2 {
     background: #ecf0f1;
 }
 
-/* 輸入區域 */
+/* =========================================
+   3. Input Section
+   ========================================= */
 .input-section {
-    background: #f8f9fa;
+    background: var(--bg-light);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
@@ -199,11 +203,11 @@ select {
 input[type="text"]:focus,
 select:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--accent-blue);
     box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
-/* 美化 datalist 的輸入框效果 */
+/* Datalist Styling */
 input[list] {
     position: relative;
 }
@@ -213,14 +217,15 @@ input[list]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-/* 當輸入框聚焦時的樣式 */
 input[list]:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--accent-blue);
     box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
-/* 類別區塊樣式 */
+/* =========================================
+   4. Type Section
+   ========================================= */
 .type-section {
     margin-bottom: 20px;
     background: white;
@@ -235,7 +240,7 @@ input[list]:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #2c3e50;
+    background: var(--text-main);
     color: white;
     user-select: none;
 }
@@ -253,7 +258,7 @@ input[list]:focus {
 }
 
 .type-header.professional {
-    background: #e74c3c;
+    background: var(--accent-red);
 }
 
 .type-header.professional:hover {
@@ -284,7 +289,7 @@ input[list]:focus {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    background: #f8f9fa;
+    background: var(--bg-light);
     padding: 0;
 }
 
@@ -294,16 +299,16 @@ input[list]:focus {
     transition: max-height 0.3s ease-in;
 }
 
-/* 為內部的 grid 容器添加固定寬度，防止收合時重排 */
 .type-subjects-grid {
     display: flex;
     flex-direction: column;
-    /* 垂直排列 */
     padding: 15px;
     width: 100%;
 }
 
-/* 按鈕樣式 */
+/* =========================================
+   5. Buttons & Controls
+   ========================================= */
 .btn {
     padding: 10px 20px;
     border: none;
@@ -311,7 +316,7 @@ input[list]:focus {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    transition: all 0.3s;
+    transition: var(--transition-normal);
 }
 
 .btn-add {
@@ -324,7 +329,7 @@ input[list]:focus {
 }
 
 .btn-delete {
-    background-color: #e74c3c;
+    background-color: var(--accent-red);
     color: white;
     padding: 5px 15px;
     font-size: 14px;
@@ -334,12 +339,12 @@ input[list]:focus {
     background-color: #c0392b;
 }
 
-/* 危險操作區樣式 */
+/* Danger Zone */
 .danger-zone {
     margin-top: 40px;
     padding: 20px;
     background-color: #ffe6e6;
-    border: 2px dashed #e74c3c;
+    border: 2px dashed var(--accent-red);
     border-radius: 8px;
     text-align: center;
 }
@@ -356,7 +361,6 @@ input[list]:focus {
     font-size: 0.9em;
 }
 
-/* 讓清除按鈕看起來更危險 */
 .btn-clear {
     background-color: #c0392b;
     color: white;
@@ -368,7 +372,6 @@ input[list]:focus {
     box-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
 }
 
-/* 可選：加入確認勾選框方式 */
 .danger-confirm {
     margin-bottom: 15px;
 }
@@ -383,7 +386,9 @@ input[list]:focus {
     font-weight: bold;
 }
 
-/* 篩選區域 */
+/* =========================================
+   6. Filter & Display
+   ========================================= */
 .filter-section {
     background: #ecf0f1;
     padding: 20px;
@@ -397,7 +402,6 @@ input[list]:focus {
     gap: 10px;
 }
 
-/* 顯示區域 */
 .display-section {
     margin-top: 20px;
 }
@@ -409,7 +413,7 @@ input[list]:focus {
 }
 
 .record-table th {
-    background-color: #3498db;
+    background-color: var(--accent-blue);
     color: white;
     padding: 12px;
     text-align: left;
@@ -422,27 +426,22 @@ input[list]:focus {
 }
 
 .record-table tr:hover {
-    background-color: #f8f9fa;
+    background-color: var(--bg-light);
 }
 
 .record-table tr:nth-child(even) {
     background-color: #f5f7fa;
 }
 
-.no-records {
+.no-records,
+.no-subject-stats {
     text-align: center;
     padding: 40px;
-    color: #7f8c8d;
+    color: var(--text-muted);
     font-size: 18px;
 }
 
-.no-subject-stats {
-    text-align: center;
-    padding: 20px;
-    color: #7f8c8d;
-}
-
-/* 分頁樣式 */
+/* Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -459,13 +458,13 @@ input[list]:focus {
     color: #333;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: var(--transition-normal);
 }
 
 .pagination button:hover:not(:disabled) {
-    background: #3498db;
+    background: var(--accent-blue);
     color: white;
-    border-color: #3498db;
+    border-color: var(--accent-blue);
 }
 
 .pagination button:disabled {
@@ -478,9 +477,9 @@ input[list]:focus {
 }
 
 .pagination .page-btn.active {
-    background: #3498db;
+    background: var(--accent-blue);
     color: white;
-    border-color: #3498db;
+    border-color: var(--accent-blue);
 }
 
 .pagination .page-info {
@@ -488,7 +487,9 @@ input[list]:focus {
     font-size: 14px;
 }
 
-
+/* =========================================
+   7. Media Queries
+   ========================================= */
 @media (max-width: 1024px) {
     .input-grid {
         grid-template-columns: 1fr 1fr;
