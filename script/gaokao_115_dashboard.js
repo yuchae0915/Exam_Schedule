@@ -18,11 +18,17 @@ const gaokaoSubjectData = {
         totalLessons: 25,
         idPrefix: 'ds'
     },
-    netsec: {
-        name: '網路+安全 (Net+Sec)',
-        icon: '🌐🔒',
-        totalLessons: 29,
-        idPrefix: 'netsec'
+    network: {
+        name: '網路 (Network)',
+        icon: '🌐',
+        totalLessons: 15,
+        idPrefix: 'network'
+    },
+    security: {
+        name: '安全 (Security)',
+        icon: '🔒',
+        totalLessons: 14,
+        idPrefix: 'security'
     }
 };
 
