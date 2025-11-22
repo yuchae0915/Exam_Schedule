@@ -4,31 +4,46 @@ const gaokaoSubjectData = {
         name: '資訊管理 (MIS)',
         icon: '📚',
         totalLessons: 17,
-        idPrefix: 'mis'
+        idPrefix: 'mis',
+        startDate: '114.10.03',
+        endDate: '114.12.12',
+        description: '密集課程：約 2 個月結束，比網路晚開課但早結束'
     },
     db: {
         name: '資料庫 (DB)',
         icon: '💾',
         totalLessons: 16,
-        idPrefix: 'db'
+        idPrefix: 'db',
+        startDate: '114.11.28',
+        endDate: '115.01.23',
+        description: '跨年度：跨越年底與年初，需注意 SQL 實作練習'
     },
     ds: {
         name: '資料結構 (DS)',
         icon: '📊',
         totalLessons: 25,
-        idPrefix: 'ds'
+        idPrefix: 'ds',
+        startDate: '115.01.23',
+        endDate: '115.03.13',
+        description: '年後衝刺：約 1.5 個月，時間短但難度高，需極度專注'
     },
     network: {
         name: '網路 (Network)',
         icon: '🌐',
         totalLessons: 15,
-        idPrefix: 'network'
+        idPrefix: 'network',
+        startDate: '114.09.19',
+        endDate: '114.12.26',
+        description: '週期最長：橫跨 3 個多月，打底期，與資管高度重疊'
     },
     security: {
         name: '安全 (Security)',
         icon: '🔒',
         totalLessons: 14,
-        idPrefix: 'security'
+        idPrefix: 'security',
+        startDate: '115.03.13',
+        endDate: '115.04.24',
+        description: '考前收尾：約 1.5 個月，接續在資料結構後，直通考前'
     }
 };
 
