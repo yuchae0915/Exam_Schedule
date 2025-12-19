@@ -90,9 +90,20 @@ function restoreData() {
                     // 清除現有數據（完全替換模式）
                     localStorage.clear();
 
-                    // 恢復數據
+                    // 先記錄匯入時間（避免被備份數據覆蓋）
+                    const importTime = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+                    localStorage.setItem('last-backup-import', importTime);
+
+                    // 恢復數據（排除時間戳記 key）
+                    const timestampKeys = ['last-backup-export', 'last-backup-import'];
                     let successCount = 0;
                     Object.entries(backup).forEach(([key, value]) => {
+                        // 跳過時間戳記相關的 key，避免覆蓋剛設置的匯入時間
+                        if (timestampKeys.includes(key)) {
+                            console.log(`跳過備份中的時間戳: ${key}`);
+                            return;
+                        }
+
                         try {
                             localStorage.setItem(key, value);
                             successCount++;
@@ -101,9 +112,10 @@ function restoreData() {
                         }
                     });
 
-                    // 記錄匯入時間
-                    const importTime = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-                    localStorage.setItem('last-backup-import', importTime);
+                    // 如果備份中有匯出時間戳，也恢復它（但不覆蓋匯入時間）
+                    if (backup['last-backup-export']) {
+                        localStorage.setItem('last-backup-export', backup['last-backup-export']);
+                    }
 
                     // 显示成功消息并刷新页面
                     showBackupMessage(`✅ 恢復成功！\n成功匯入 ${successCount}/${itemCount} 個數據項\n\n頁面將在 2 秒後自動刷新...`, 'success');
