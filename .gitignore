@@ -1,2 +1,28 @@
-/info.txt
-/test_code
+# 依賴套件（可透過 npm install 安裝）
+node_modules/
+package-lock.json
+
+# 個人數據和備份
+data.json
+backups/
+
+# 個人文件和筆記
+info.txt
+test_code/
+*.docx
+
+# 系統文件
+.DS_Store
+Thumbs.db
+*.log
+desktop.ini
+
+# IDE 設定
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Office 臨時文件
+~$*

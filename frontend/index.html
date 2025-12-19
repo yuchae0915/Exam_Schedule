@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>考試時程表</title>
-    <link rel="stylesheet" href="../style/common.css">
-    <link rel="stylesheet" href="../style/index.css">
-    <script src="../script/index.js" defer></script>
+    <link rel="stylesheet" href="./style/common.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <script src="./script/heartbeat.js" defer></script>
+    <script src="./script/backup.js" defer></script>
+    <script src="./script/index.js" defer></script>
 </head>
 
 <body>
@@ -28,12 +30,12 @@
                 <thead>
                     <tr>
                         <th style="width: 120px;">考試名稱</th>
-                        <th style="width: 120px;">報名日期</th>
-                        <th style="width: 120px;">考試日期</th>
-                        <th style="width: 80px;">放榜日期</th>
-                        <th style="width: 140px;">倒數天數</th>
-                        <th style="width: 300px;">考試科目</th>
-                        <th style="width: 120px;">其他資訊</th>
+                        <th style="width: 100px;">報名日期</th>
+                        <th style="width: 140px;">筆試日期</th>
+                        <th style="width: 140px;">放榜日期</th>
+                        <th style="width: 80px;">倒數</th>
+                        <th>考試科目</th>
+                        <th style="width: 110px;">備註</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,6 +101,16 @@
                 </tbody>
             </table>
             <button class="refresh-btn" type="button" data-action="refresh-countdown">🔄 立即更新倒數</button>
+
+            <!-- 備份與恢復功能 -->
+            <div class="links-group" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                <a href="javascript:void(0)" onclick="backupData()" class="nav-link" title="備份所有學習進度到文件">
+                    💾 備份數據
+                </a>
+                <a href="javascript:void(0)" onclick="restoreData()" class="nav-link" title="從備份文件恢復學習進度">
+                    📥 恢復數據
+                </a>
+            </div>
             <div class="update-time">
                 <p>📅 最後更新時間：<span id="current-time">-</span></p>
                 <p>⏰ 倒數計算基準：距離考試開始日期</p>

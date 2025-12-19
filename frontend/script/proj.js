@@ -617,7 +617,12 @@ function updateGaokaoProgress(subjectId) {
 }
 
 function initGaokaoSubjects() {
-    Object.keys(gaokaoSubjects).forEach(subjectId => {
+    // 檢查 gaokaoSubjectData 是否存在（由 gaokao_115_dashboard.js 提供）
+    if (typeof gaokaoSubjectData === 'undefined') {
+        return; // 如果不在 gaokao 頁面，直接返回
+    }
+
+    Object.keys(gaokaoSubjectData).forEach(subjectId => {
         const container = document.getElementById(`lessons-${subjectId}`);
         if (container) {
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
@@ -651,18 +656,23 @@ function initGaokaoSubjects() {
 }
 
 function updateGaokaoOverallStats() {
+    // 檢查變數是否存在
+    if (typeof gaokaoSubjectData === 'undefined') {
+        return;
+    }
+
     let totalLessons = 0;
     let totalCompleted = 0;
 
-    Object.keys(gaokaoSubjects).forEach(subjectId => {
-        const subject = gaokaoSubjects[subjectId];
+    Object.keys(gaokaoSubjectData).forEach(subjectId => {
+        const subject = gaokaoSubjectData[subjectId];
         const container = document.getElementById(`lessons-${subjectId}`);
 
         if (container) {
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
             const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
 
-            totalLessons += subject.total;
+            totalLessons += subject.totalLessons;
             totalCompleted += checked;
         }
     });
