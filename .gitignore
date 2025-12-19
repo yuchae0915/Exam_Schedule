@@ -1,6 +1,9 @@
-# 依賴套件（可透過 npm install 安裝）
+# Node.js 相關（已不再使用）
 node_modules/
+package.json
 package-lock.json
+server.js
+start_hidden.vbs
 
 # 個人數據和備份
 data.json
@@ -10,6 +13,9 @@ backups/
 info.txt
 test_code/
 *.docx
+
+# 不再使用的腳本
+frontend/script/heartbeat.js
 
 # 系統文件
 .DS_Store
