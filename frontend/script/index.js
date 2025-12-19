@@ -44,7 +44,7 @@
             const weeksDiff = Math.ceil(daysDiff / 7);
 
             if (daysDiff > 0) {
-                element.textContent = `${daysDiff} 天（約 ${weeksDiff} 週）`;
+                element.innerHTML = `${daysDiff} 天<br>（約 ${weeksDiff} 週）`;
                 if (daysDiff <= 30) setCountdownState(element, 'countdown--urgent');
                 else if (daysDiff <= 90) setCountdownState(element, 'countdown--near');
                 else setCountdownState(element, 'countdown--far');

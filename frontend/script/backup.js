@@ -37,6 +37,11 @@ function backupData() {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
 
+        // 記錄備份匯出時間
+        const exportTime = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+        localStorage.setItem('last-backup-export', exportTime);
+        updateBackupTimestamps();
+
         // 顯示成功訊息
         showBackupMessage(`✅ 備份成功！\n檔案已下載：${filename}\n共備份 ${Object.keys(backup).length} 個數據項`, 'success');
 
@@ -75,15 +80,15 @@ function restoreData() {
 
                     // 显示确认对话框
                     const itemCount = Object.keys(backup).length;
-                    const confirmMsg = `確定要恢復備份嗎？\n\n將匯入 ${itemCount} 個數據項\n當前數據將被覆蓋！`;
+                    const confirmMsg = `確定要恢復備份嗎？\n\n⚠️ 警告：所有現有數據將被完全清除！\n將匯入 ${itemCount} 個數據項\n此操作無法撤銷！`;
 
                     if (!confirm(confirmMsg)) {
                         showBackupMessage('ℹ️ 已取消恢復操作', 'info');
                         return;
                     }
 
-                    // 清除現有數據（可選）
-                    // localStorage.clear();
+                    // 清除現有數據（完全替換模式）
+                    localStorage.clear();
 
                     // 恢復數據
                     let successCount = 0;
@@ -95,6 +100,10 @@ function restoreData() {
                             console.warn(`无法恢复 key: ${key}`, err);
                         }
                     });
+
+                    // 記錄匯入時間
+                    const importTime = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+                    localStorage.setItem('last-backup-import', importTime);
 
                     // 显示成功消息并刷新页面
                     showBackupMessage(`✅ 恢復成功！\n成功匯入 ${successCount}/${itemCount} 個數據項\n\n頁面將在 2 秒後自動刷新...`, 'success');
@@ -213,5 +222,30 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+/**
+ * 更新備份時間戳記顯示
+ */
+function updateBackupTimestamps() {
+    const exportEl = document.getElementById('last-backup-export');
+    const importEl = document.getElementById('last-backup-import');
+
+    if (exportEl) {
+        const lastExport = localStorage.getItem('last-backup-export');
+        exportEl.textContent = lastExport || '尚未備份';
+    }
+
+    if (importEl) {
+        const lastImport = localStorage.getItem('last-backup-import');
+        importEl.textContent = lastImport || '尚未匯入';
+    }
+}
+
+// 頁面載入時更新時間戳記
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateBackupTimestamps);
+} else {
+    updateBackupTimestamps();
+}
 
 console.log('✅ 備份/恢復工具已載入');
