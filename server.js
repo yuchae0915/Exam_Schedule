@@ -149,6 +149,7 @@ function cleanOldBackups() {
 let lastHeartbeat = Date.now();
 const HEARTBEAT_TIMEOUT = 10000; // 10秒沒有心跳就關閉
 const SHUTDOWN_DELAY = 5000; // 延遲5秒關閉，確保數據保存
+let isShuttingDown = false; // 防止重複觸發關閉
 
 // 心跳端點
 app.get('/api/heartbeat', (req, res) => {
@@ -157,10 +158,13 @@ app.get('/api/heartbeat', (req, res) => {
 });
 
 // 每秒檢查心跳
-setInterval(() => {
+const heartbeatChecker = setInterval(() => {
     const timeSinceLastHeartbeat = Date.now() - lastHeartbeat;
 
-    if (timeSinceLastHeartbeat > HEARTBEAT_TIMEOUT) {
+    if (timeSinceLastHeartbeat > HEARTBEAT_TIMEOUT && !isShuttingDown) {
+        isShuttingDown = true;
+        clearInterval(heartbeatChecker); // 停止檢查
+
         console.log('');
         console.log('⚠️  偵測到所有網頁已關閉');
         console.log(`⏱️  ${SHUTDOWN_DELAY / 1000} 秒後自動關閉伺服器...`);
